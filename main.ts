@@ -14,7 +14,9 @@ async function main() {
     "https://www.dr.dk/nyheder/service/feeds/senestenyt"
   );
 
-  console.log(JSON.stringify(newsFeed, undefined, 2));
+  for (const item of newsFeed.items) {
+    console.log(item.title);
+  }
 
   // await agent.login({
   //   identifier: process.env["BLUESKY_USERNAME"]!,
@@ -28,8 +30,6 @@ async function main() {
   // } catch (error) {
   //   console.error(error);
   // }
-
-  console.log("Done.");
 }
 
 main();
