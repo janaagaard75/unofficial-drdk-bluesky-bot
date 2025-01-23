@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import * as dotenv from "dotenv";
-import * as process from "process";
+import Parser from "rss-parser";
 
 dotenv.config();
 
@@ -9,10 +9,18 @@ const agent = new AtpAgent({
 });
 
 async function main() {
-  await agent.login({
-    identifier: process.env["BLUESKY_USERNAME"]!,
-    password: process.env["BLUESKY_PASSWORD"]!,
-  });
+  const parser = new Parser();
+  const newsFeed = await parser.parseURL(
+    "https://www.dr.dk/nyheder/service/feeds/senestenyt"
+  );
+
+  console.log(JSON.stringify(newsFeed, undefined, 2));
+
+  // await agent.login({
+  //   identifier: process.env["BLUESKY_USERNAME"]!,
+  //   password: process.env["BLUESKY_PASSWORD"]!,
+  // });
+
   // try {
   //   await agent.post({
   //     text: "🙂",
