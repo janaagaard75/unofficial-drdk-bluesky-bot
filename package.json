@@ -1,0 +1,8 @@
+{
+  "name": "unofficial-drdk-bluesky-bot",
+  "description": "Unofficial dr.dk news bot for Bluesky",
+  "version": "0.0.0",
+  "author": "Jan Aagaard <jan@aagaard.net>",
+  "license": "MIT",
+  "scripts": {}
+}
