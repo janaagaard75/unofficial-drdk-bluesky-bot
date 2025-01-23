@@ -11,9 +11,6 @@ dependencies:
   '@netlify/functions':
     specifier: ^3.0.0
     version: 3.0.0
-  dotenv:
-    specifier: ^16.4.7
-    version: 16.4.7
   rss-parser:
     specifier: ^3.13.0
     version: 3.13.0
@@ -318,11 +315,6 @@ packages:
 
   /await-lock@2.2.2:
     resolution: {integrity: sha512-aDczADvlvTGajTDjcjpJMqRkOF6Qdz3YbPZm/PyW6tKPkx2hlYBzxMhEywM/tU72HrVZjgl5VCdRuMlA7pZ8Gw==}
-    dev: false
-
-  /dotenv@16.4.7:
-    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
-    engines: {node: '>=12'}
     dev: false
 
   /entities@2.2.0:

@@ -1,8 +1,5 @@
 import { AtpAgent } from "@atproto/api";
-import * as dotenv from "dotenv";
 import Parser from "rss-parser";
-
-dotenv.config();
 
 const agent = new AtpAgent({
   service: "https://bsky.social",
