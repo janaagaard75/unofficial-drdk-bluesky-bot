@@ -1,7 +1,4 @@
 import { Context } from "@netlify/functions";
-import * as dotenv from "dotenv";
-
-dotenv.config();
 
 export default (request: Request, _context: Context) => {
   try {
