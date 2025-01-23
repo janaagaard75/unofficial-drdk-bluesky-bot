@@ -13,10 +13,15 @@ async function main() {
     identifier: process.env["BLUESKY_USERNAME"]!,
     password: process.env["BLUESKY_PASSWORD"]!,
   });
-  // await agent.post({
-  //   text: "🙂",
-  // });
-  console.log("Just posted!");
+  // try {
+  //   await agent.post({
+  //     text: "🙂",
+  //   });
+  // } catch (error) {
+  //   console.error(error);
+  // }
+
+  console.log("Done.");
 }
 
 main();
