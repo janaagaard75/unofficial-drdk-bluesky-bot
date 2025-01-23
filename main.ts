@@ -1,10 +1,10 @@
-import { BskyAgent } from "@atproto/api";
+import { AtpAgent } from "@atproto/api";
 import * as dotenv from "dotenv";
 import * as process from "process";
 
 dotenv.config();
 
-const agent = new BskyAgent({
+const agent = new AtpAgent({
   service: "https://bsky.social",
 });
 
