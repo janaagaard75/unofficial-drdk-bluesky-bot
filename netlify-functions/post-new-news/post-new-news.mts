@@ -7,5 +7,5 @@ export default async (request: Request) => {
 };
 
 export const config: Config = {
-  schedule: "@hourly",
+  schedule: "@monthly",
 };
