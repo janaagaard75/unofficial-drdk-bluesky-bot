@@ -1,0 +1,211 @@
+{
+  "data": {
+    "feed": [
+      {
+        "post": {
+          "uri": "at://did:plc:dlxnthdtaz7qdflht47dpst6/app.bsky.feed.post/3lgixqmjtvm2g",
+          "cid": "bafyreifzqkanry2jsseptnbnrs3iey56ff6dkajjv4lkwsd4zsktjxxd2u",
+          "author": {
+            "did": "did:plc:dlxnthdtaz7qdflht47dpst6",
+            "handle": "drdk-nyheder-bot.bsky.social",
+            "displayName": "Uofficiel dr.dk nyheder bot",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:dlxnthdtaz7qdflht47dpst6/bafkreid47n5jolybyr6kiiqivwn7nkd3iouzvfaeh55mtayu4ee34j5mwi@jpeg",
+            "viewer": {
+              "muted": false,
+              "blockedBy": false
+            },
+            "labels": [],
+            "createdAt": "2025-01-24T17:24:46.343Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2025-01-24T17:55:04.327Z",
+            "embed": {
+              "$type": "app.bsky.embed.external",
+              "external": {
+                "description": "En føderal dommer i USA har spændt ben for præsident Donald Trumps ønske om at fjerne den automatiske ret til amerikansk statsborgerskab, hvis man er født i USA.",
+                "thumb": {
+                  "$type": "blob",
+                  "ref": {
+                    "$link": "bafkreifio54ru2akvsue6grjdiyuo6v55mt43ewz7hck3ik7uv34jgpxk4"
+                  },
+                  "mimeType": "image/jpeg",
+                  "size": 447667
+                },
+                "title": "Dommer blokerer Trumps dekret om medfødt statsborgerskab | Nyheder | DR",
+                "uri": "https://www.dr.dk/nyheder/seneste/dommer-blokerer-trumps-dekret-om-medfoedt-statsborgerskab"
+              }
+            },
+            "facets": [
+              {
+                "features": [
+                  {
+                    "$type": "app.bsky.richtext.facet#link",
+                    "uri": "https://www.dr.dk/nyheder/seneste/dommer-blokerer-trumps-dekret-om-medfoedt-statsborgerskab"
+                  }
+                ],
+                "index": {
+                  "byteEnd": 25,
+                  "byteStart": 0
+                }
+              }
+            ],
+            "langs": ["en"],
+            "text": "www.dr.dk/nyheder/sene..."
+          },
+          "embed": {
+            "$type": "app.bsky.embed.external#view",
+            "external": {
+              "uri": "https://www.dr.dk/nyheder/seneste/dommer-blokerer-trumps-dekret-om-medfoedt-statsborgerskab",
+              "title": "Dommer blokerer Trumps dekret om medfødt statsborgerskab | Nyheder | DR",
+              "description": "En føderal dommer i USA har spændt ben for præsident Donald Trumps ønske om at fjerne den automatiske ret til amerikansk statsborgerskab, hvis man er født i USA.",
+              "thumb": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:dlxnthdtaz7qdflht47dpst6/bafkreifio54ru2akvsue6grjdiyuo6v55mt43ewz7hck3ik7uv34jgpxk4@jpeg"
+            }
+          },
+          "replyCount": 0,
+          "repostCount": 0,
+          "likeCount": 0,
+          "quoteCount": 0,
+          "indexedAt": "2025-01-24T17:55:07.458Z",
+          "viewer": {
+            "threadMuted": false,
+            "embeddingDisabled": false
+          },
+          "labels": []
+        }
+      },
+      {
+        "post": {
+          "uri": "at://did:plc:dlxnthdtaz7qdflht47dpst6/app.bsky.feed.post/3lgiwrc4yw42g",
+          "cid": "bafyreihl4rlffjfncfxk2wr2g25z7cwoxrh6nitgxzhup7hxbpmdqpnfse",
+          "author": {
+            "did": "did:plc:dlxnthdtaz7qdflht47dpst6",
+            "handle": "drdk-nyheder-bot.bsky.social",
+            "displayName": "Uofficiel dr.dk nyheder bot",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:dlxnthdtaz7qdflht47dpst6/bafkreid47n5jolybyr6kiiqivwn7nkd3iouzvfaeh55mtayu4ee34j5mwi@jpeg",
+            "viewer": {
+              "muted": false,
+              "blockedBy": false
+            },
+            "labels": [],
+            "createdAt": "2025-01-24T17:24:46.343Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2025-01-24T17:37:33.232Z",
+            "embed": {
+              "$type": "app.bsky.embed.external",
+              "external": {
+                "description": "En 29-årig pakistaner er blevet idømt 30 års fængsel for at have forsøgt at dræbe to unge med en kødøkse uden for satirebladet Charlie Hebdos tidligere kontor.",
+                "thumb": {
+                  "$type": "blob",
+                  "ref": {
+                    "$link": "bafkreifio54ru2akvsue6grjdiyuo6v55mt43ewz7hck3ik7uv34jgpxk4"
+                  },
+                  "mimeType": "image/jpeg",
+                  "size": 447667
+                },
+                "title": "Pakistaner får 30 års fængsel for kødøkse-angreb ved Charlie Hebdo-lokaler | Nyheder | DR",
+                "uri": "https://www.dr.dk/nyheder/seneste/pakistaner-faar-30-aars-faengsel-koedoekse-angreb-ved-charlie-hebdo-lokaler"
+              }
+            },
+            "facets": [
+              {
+                "features": [
+                  {
+                    "$type": "app.bsky.richtext.facet#link",
+                    "uri": "https://www.dr.dk/nyheder/seneste/pakistaner-faar-30-aars-faengsel-koedoekse-angreb-ved-charlie-hebdo-lokaler"
+                  }
+                ],
+                "index": {
+                  "byteEnd": 25,
+                  "byteStart": 0
+                }
+              }
+            ],
+            "langs": ["en"],
+            "text": "www.dr.dk/nyheder/sene..."
+          },
+          "embed": {
+            "$type": "app.bsky.embed.external#view",
+            "external": {
+              "uri": "https://www.dr.dk/nyheder/seneste/pakistaner-faar-30-aars-faengsel-koedoekse-angreb-ved-charlie-hebdo-lokaler",
+              "title": "Pakistaner får 30 års fængsel for kødøkse-angreb ved Charlie Hebdo-lokaler | Nyheder | DR",
+              "description": "En 29-årig pakistaner er blevet idømt 30 års fængsel for at have forsøgt at dræbe to unge med en kødøkse uden for satirebladet Charlie Hebdos tidligere kontor.",
+              "thumb": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:dlxnthdtaz7qdflht47dpst6/bafkreifio54ru2akvsue6grjdiyuo6v55mt43ewz7hck3ik7uv34jgpxk4@jpeg"
+            }
+          },
+          "replyCount": 0,
+          "repostCount": 0,
+          "likeCount": 1,
+          "quoteCount": 0,
+          "indexedAt": "2025-01-24T17:37:38.452Z",
+          "viewer": {
+            "threadMuted": false,
+            "embeddingDisabled": false
+          },
+          "labels": []
+        }
+      },
+      {
+        "post": {
+          "uri": "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3lgbvthr26k2z",
+          "cid": "bafyreih3vaaaeckrurwb6ozwrxjnsxfb65satywb2y5f6jxutpefdbma3e",
+          "author": {
+            "did": "did:plc:z72i7hdynmk6r22z27h6tvur",
+            "handle": "bsky.app",
+            "displayName": "Bluesky",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:z72i7hdynmk6r22z27h6tvur/bafkreihagr2cmvl2jt4mgx3sppwe2it3fwolkrbtjrhcnwjk4jdijhsoze@jpeg",
+            "associated": {
+              "chat": {
+                "allowIncoming": "none"
+              }
+            },
+            "viewer": {
+              "muted": false,
+              "blockedBy": false,
+              "following": "at://did:plc:dlxnthdtaz7qdflht47dpst6/app.bsky.graph.follow/3lgiw2ekkcd2g"
+            },
+            "labels": [],
+            "createdAt": "2023-04-12T04:53:57.057Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2025-01-21T22:32:14.330Z",
+            "langs": ["en"],
+            "text": "📢 Bluesky 1.96.7 for Android is rolling out now\n\nThis update should fix some issues people have experienced with scrolling feeds on certain Android devices"
+          },
+          "replyCount": 801,
+          "repostCount": 1464,
+          "likeCount": 23816,
+          "quoteCount": 101,
+          "indexedAt": "2025-01-21T22:32:14.756Z",
+          "viewer": {
+            "threadMuted": false,
+            "embeddingDisabled": false
+          },
+          "labels": []
+        }
+      }
+    ]
+  },
+  "headers": {
+    "access-control-allow-origin": "*",
+    "atproto-content-labelers": "did:plc:ar7c4by46qjdydhdevvrndac;redact",
+    "atproto-repo-rev": "3lgixrmuawk2q",
+    "cache-control": "private",
+    "content-encoding": "gzip",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Fri, 24 Jan 2025 21:09:23 GMT",
+    "keep-alive": "timeout=90",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2999",
+    "ratelimit-reset": "1737753263",
+    "strict-transport-security": "max-age=63072000",
+    "transfer-encoding": "chunked",
+    "vary": "Authorization, Accept-Encoding",
+    "x-powered-by": "Express"
+  },
+  "success": true
+}

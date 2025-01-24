@@ -17,6 +17,7 @@
   "dependencies": {
     "@netlify/functions": "^3.0.0",
     "@types/node": "^22.0.0",
+    "rss-parser": "^3.13.0",
     "typescript": "^4.5.5"
   }
 }
