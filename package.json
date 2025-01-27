@@ -16,5 +16,6 @@
   "devDependencies": {
     "@types/node": "^22.10.10",
     "prettier": "^3.4.2"
-  }
+  },
+  "packageManager": "pnpm@9.15.4"
 }
