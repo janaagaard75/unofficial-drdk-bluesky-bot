@@ -39,7 +39,11 @@ interface External {
 
 async function main() {
   try {
-    const postedUrls = await fetchPostedUrlsOnBluesky();
+    const agent = new AtpAgent({
+      service: "https://bsky.social",
+    });
+
+    const postedUrls = await fetchPostedUrlsOnBluesky(agent);
     const urlsFromFeed = await fetchUrlsFromRssFeed();
 
     const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
@@ -65,11 +69,9 @@ const fetchUrlsFromRssFeed = async (): Promise<Set<string>> => {
   return new Set(urlsFromFeed);
 };
 
-const fetchPostedUrlsOnBluesky = async (): Promise<Set<string>> => {
-  const agent = new AtpAgent({
-    service: "https://bsky.social",
-  });
-
+const fetchPostedUrlsOnBluesky = async (
+  agent: AtpAgent
+): Promise<Set<string>> => {
   await agent.login({
     identifier: process.env["BLUESKY_USERNAME"]!,
     password: process.env["BLUESKY_PASSWORD"]!,
