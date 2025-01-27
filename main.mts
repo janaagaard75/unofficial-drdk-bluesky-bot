@@ -52,9 +52,11 @@ async function main() {
     // console.log("postedUrls", postedUrls);
     // console.log("urlsFromFeed", urlsFromFeed);
     // console.log("alreadyPostedUrls", alreadyPostedUrls);
-    console.log("newUrls", newUrls);
+    // console.log("newUrls", newUrls);
 
     await postUrls(agent, newUrls);
+
+    console.log(`Posted ${newUrls.size} new URLs.`);
   } catch (error) {
     console.error(error);
   }
