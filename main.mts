@@ -104,6 +104,7 @@ const fetchPostedUrlsOnBluesky = async (
 const postUrls = async (agent: AtpAgent, urls: Set<string>) => {
   for (const url of urls) {
     await agent.post({
+      langs: ["da-DK"],
       text: url,
     });
   }
