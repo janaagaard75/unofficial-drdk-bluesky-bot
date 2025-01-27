@@ -46,13 +46,15 @@ async function main() {
     const postedUrls = await fetchPostedUrlsOnBluesky(agent);
     const urlsFromFeed = await fetchUrlsFromRssFeed();
 
-    const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
+    // const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
     const newUrls = urlsFromFeed.difference(postedUrls);
 
-    console.log("postedUrls", postedUrls);
-    console.log("urlsFromFeed", urlsFromFeed);
-    console.log("alreadyPostedUrls", alreadyPostedUrls);
+    // console.log("postedUrls", postedUrls);
+    // console.log("urlsFromFeed", urlsFromFeed);
+    // console.log("alreadyPostedUrls", alreadyPostedUrls);
     console.log("newUrls", newUrls);
+
+    await postUrls(agent, newUrls);
   } catch (error) {
     console.error(error);
   }
@@ -95,6 +97,14 @@ const fetchPostedUrlsOnBluesky = async (
     .map((embed) => (embed.external as External).uri);
 
   return new Set(postedUrls);
+};
+
+const postUrls = async (agent: AtpAgent, urls: Set<string>) => {
+  for (const url of urls) {
+    await agent.post({
+      text: url,
+    });
+  }
 };
 
 const isDefined = <T,>(item: T | null | undefined): item is T =>
