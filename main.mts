@@ -1,4 +1,5 @@
 import { AtpAgent } from "@atproto/api";
+import Parser from "rss-parser";
 
 const agent = new AtpAgent({
   service: "https://bsky.social",
@@ -13,8 +14,8 @@ interface External {
 
 async function main() {
   try {
-    const urlsFromFeed = fetchUrlsFromRssFeed();
-    const postedUrls = fetchPostedUrlsOnBluesky();
+    const urlsFromFeed = await fetchUrlsFromRssFeed();
+    const postedUrls = await fetchPostedUrlsOnBluesky();
 
     const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
     const newUrls = urlsFromFeed.difference(postedUrls);
@@ -26,16 +27,18 @@ async function main() {
   }
 }
 
-const fetcUrlsFromRssFeed = async (): Set<string> => {
+const fetchUrlsFromRssFeed = async (): Promise<Set<string>> => {
   const parser = new Parser();
   const newsFeed = await parser.parseURL(
     "https://www.dr.dk/nyheder/service/feeds/senestenyt"
   );
-  const urlsFromFeed = newsFeed.items.map(item => item.link);
+  const urlsFromFeed = newsFeed.items
+    .map((item) => item.link)
+    .filter(isDefined);
   return new Set(urlsFromFeed);
-}
+};
 
-const fetchPostedUrlOnBluesky = async (): Set<string> => {
+const fetchPostedUrlsOnBluesky = async (): Promise<Set<string>> => {
   await agent.login({
     identifier: process.env["BLUESKY_USERNAME"]!,
     password: process.env["BLUESKY_PASSWORD"]!,
@@ -49,17 +52,18 @@ const fetchPostedUrlOnBluesky = async (): Set<string> => {
 
   const postedUrls = feedViewPosts
     // Filter out posts that aren't from the bot. Don't know why this is necessary.
-    .filter((feedViewPost) =>
-      feedViewPost.post.author.did === "did:plc:dlxnthdtaz7qdflht47dpst6"
+    .filter(
+      (feedViewPost) =>
+        feedViewPost.post.author.did === "did:plc:dlxnthdtaz7qdflht47dpst6"
     )
     .map((feedViewPost) => feedViewPost.post.embed)
     .filter(isDefined)
     .map((embed) => (embed.external as External).uri);
 
-  return new Set(postedUrls)
-}
+  return new Set(postedUrls);
+};
 
-const isDefined = <T>(item: T | null | undefined): item is T =>
+const isDefined = <T,>(item: T | null | undefined): item is T =>
   item !== undefined && item !== null;
 
 main();
