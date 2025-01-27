@@ -1,9 +1,34 @@
 import { AtpAgent } from "@atproto/api";
 import Parser from "rss-parser";
 
-const agent = new AtpAgent({
-  service: "https://bsky.social",
-});
+if (!Set.prototype.difference) {
+  Set.prototype.difference = function (
+    this: Set<any>,
+    otherSet: Set<any>
+  ): Set<any> {
+    const result = new Set(this);
+    for (const item of otherSet) {
+      result.delete(item);
+    }
+    return result;
+  };
+}
+
+if (!Set.prototype.intersection) {
+  Set.prototype.intersection = function (otherSet: Set<any>): Set<any> {
+    if (!(otherSet instanceof Set)) {
+      throw new TypeError("Argument must be a Set");
+    }
+
+    const intersectionSet = new Set<any>();
+    for (const item of this) {
+      if (otherSet.has(item)) {
+        intersectionSet.add(item);
+      }
+    }
+    return intersectionSet;
+  };
+}
 
 interface External {
   description: string;
@@ -39,6 +64,10 @@ const fetchUrlsFromRssFeed = async (): Promise<Set<string>> => {
 };
 
 const fetchPostedUrlsOnBluesky = async (): Promise<Set<string>> => {
+  const agent = new AtpAgent({
+    service: "https://bsky.social",
+  });
+
   await agent.login({
     identifier: process.env["BLUESKY_USERNAME"]!,
     password: process.env["BLUESKY_PASSWORD"]!,
