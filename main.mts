@@ -39,12 +39,14 @@ interface External {
 
 async function main() {
   try {
-    const urlsFromFeed = await fetchUrlsFromRssFeed();
     const postedUrls = await fetchPostedUrlsOnBluesky();
+    const urlsFromFeed = await fetchUrlsFromRssFeed();
 
     const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
     const newUrls = urlsFromFeed.difference(postedUrls);
 
+    console.log("postedUrls", postedUrls);
+    console.log("urlsFromFeed", urlsFromFeed);
     console.log("alreadyPostedUrls", alreadyPostedUrls);
     console.log("newUrls", newUrls);
   } catch (error) {
@@ -73,8 +75,9 @@ const fetchPostedUrlsOnBluesky = async (): Promise<Set<string>> => {
     password: process.env["BLUESKY_PASSWORD"]!,
   });
 
+  const feedSize = 20;
   const timeline = await agent.getTimeline({
-    limit: 100,
+    limit: 2 * feedSize,
   });
 
   const feedViewPosts = timeline.data.feed;
