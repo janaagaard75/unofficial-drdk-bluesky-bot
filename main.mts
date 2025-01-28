@@ -57,7 +57,7 @@ async function main() {
     const firstUrl = newUrls.values().next().value;
 
     if (firstUrl !== undefined) {
-      // await postUrls(agent, newUrls);
+      await postUrls(agent, newUrls);
     }
 
     console.log(`Posted ${newUrls.size} new URLs.`);
@@ -107,10 +107,13 @@ const fetchPostedUrlsOnBluesky = async (
 
 const postUrls = async (agent: AtpAgent, urls: Set<string>) => {
   for (const url of urls) {
-    await agent.post({
+    const post = {
       langs: ["da-DK"],
       text: url,
-    });
+    };
+
+    console.log("Post", post);
+    // await agent.post(post);
   }
 };
 
