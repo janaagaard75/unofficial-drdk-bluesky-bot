@@ -124,7 +124,7 @@ const postUrl = async (agent: AtpAgent, url: string) => {
   const post = {
     facets: facets,
     langs: ["da-DK"],
-    text: url,
+    text: strippedUrl,
   };
 
   console.dir(post, { depth: undefined });
