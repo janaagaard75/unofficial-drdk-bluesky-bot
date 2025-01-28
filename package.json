@@ -5,7 +5,7 @@
   "author": "Jan Aagaard <jan@aagaard.net>",
   "license": "MIT",
   "scripts": {
-    "start": "tsx ./main.ts"
+    "start": "tsx --env-file=.env ./main.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.31",
@@ -15,6 +15,8 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.10",
-    "prettier": "^3.4.2"
-  }
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@9.15.4"
 }

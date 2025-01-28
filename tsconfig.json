@@ -15,5 +15,5 @@
     "strict": true,
     "target": "ESNext"
   },
-  "include": ["main.ts"]
+  "include": ["*.ts", "*.mts"]
 }
