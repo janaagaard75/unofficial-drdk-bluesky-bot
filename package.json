@@ -5,7 +5,7 @@
   "author": "Jan Aagaard <jan@aagaard.net>",
   "license": "MIT",
   "scripts": {
-    "start": "tsx --env-file=.env ./main.mts"
+    "start": "tsx --env-file=.env ./main.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.31",

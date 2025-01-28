@@ -1,5 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import Parser from "rss-parser";
+import { detectFacets, UnicodeString } from "./detectFacets";
 
 if (!Set.prototype.difference) {
   Set.prototype.difference = function (
@@ -111,16 +112,19 @@ const fetchPostedUrlsOnBluesky = async (
 const postUrl = async (agent: AtpAgent, url: string) => {
   const strippedUrl = url.replace(/https?:\/\//, "");
 
+  const facets = detectFacets(new UnicodeString(strippedUrl));
+
   const post = {
+    facets: facets,
     langs: ["da-DK"],
-    text: strippedUrl,
+    text: url,
   };
 
-  console.log("Post", post);
+  console.dir(post, { depth: undefined });
   // await agent.post(post);
 };
 
-const isDefined = <T,>(item: T | null | undefined): item is T =>
+const isDefined = <T>(item: T | null | undefined): item is T =>
   item !== undefined && item !== null;
 
 main();

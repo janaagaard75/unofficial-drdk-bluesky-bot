@@ -6,14 +6,14 @@ type Facet = AppBskyRichtextFacet.Main;
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
-class UnicodeString {
-  utf16: string;
-  utf8: Uint8Array;
-
+export class UnicodeString {
   constructor(utf16: string) {
     this.utf16 = utf16;
     this.utf8 = encoder.encode(utf16);
   }
+
+  utf16: string;
+  utf8: Uint8Array;
 
   // helper to convert utf16 code-unit offsets to utf8 code-unit offsets
   utf16IndexToUtf8Index(i: number) {
@@ -21,16 +21,20 @@ class UnicodeString {
   }
 }
 
-export function detectFacets(text: UnicodeString): Array<Facet> {
+export const detectFacets = (text: UnicodeString): Array<Facet> => {
   const facets: Array<Facet> = [];
 
   const linkMatcher =
     /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim;
   let match: RegExpExecArray | null;
   while ((match = linkMatcher.exec(text.utf16)) !== null) {
+    if (match[2] === undefined) {
+      continue;
+    }
+
     let uri = match[2];
     if (!uri.startsWith("http")) {
-      const domain = match.groups?.domain;
+      const domain = match.groups?.["domain"];
       if (!domain || !isValidDomain(domain)) {
         continue;
       }
@@ -65,9 +69,9 @@ export function detectFacets(text: UnicodeString): Array<Facet> {
   }
 
   return facets;
-}
+};
 
-function isValidDomain(str: string): boolean {
+const isValidDomain = (str: string): boolean => {
   return !!TLDs.find((tld) => {
     const i = str.lastIndexOf(tld);
     if (i === -1) {
@@ -75,4 +79,4 @@ function isValidDomain(str: string): boolean {
     }
     return str.charAt(i - 1) === "." && i === str.length - tld.length;
   });
-}
+};
