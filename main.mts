@@ -55,12 +55,13 @@ async function main() {
     // console.log("newUrls", newUrls);
 
     const firstUrl = newUrls.values().next().value;
-
     if (firstUrl !== undefined) {
-      await postUrls(agent, new Set([firstUrl]));
+      postUrl(agent, firstUrl);
     }
 
-    // await postUrls(agent, newUrls);
+    // for (const url of newUrls) {
+    //   await postUrl(agent, url);
+    // }
 
     console.log(`Posted ${newUrls.size} new URLs.`);
   } catch (error) {
@@ -107,16 +108,16 @@ const fetchPostedUrlsOnBluesky = async (
   return new Set(postedUrls);
 };
 
-const postUrls = async (agent: AtpAgent, urls: Set<string>) => {
-  for (const url of urls) {
-    const post = {
-      langs: ["da-DK"],
-      text: url,
-    };
+const postUrl = async (agent: AtpAgent, url: string) => {
+  const strippedUrl = url.replace(/https?:\/\//, "");
 
-    console.log("Post", post);
-    // await agent.post(post);
-  }
+  const post = {
+    langs: ["da-DK"],
+    text: strippedUrl,
+  };
+
+  console.log("Post", post);
+  // await agent.post(post);
 };
 
 const isDefined = <T,>(item: T | null | undefined): item is T =>
