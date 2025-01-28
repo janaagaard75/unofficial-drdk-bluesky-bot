@@ -21,7 +21,7 @@ class UnicodeString {
   }
 }
 
-export function detectFacets(text: UnicodeString): Facet[] | undefined {
+export function detectFacets(text: UnicodeString): Array<Facet> {
   let match;
   const facets: Facet[] = [];
   {
@@ -63,7 +63,7 @@ export function detectFacets(text: UnicodeString): Facet[] | undefined {
     }
   }
 
-  return facets.length > 0 ? facets : undefined;
+  return facets;
 }
 
 function isValidDomain(str: string): boolean {
