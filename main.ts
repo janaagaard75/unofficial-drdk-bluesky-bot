@@ -1,4 +1,4 @@
-import { AtpAgent } from "@atproto/api";
+import { AtpAgent, Facet } from "@atproto/api";
 import Parser from "rss-parser";
 import { detectFacets, UnicodeString } from "./detectFacets";
 
@@ -31,6 +31,10 @@ if (!Set.prototype.intersection) {
   };
 }
 
+interface Record {
+  facets: Array<Facet>;
+}
+
 interface External {
   description: string;
   thumb: string;
@@ -50,7 +54,7 @@ async function main() {
     // const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
     const newUrls = urlsFromFeed.difference(postedUrls);
 
-    // console.log("postedUrls", postedUrls);
+    console.log("postedUrls", postedUrls);
     // console.log("urlsFromFeed", urlsFromFeed);
     // console.log("alreadyPostedUrls", alreadyPostedUrls);
     // console.log("newUrls", newUrls);
@@ -102,9 +106,12 @@ const fetchPostedUrlsOnBluesky = async (
       (feedViewPost) =>
         feedViewPost.post.author.did === "did:plc:dlxnthdtaz7qdflht47dpst6"
     )
-    .map((feedViewPost) => feedViewPost.post.embed)
+    .map((feedViewPost) => feedViewPost.post.record as Record)
     .filter(isDefined)
-    .map((embed) => (embed.external as External).uri);
+    .flatMap((record) => record.facets)
+    .flatMap((facet) => facet.features)
+    .filter((feature) => feature.$type === "app.bsky.richtext.facet#link")
+    .map((link) => link.uri as string);
 
   return new Set(postedUrls);
 };
