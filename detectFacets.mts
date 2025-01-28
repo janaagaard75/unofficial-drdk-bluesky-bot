@@ -22,11 +22,12 @@ class UnicodeString {
 }
 
 export function detectFacets(text: UnicodeString): Array<Facet> {
-  let match;
-  const facets: Facet[] = [];
-  const re =
+  const facets: Array<Facet> = [];
+
+  const linkMatcher =
     /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim;
-  while ((match = re.exec(text.utf16))) {
+  let match: RegExpExecArray | null;
+  while ((match = linkMatcher.exec(text.utf16)) !== null) {
     let uri = match[2];
     if (!uri.startsWith("http")) {
       const domain = match.groups?.domain;
@@ -36,8 +37,11 @@ export function detectFacets(text: UnicodeString): Array<Facet> {
       uri = `https://${uri}`;
     }
     const start = text.utf16.indexOf(match[2], match.index);
-    const index = { start, end: start + match[2].length };
-    // strip ending puncuation
+    const index = {
+      start,
+      end: start + match[2].length,
+    };
+    // Strip ending puncuation.
     if (/[.,;!?]$/.test(uri)) {
       uri = uri.slice(0, -1);
       index.end--;
