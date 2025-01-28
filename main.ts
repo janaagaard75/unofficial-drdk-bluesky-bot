@@ -59,19 +59,19 @@ async function main() {
       newUrls.has(titleAndUrl.url)
     );
 
-    console.log("postedUrls", postedUrls);
+    // console.log("postedUrls", postedUrls);
     // console.log("urlsFromFeed", urlsFromFeed);
     // console.log("alreadyPostedUrls", alreadyPostedUrls);
     // console.log("newUrls", newUrls);
 
-    const firstTitleAndUrl = newTitlesAndUrls[0];
-    if (firstTitleAndUrl !== undefined) {
-      postUrl(agent, firstTitleAndUrl.title, firstTitleAndUrl.url);
-    }
-
-    // for (const titleAndUrl of newTitlesAndUrls) {
-    //   await postUrl(agent, titleAndUrl.title, titleAndUrl.url);
+    // const lastTitleAndUrl = newTitlesAndUrls[newTitlesAndUrls.length - 1];
+    // if (lastTitleAndUrl !== undefined) {
+    //   postUrl(agent, lastTitleAndUrl.title, lastTitleAndUrl.url);
     // }
+
+    for (const titleAndUrl of newTitlesAndUrls) {
+      await postUrl(agent, titleAndUrl.title, titleAndUrl.url);
+    }
 
     console.log(`Posted ${newUrls.size} new URLs.`);
   } catch (error) {
@@ -141,8 +141,8 @@ const postUrl = async (agent: AtpAgent, title: string, url: string) => {
     text: text,
   };
 
-  console.dir(post, { depth: undefined });
-  // await agent.post(post);
+  // console.dir(post, { depth: undefined });
+  await agent.post(post);
 };
 
 const isDefined = <T>(item: T | null | undefined): item is T =>
