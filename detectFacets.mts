@@ -25,30 +25,6 @@ export function detectFacets(text: UnicodeString): Facet[] | undefined {
   let match;
   const facets: Facet[] = [];
   {
-    // mentions
-    const re = /(^|\s|\()(@)([a-zA-Z0-9.-]+)(\b)/g;
-    while ((match = re.exec(text.utf16))) {
-      if (!isValidDomain(match[3]) && !match[3].endsWith(".test")) {
-        continue; // probably not a handle
-      }
-
-      const start = text.utf16.indexOf(match[3], match.index) - 1;
-      facets.push({
-        $type: "app.bsky.richtext.facet",
-        index: {
-          byteStart: text.utf16IndexToUtf8Index(start),
-          byteEnd: text.utf16IndexToUtf8Index(start + match[3].length + 1),
-        },
-        features: [
-          {
-            $type: "app.bsky.richtext.facet#mention",
-            did: match[3], // must be resolved afterwards
-          },
-        ],
-      });
-    }
-  }
-  {
     // links
     const re =
       /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim;
