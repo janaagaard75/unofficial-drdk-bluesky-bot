@@ -52,13 +52,15 @@ async function main() {
     // console.log("postedUrls", postedUrls);
     // console.log("urlsFromFeed", urlsFromFeed);
     // console.log("alreadyPostedUrls", alreadyPostedUrls);
-    console.log("newUrls", newUrls);
+    // console.log("newUrls", newUrls);
 
     const firstUrl = newUrls.values().next().value;
 
     if (firstUrl !== undefined) {
-      await postUrls(agent, newUrls);
+      await postUrls(agent, new Set([firstUrl]));
     }
+
+    // await postUrls(agent, newUrls);
 
     console.log(`Posted ${newUrls.size} new URLs.`);
   } catch (error) {
