@@ -24,43 +24,40 @@ class UnicodeString {
 export function detectFacets(text: UnicodeString): Array<Facet> {
   let match;
   const facets: Facet[] = [];
-  {
-    // links
-    const re =
-      /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim;
-    while ((match = re.exec(text.utf16))) {
-      let uri = match[2];
-      if (!uri.startsWith("http")) {
-        const domain = match.groups?.domain;
-        if (!domain || !isValidDomain(domain)) {
-          continue;
-        }
-        uri = `https://${uri}`;
+  const re =
+    /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim;
+  while ((match = re.exec(text.utf16))) {
+    let uri = match[2];
+    if (!uri.startsWith("http")) {
+      const domain = match.groups?.domain;
+      if (!domain || !isValidDomain(domain)) {
+        continue;
       }
-      const start = text.utf16.indexOf(match[2], match.index);
-      const index = { start, end: start + match[2].length };
-      // strip ending puncuation
-      if (/[.,;!?]$/.test(uri)) {
-        uri = uri.slice(0, -1);
-        index.end--;
-      }
-      if (/[)]$/.test(uri) && !uri.includes("(")) {
-        uri = uri.slice(0, -1);
-        index.end--;
-      }
-      facets.push({
-        index: {
-          byteStart: text.utf16IndexToUtf8Index(index.start),
-          byteEnd: text.utf16IndexToUtf8Index(index.end),
-        },
-        features: [
-          {
-            $type: "app.bsky.richtext.facet#link",
-            uri,
-          },
-        ],
-      });
+      uri = `https://${uri}`;
     }
+    const start = text.utf16.indexOf(match[2], match.index);
+    const index = { start, end: start + match[2].length };
+    // strip ending puncuation
+    if (/[.,;!?]$/.test(uri)) {
+      uri = uri.slice(0, -1);
+      index.end--;
+    }
+    if (/[)]$/.test(uri) && !uri.includes("(")) {
+      uri = uri.slice(0, -1);
+      index.end--;
+    }
+    facets.push({
+      index: {
+        byteStart: text.utf16IndexToUtf8Index(index.start),
+        byteEnd: text.utf16IndexToUtf8Index(index.end),
+      },
+      features: [
+        {
+          $type: "app.bsky.richtext.facet#link",
+          uri,
+        },
+      ],
+    });
   }
 
   return facets;
