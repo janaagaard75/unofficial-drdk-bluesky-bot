@@ -1,4 +1,4 @@
-import { AtpAgent, UnicodeString } from "@atproto/api";
+import { AtpAgent } from "@atproto/api";
 import { detectFacets } from "./detectFacets";
 
 export const postTitleAndUrl = async (
@@ -8,7 +8,7 @@ export const postTitleAndUrl = async (
 ) => {
   const strippedUrl = url.replace(/https?:\/\//, "");
   const text = `${title}\n\n${strippedUrl}`;
-  const facets = detectFacets(new UnicodeString(text));
+  const facets = detectFacets(text);
   const post = {
     facets: facets,
     langs: ["da-DK"],

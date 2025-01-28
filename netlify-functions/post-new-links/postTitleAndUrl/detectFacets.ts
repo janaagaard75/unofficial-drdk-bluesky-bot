@@ -1,13 +1,15 @@
 import { Facet, UnicodeString } from "@atproto/api";
 import { isValidDomain } from "./isValidDomain";
 
-export const detectFacets = (text: UnicodeString): Array<Facet> => {
+export const detectFacets = (stringText: string): Array<Facet> => {
   const facets: Array<Facet> = [];
 
   const linkMatcher =
     /(^|\s|\()((https?:\/\/[\S]+)|((?<domain>[a-z][a-z0-9]*(\.[a-z0-9]+)+)[\S]*))/gim;
+  const unicodeText = new UnicodeString(stringText);
+
   let match: RegExpExecArray | null;
-  while ((match = linkMatcher.exec(text.utf16)) !== null) {
+  while ((match = linkMatcher.exec(unicodeText.utf16)) !== null) {
     if (match[2] === undefined) {
       continue;
     }
@@ -20,7 +22,7 @@ export const detectFacets = (text: UnicodeString): Array<Facet> => {
       }
       uri = `https://${uri}`;
     }
-    const start = text.utf16.indexOf(match[2], match.index);
+    const start = unicodeText.utf16.indexOf(match[2], match.index);
     const index = {
       start,
       end: start + match[2].length,
@@ -36,8 +38,8 @@ export const detectFacets = (text: UnicodeString): Array<Facet> => {
     }
     facets.push({
       index: {
-        byteStart: text.utf16IndexToUtf8Index(index.start),
-        byteEnd: text.utf16IndexToUtf8Index(index.end),
+        byteStart: unicodeText.utf16IndexToUtf8Index(index.start),
+        byteEnd: unicodeText.utf16IndexToUtf8Index(index.end),
       },
       features: [
         {
