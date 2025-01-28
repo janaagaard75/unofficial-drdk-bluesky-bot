@@ -49,23 +49,28 @@ async function main() {
     });
 
     const postedUrls = await fetchPostedUrlsOnBluesky(agent);
-    const urlsFromFeed = await fetchUrlsFromRssFeed();
+    const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
+    const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
 
     // const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
+
     const newUrls = urlsFromFeed.difference(postedUrls);
+    const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
+      newUrls.has(titleAndUrl.url)
+    );
 
     console.log("postedUrls", postedUrls);
     // console.log("urlsFromFeed", urlsFromFeed);
     // console.log("alreadyPostedUrls", alreadyPostedUrls);
     // console.log("newUrls", newUrls);
 
-    const firstUrl = newUrls.values().next().value;
-    if (firstUrl !== undefined) {
-      postUrl(agent, firstUrl);
+    const firstTitleAndUrl = newTitlesAndUrls[0];
+    if (firstTitleAndUrl !== undefined) {
+      postUrl(agent, firstTitleAndUrl.title, firstTitleAndUrl.url);
     }
 
-    // for (const url of newUrls) {
-    //   await postUrl(agent, url);
+    // for (const titleAndUrl of newTitlesAndUrls) {
+    //   await postUrl(agent, titleAndUrl.title, titleAndUrl.url);
     // }
 
     console.log(`Posted ${newUrls.size} new URLs.`);
@@ -74,15 +79,25 @@ async function main() {
   }
 }
 
-const fetchUrlsFromRssFeed = async (): Promise<Set<string>> => {
+const fetchTitlesAndUrlsFromRssFeed = async (): Promise<
+  Array<{
+    title: string;
+    url: string;
+  }>
+> => {
   const parser = new Parser();
   const newsFeed = await parser.parseURL(
     "https://www.dr.dk/nyheder/service/feeds/senestenyt"
   );
-  const urlsFromFeed = newsFeed.items
-    .map((item) => item.link)
-    .filter(isDefined);
-  return new Set(urlsFromFeed);
+
+  const titlesAndUrls = newsFeed.items.map((item) => {
+    return {
+      title: item.title ?? "",
+      url: item.link ?? "",
+    };
+  });
+
+  return titlesAndUrls;
 };
 
 const fetchPostedUrlsOnBluesky = async (
@@ -116,15 +131,14 @@ const fetchPostedUrlsOnBluesky = async (
   return new Set(postedUrls);
 };
 
-const postUrl = async (agent: AtpAgent, url: string) => {
+const postUrl = async (agent: AtpAgent, title: string, url: string) => {
   const strippedUrl = url.replace(/https?:\/\//, "");
-
-  const facets = detectFacets(new UnicodeString(strippedUrl));
-
+  const text = `${title}\n\n${strippedUrl}`;
+  const facets = detectFacets(new UnicodeString(text));
   const post = {
     facets: facets,
     langs: ["da-DK"],
-    text: strippedUrl,
+    text: text,
   };
 
   console.dir(post, { depth: undefined });
