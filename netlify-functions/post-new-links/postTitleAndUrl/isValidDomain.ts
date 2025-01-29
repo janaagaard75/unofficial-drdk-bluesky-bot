@@ -1,12 +1,7 @@
-import TLDs from "tlds" with { type: "json" };
+import { parse } from "tldts";
 
 export const isValidDomain = (str: string): boolean => {
-    return !!TLDs.find((tld) => {
-      const i = str.lastIndexOf(tld);
-      if (i === -1) {
-        return false;
-      }
-      return str.charAt(i - 1) === "." && i === str.length - tld.length;
-    });
-  };
-  
+  const parsed = parse(str);
+
+  return parsed.isIcann === true;
+};

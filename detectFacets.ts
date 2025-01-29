@@ -1,5 +1,4 @@
 import { AppBskyRichtextFacet } from "@atproto/api";
-import TLDs from "tlds";
 
 type Facet = AppBskyRichtextFacet.Main;
 
@@ -72,11 +71,5 @@ export const detectFacets = (text: UnicodeString): Array<Facet> => {
 };
 
 const isValidDomain = (str: string): boolean => {
-  return !!TLDs.find((tld) => {
-    const i = str.lastIndexOf(tld);
-    if (i === -1) {
-      return false;
-    }
-    return str.charAt(i - 1) === "." && i === str.length - tld.length;
-  });
+  return true;
 };
