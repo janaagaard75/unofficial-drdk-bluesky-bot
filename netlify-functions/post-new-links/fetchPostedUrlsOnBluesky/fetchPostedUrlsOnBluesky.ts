@@ -4,11 +4,6 @@ import { Record } from "./Record";
 export const fetchPostedUrlsOnBluesky = async (
   agent: AtpAgent
 ): Promise<Set<string>> => {
-  await agent.login({
-    identifier: process.env["BLUESKY_USERNAME"]!,
-    password: process.env["BLUESKY_PASSWORD"]!,
-  });
-
   const feedSize = 20;
   const timeline = await agent.getTimeline({
     limit: 2 * feedSize,

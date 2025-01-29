@@ -13,6 +13,11 @@ export default async (request: Request) => {
       service: "https://bsky.social",
     });
 
+    await agent.login({
+      identifier: process.env["BLUESKY_USERNAME"]!,
+      password: process.env["BLUESKY_PASSWORD"]!,
+    });
+
     const postedUrls = await fetchPostedUrlsOnBluesky(agent);
     const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
     const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
