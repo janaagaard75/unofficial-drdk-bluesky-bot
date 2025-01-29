@@ -10,14 +10,22 @@ export default async (request: Request) => {
   console.log(`pTriggered. Next invocation at: ${next_run}.`);
 
   try {
+    const username = process.env["BLUESKY_USERNAME"];
+    if (username === undefined) {
+      throw new Error("BLUESKY_USERNAME must be defined.");
+    }
+    const password = process.env["BLUESKY_PASSWORD"];
+    if (password === undefined) {
+      throw new Error("BLUESKY_PASSWORD must be defined.");
+    }
     const agent = new AtpAgent({
       service: "https://bsky.social",
     });
     await agent.login({
-      identifier: process.env["BLUESKY_USERNAME"]!,
-      password: process.env["BLUESKY_PASSWORD"]!,
+      identifier: username,
+      password: password,
     });
-    console.log("Signed in to Bluesky.");
+    console.log(`Signed in to Blueky as ${username}.`);
 
     const postedUrls = await fetchPostedUrlsOnBluesky(agent);
     console.log(`Fetched ${postedUrls.size} posted URLs.`);
