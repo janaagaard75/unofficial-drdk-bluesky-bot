@@ -11,6 +11,7 @@
     "@atproto/api": "^0.13.31",
     "@netlify/functions": "^3.0.0",
     "rss-parser": "^3.13.0",
+    "tlds": "^1.255.0",
     "tsx": "^4.19.2"
   },
   "devDependencies": {

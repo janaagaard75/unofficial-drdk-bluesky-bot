@@ -17,6 +17,9 @@ importers:
       rss-parser:
         specifier: ^3.13.0
         version: 3.13.0
+      tlds:
+        specifier: ^1.255.0
+        version: 1.255.0
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
