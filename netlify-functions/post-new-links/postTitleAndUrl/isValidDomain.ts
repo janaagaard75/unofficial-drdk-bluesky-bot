@@ -1,4 +1,4 @@
-import TLDs from "tlds";
+import TLDs from "tlds" with { type: "json" };
 
 export const isValidDomain = (str: string): boolean => {
     return !!TLDs.find((tld) => {
