@@ -7,35 +7,33 @@ import { setDifference } from "./setDifference";
 
 export default async (request: Request) => {
   const { next_run } = await request.json();
+  console.log(`pTriggered. Next invocation at: ${next_run}.`);
 
   try {
     const agent = new AtpAgent({
       service: "https://bsky.social",
     });
-
     await agent.login({
       identifier: process.env["BLUESKY_USERNAME"]!,
       password: process.env["BLUESKY_PASSWORD"]!,
     });
+    console.log("Signed in to Bluesky.");
 
     const postedUrls = await fetchPostedUrlsOnBluesky(agent);
+    console.log(`Fetched ${postedUrls.size} posted URLs.`);
+
     const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
+    console.log(
+      `Fetched ${titlesAndUrlsFromFeed.length} titles and URLs from RSS feed.`
+    );
+
     const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
-    // const alreadyPostedUrls = urlsFromFeed.intersection(postedUrls);
     const newUrls = setDifference(urlsFromFeed, postedUrls);
+    console.log(`Found ${newUrls.size} new URLs.`);
+
     const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
       newUrls.has(titleAndUrl.url)
     );
-
-    // console.log("postedUrls", postedUrls);
-    // console.log("urlsFromFeed", urlsFromFeed);
-    // console.log("alreadyPostedUrls", alreadyPostedUrls);
-    // console.log("newUrls", newUrls);
-
-    // const lastTitleAndUrl = newTitlesAndUrls[newTitlesAndUrls.length - 1];
-    // if (lastTitleAndUrl !== undefined) {
-    //   postUrl(agent, lastTitleAndUrl.title, lastTitleAndUrl.url);
-    // }
 
     for (const titleAndUrl of newTitlesAndUrls) {
       await postTitleAndUrl(agent, titleAndUrl.title, titleAndUrl.url);
@@ -45,8 +43,6 @@ export default async (request: Request) => {
   } catch (error) {
     console.error(error);
   }
-
-  console.log("Received event! Next invocation at:", next_run);
 };
 
 export const config: Config = {
