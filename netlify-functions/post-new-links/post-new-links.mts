@@ -7,7 +7,7 @@ import { setDifference } from "./setDifference";
 
 export default async (request: Request) => {
   const { next_run } = await request.json();
-  console.log(`pTriggered. Next invocation at: ${next_run}.`);
+  console.log(`Triggered. Next invocation at: ${next_run}.`);
 
   try {
     const username = process.env["BLUESKY_USERNAME"];
