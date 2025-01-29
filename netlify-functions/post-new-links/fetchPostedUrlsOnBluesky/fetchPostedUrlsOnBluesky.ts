@@ -1,5 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import { Record } from "./Record";
+import { isDefined } from "./isDefined";
 
 export const fetchPostedUrlsOnBluesky = async (
   agent: AtpAgent
