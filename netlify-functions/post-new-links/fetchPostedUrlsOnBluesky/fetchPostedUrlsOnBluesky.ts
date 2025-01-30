@@ -27,7 +27,3 @@ export const fetchPostedUrlsOnBluesky = async (
 
   return new Set(postedUrls);
 };
-
-function isDefined(value: any, index: number, array: any[]): value is any {
-  throw new Error("Function not implemented.");
-}
