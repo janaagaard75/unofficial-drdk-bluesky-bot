@@ -9,7 +9,7 @@ export default (request: Request, _context: Context) => {
       `Hello ${subject}. (Environment test: ${process.env["NOT_A_SECRET"]})`
     );
   } catch (error) {
-    return new Response(error.toString(), {
+    return new Response(error?.toString(), {
       status: 500,
     });
   }

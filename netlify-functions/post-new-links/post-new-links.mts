@@ -6,7 +6,7 @@ import { postTitleAndUrl } from "./postTitleAndUrl/postTitleAndUrl";
 import { setDifference } from "./setDifference";
 
 export default async (request: Request) => {
-  const { next_run } = await request.json();
+  const { next_run } = (await request.json()) as { next_run: string };
   console.log(`Triggered. Next invocation at: ${next_run}.`);
 
   try {
