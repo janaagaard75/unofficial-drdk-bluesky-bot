@@ -5,6 +5,7 @@
   "author": "Jan Aagaard <jan@aagaard.net>",
   "license": "MIT",
   "scripts": {
+    "check-types": "tsc",
     "start": "tsx --env-file=.env ./main.ts"
   },
   "dependencies": {

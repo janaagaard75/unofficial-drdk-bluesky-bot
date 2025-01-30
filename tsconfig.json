@@ -11,8 +11,14 @@
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "strict": true,
     "target": "ESNext"
   },
-  "include": ["*.ts", "*.mts"]
+  "include": [
+    "./*.ts",
+    "./*.mts",
+    "./netlify-functions/**/*.ts",
+    "./netlify-functions/**/*.mts"
+  ]
 }
