@@ -15,7 +15,7 @@ export default async (_request: Request, _context: Context) => {
       password: password,
     });
 
-    postTitleAndUrl(agent, "Hello World", "https://example.com");
+    await postTitleAndUrl(agent, "Hello World", "https://example.com");
 
     return new Response("Posted Hello World to Bluesky.", {
       status: 200,
