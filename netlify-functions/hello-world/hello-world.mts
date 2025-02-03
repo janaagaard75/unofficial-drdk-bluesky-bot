@@ -15,6 +15,23 @@ export default async (_request: Request, _context: Context) => {
     });
 
     const post = {
+      embed: {
+        $type: "app.bsky.embed.external",
+        external: {
+          description: "See what's next.",
+          // thumb: {
+          //   $type: "blob",
+          //   mimeType: "image/png",
+          //   ref: {
+          //     $link:
+          //       "bafkreiash5eihfku2jg4skhyh5kes7j5d5fd6xxloaytdywcvb3r3zrzhu",
+          //   },
+          //   size: 23527,
+          // },
+          title: "External embed",
+          uri: "https://example.com",
+        },
+      },
       langs: ["da-DK"],
       text: "Hello World!",
     };
