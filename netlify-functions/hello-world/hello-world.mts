@@ -1,7 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import { Context } from "@netlify/functions";
 import { getEnvironmentVariableValue } from "../post-new-links/getEnvironmentVariableValue";
-import { postTitleAndUrl } from "../post-new-links/postTitleAndUrl/postTitleAndUrl";
 
 export default async (_request: Request, _context: Context) => {
   try {
@@ -15,7 +14,13 @@ export default async (_request: Request, _context: Context) => {
       password: password,
     });
 
-    await postTitleAndUrl(agent, "Hello World", "https://example.com");
+    const post = {
+      langs: ["da-DK"],
+      text: "Hello World!",
+    };
+
+    // console.dir(post, { depth: undefined });
+    await agent.post(post);
 
     return new Response("Posted Hello World to Bluesky.", {
       status: 200,
