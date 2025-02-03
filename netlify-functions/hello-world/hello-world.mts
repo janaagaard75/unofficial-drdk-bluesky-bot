@@ -18,7 +18,7 @@ export default async (_request: Request, _context: Context) => {
       embed: {
         $type: "app.bsky.embed.external",
         external: {
-          description: "See what's next.",
+          description: "Hello World",
           // thumb: {
           //   $type: "blob",
           //   mimeType: "image/png",
@@ -33,7 +33,6 @@ export default async (_request: Request, _context: Context) => {
         },
       },
       langs: ["da-DK"],
-      text: "Hello World!",
     };
 
     // console.dir(post, { depth: undefined });
