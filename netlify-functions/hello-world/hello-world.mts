@@ -28,7 +28,7 @@ export default async (_request: Request, _context: Context) => {
           //   },
           //   size: 23527,
           // },
-          test: "",
+          test: " ",
           title: "External embed",
           uri: "https://example.com",
         },
