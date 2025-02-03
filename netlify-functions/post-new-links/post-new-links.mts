@@ -2,6 +2,7 @@ import { AtpAgent } from "@atproto/api";
 import type { Config } from "@netlify/functions";
 import { fetchPostedUrlsOnBluesky } from "./fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
+import { getEnvironmentVariableValue } from "./getEnvironmentVariableValue";
 import { postTitleAndUrl } from "./postTitleAndUrl/postTitleAndUrl";
 import { setDifference } from "./setDifference";
 
@@ -10,14 +11,8 @@ export default async (request: Request) => {
   console.log(`Triggered. Next invocation at: ${next_run}.`);
 
   try {
-    const username = process.env["BLUESKY_USERNAME"];
-    if (username === undefined) {
-      throw new Error("BLUESKY_USERNAME must be defined.");
-    }
-    const password = process.env["BLUESKY_PASSWORD"];
-    if (password === undefined) {
-      throw new Error("BLUESKY_PASSWORD must be defined.");
-    }
+    const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
+    const password = getEnvironmentVariableValue("BLUESKY_PASSWORD");
     const agent = new AtpAgent({
       service: "https://bsky.social",
     });
