@@ -1,5 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
+import { postTitleAndUrl } from "./netlify-functions/post-new-links/postTitleAndUrl/postTitleAndUrl";
 
 async function main() {
   console.log("Starting...");
@@ -16,30 +17,7 @@ async function main() {
 
   console.log("Signed in.");
 
-  const post = {
-    embed: {
-      $type: "app.bsky.embed.external",
-      external: {
-        description: "Hello World",
-        // thumb: {
-        //   $type: "blob",
-        //   mimeType: "image/png",
-        //   ref: {
-        //     $link:
-        //       "bafkreiash5eihfku2jg4skhyh5kes7j5d5fd6xxloaytdywcvb3r3zrzhu",
-        //   },
-        //   size: 23527,
-        // },
-        title: "External embed",
-        uri: "https://example.com",
-      },
-    },
-    langs: ["da-DK"],
-    text: "",
-  };
-
-  // console.dir(post, { depth: undefined });
-  await agent.post(post);
+  await postTitleAndUrl(agent, "Hello World 2", "https://example.com");
 
   console.log("Done.");
 
