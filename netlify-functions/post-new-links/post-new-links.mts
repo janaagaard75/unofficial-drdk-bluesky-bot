@@ -32,7 +32,7 @@ export default async (request: Request) => {
 
     const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
     const newUrls = setDifference(urlsFromFeed, postedUrls);
-    console.log(`Found ${newUrls.size} new URLs.`);
+    // console.log(`Found ${newUrls.size} new URLs.`);
 
     const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
       newUrls.has(titleAndUrl.url)
