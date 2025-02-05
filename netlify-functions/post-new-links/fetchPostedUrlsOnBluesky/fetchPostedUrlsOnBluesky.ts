@@ -20,10 +20,22 @@ export const fetchPostedUrlsOnBluesky = async (
     )
     .map((feedViewPost) => feedViewPost.post.record as Record)
     .filter(isDefined)
-    .flatMap((record) => record.facets)
-    .flatMap((facet) => facet.features)
-    .filter((feature) => feature.$type === "app.bsky.richtext.facet#link")
-    .map((link) => link.uri as string);
+    .flatMap((record) => {
+      if (record.embed !== undefined) {
+        return [record.embed.external.uri];
+      }
 
-  return new Set(postedUrls);
+      if (record.facets !== undefined) {
+        return record.facets.flatMap((facet) =>
+          facet.features.flatMap((feature) => feature.uri as string)
+        );
+      }
+
+      return [];
+    });
+
+  console.log("Posted URLs:", JSON.stringify(postedUrls, undefined, 2));
+
+  // return new Set(postedUrls);
+  return new Set("");
 };
