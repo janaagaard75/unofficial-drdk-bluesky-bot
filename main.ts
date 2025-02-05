@@ -21,26 +21,24 @@ async function main() {
 
   for (const url of testUrls) {
     const article = await extract(url);
-    console.log(article?.image);
 
     if (article?.image !== undefined) {
       const downloadedImage = await fetch(article.image);
-      const arrayBuffer = await downloadedImage.arrayBuffer();
-      const uintArray = new Uint8Array(arrayBuffer);
-      const uploadedImage = await agent.uploadBlob(uintArray);
+      const imageBuffer = await downloadedImage.arrayBuffer();
+      const uploadedImage = await agent.uploadBlob(new Uint8Array(imageBuffer));
 
       const post = {
         embed: {
           $type: "app.bsky.embed.external",
           external: {
-            description: article.description,
-            title: article.title,
+            description: "",
+            title: "Title",
             uri: url,
             thumb: uploadedImage.data.blob,
           },
         },
         langs: ["da-DK"],
-        text: article.content,
+        text: "",
       };
 
       await agent.post(post);
