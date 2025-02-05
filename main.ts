@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
+import { fetchPostedUrlsOnBluesky } from "./netlify-functions/post-new-links/fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
-import { postTitleAndUrl } from "./netlify-functions/post-new-links/postTitleAndUrl/postTitleAndUrl";
 
 async function main() {
   console.log("Starting...");
@@ -17,7 +17,11 @@ async function main() {
 
   console.log("Signed in.");
 
-  await postTitleAndUrl(agent, "Hello World 2", "https://example.com");
+  const postedUrls = await fetchPostedUrlsOnBluesky(agent);
+
+  console.log("Posted URLs:", postedUrls);
+
+  // await postTitleAndUrl(agent, "Hello World 2", "https://example.com");
 
   console.log("Done.");
 

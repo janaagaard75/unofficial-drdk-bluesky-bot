@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["Aagaard", "atproto", "dlxnthdtaz7qdflht47dpst6", "drdk"],
+  "cSpell.words": [
+    "Aagaard",
+    "atproto",
+    "bsky",
+    "dlxnthdtaz7qdflht47dpst6",
+    "drdk"
+  ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
