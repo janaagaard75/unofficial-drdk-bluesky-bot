@@ -8,8 +8,8 @@ async function main() {
   const agent = new AtpAgent({
     service: "https://bsky.social",
   });
-  const username = getEnvironmentVariableValue("BLUESKY_TEST_USERNAME");
-  const password = getEnvironmentVariableValue("BLUESKY_TEST_PASSWORD");
+  const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
+  const password = getEnvironmentVariableValue("BLUESKY_PASSWORD");
   await agent.login({
     identifier: username,
     password: password,
