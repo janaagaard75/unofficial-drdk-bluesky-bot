@@ -34,8 +34,5 @@ export const fetchPostedUrlsOnBluesky = async (
       return [];
     });
 
-  console.log("Posted URLs:", JSON.stringify(postedUrls, undefined, 2));
-
-  // return new Set(postedUrls);
-  return new Set("");
+  return new Set(postedUrls);
 };
