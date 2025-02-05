@@ -1,33 +1,51 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchPostedUrlsOnBluesky } from "./netlify-functions/post-new-links/fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
+import { extract } from "@extractus/article-extractor";
 import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
 
 async function main() {
-  console.log("Starting...");
+  const testUrls = [
+    "https://www.dr.dk/nyheder/seneste/svensk-politi-efterlyser-video-og-billeder-i-forbindelse-med-efterforskning-af",
+    "https://www.dr.dk/nyheder/udland/eu-kommissionen-oensker-opgoer-med-online-platforme-som-temu-told-og-afgifter-kan",
+    "https://www.dr.dk/nyheder/indland/regeringen-vil-nedlaegge-jobcentrene-en-stor-og-omfattende-oevelse",
+    "https://www.dr.dk/sporten/seneste-sport/esbjerg-og-odense-buldrer-videre-i-kvindeligaen",
+    "https://www.dr.dk/nyheder/seneste/sverige-flager-paa-halv-efter-skoleskyderi",
+  ];
 
   const agent = new AtpAgent({
     service: "https://bsky.social",
   });
-  const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
-  const password = getEnvironmentVariableValue("BLUESKY_PASSWORD");
   await agent.login({
-    identifier: username,
-    password: password,
+    identifier: getEnvironmentVariableValue("BLUESKY_TEST_USERNAME"),
+    password: getEnvironmentVariableValue("BLUESKY_TEST_PASSWORD"),
   });
 
-  console.log("Signed in.");
+  for (const url of testUrls) {
+    const article = await extract(url);
+    console.log(article?.image);
 
-  const postedUrls = await fetchPostedUrlsOnBluesky(agent);
+    if (article?.image !== undefined) {
+      const downloadedImage = await fetch(article.image);
+      const arrayBuffer = await downloadedImage.arrayBuffer();
+      const uintArray = new Uint8Array(arrayBuffer);
+      const uploadedImage = await agent.uploadBlob(uintArray);
 
-  console.log("Posted URLs:", postedUrls);
+      const post = {
+        embed: {
+          $type: "app.bsky.embed.external",
+          external: {
+            description: article.description,
+            title: article.title,
+            uri: url,
+            thumb: uploadedImage.data.blob,
+          },
+        },
+        langs: ["da-DK"],
+        text: article.content,
+      };
 
-  // await postTitleAndUrl(agent, "Hello World 2", "https://example.com");
-
-  console.log("Done.");
-
-  return new Response("Posted Hello World to Bluesky.", {
-    status: 200,
-  });
+      await agent.post(post);
+    }
+  }
 }
 
 main();
