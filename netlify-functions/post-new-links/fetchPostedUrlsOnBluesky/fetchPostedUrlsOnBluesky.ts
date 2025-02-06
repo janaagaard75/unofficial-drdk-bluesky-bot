@@ -13,15 +13,10 @@ export const fetchPostedUrlsOnBluesky = async (
   const feedViewPosts = timeline.data.feed;
 
   const postedUrls = feedViewPosts
-    // Filter out posts that aren't from the bot. Don't know why this is necessary.
-    .filter(
-      (feedViewPost) =>
-        feedViewPost.post.author.did === "did:plc:dlxnthdtaz7qdflht47dpst6"
-    )
     .map((feedViewPost) => feedViewPost.post.record as Record)
     .filter(isDefined)
     .flatMap((record) => {
-      if (record.embed !== undefined) {
+      if (record.embed?.external?.uri !== undefined) {
         return [record.embed.external.uri];
       }
 

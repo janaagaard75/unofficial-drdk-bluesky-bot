@@ -15,7 +15,7 @@ export const postTitleAndUrl = async (
     embed: {
       $type: "app.bsky.embed.external",
       external: {
-        description: imageAndDescription?.description,
+        description: imageAndDescription?.description ?? "",
         thumb: imageBlob,
         title: title,
         uri: url,
