@@ -12,6 +12,6 @@ export const fetchDescriptionAndImage = async (url: string) => {
 
   return {
     description: article.description,
-    image: Buffer.from(imageBuffer).toString("base64"),
+    image: imageBuffer,
   };
 };

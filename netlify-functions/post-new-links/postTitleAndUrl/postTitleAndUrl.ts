@@ -1,19 +1,21 @@
 import { AtpAgent } from "@atproto/api";
-import { getHeroImageBlob } from "./getHeroImageBlob";
+import { fetchDescriptionAndImage } from "./fetchDescriptionAndImage";
+import { uploadImage } from "./uploadImage";
 
 export const postTitleAndUrl = async (
   agent: AtpAgent,
   title: string,
   url: string
 ) => {
-  const heroImageBlob = await getHeroImageBlob(agent, url);
+  const imageAndDescription = await fetchDescriptionAndImage(url);
+  const imageBlob = await uploadImage(agent, imageAndDescription?.image);
 
   const post = {
     embed: {
       $type: "app.bsky.embed.external",
       external: {
-        description: "",
-        thumb: heroImageBlob,
+        description: imageAndDescription?.description,
+        thumb: imageBlob,
         title: title,
         uri: url,
       },

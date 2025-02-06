@@ -1,8 +1,9 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchHeroImage } from "./fetchHeroImage";
 
-export const getHeroImageBlob = async (agent: AtpAgent, url: string) => {
-  const imageBuffer = await fetchHeroImage(url);
+export const uploadImage = async (
+  agent: AtpAgent,
+  imageBuffer: ArrayBuffer | undefined
+) => {
   if (imageBuffer === undefined) {
     return undefined;
   }
