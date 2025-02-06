@@ -27,9 +27,9 @@ async function main() {
         $type: "app.bsky.embed.external",
         external: {
           description: "",
+          thumb: heroImageBlob,
           title: "Title",
           uri: url,
-          thumb: heroImageBlob,
         },
       },
       langs: ["da-DK"],
