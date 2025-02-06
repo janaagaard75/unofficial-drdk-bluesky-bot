@@ -5,7 +5,8 @@
     "bsky",
     "dlxnthdtaz7qdflht47dpst6",
     "drdk",
-    "extractus"
+    "extractus",
+    "tldts"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"

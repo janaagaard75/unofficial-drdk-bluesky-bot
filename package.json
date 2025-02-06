@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
+    "description": "tsx --env-file=.env ./description.ts",
     "hero-images": "tsx --env-file=.env ./hero-images.ts"
   },
   "dependencies": {
