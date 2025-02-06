@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "start": "tsx --env-file=.env ./main.ts"
+    "hero-images": "tsx --env-file=.env ./hero-images.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.32",
