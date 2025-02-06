@@ -16,7 +16,7 @@ export const fetchDescriptionAndImage = async (url: string) => {
       image: imageBuffer,
     };
   } catch (error) {
-    console.error("Failed to fetch description and image", error);
+    console.error("Failed to fetch description and image.", url, error);
     return undefined;
   }
 };
