@@ -20,7 +20,7 @@ export default async (request: Request) => {
       identifier: username,
       password: password,
     });
-    console.log(`Signed in to Blueky as ${username}.`);
+    console.log(`Signed in to Bluesky as ${username}.`);
 
     const postedUrls = await fetchPostedUrlsOnBluesky(agent);
     console.log(`Fetched ${postedUrls.size} posted URLs.`);
@@ -32,7 +32,6 @@ export default async (request: Request) => {
 
     const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
     const newUrls = setDifference(urlsFromFeed, postedUrls);
-    // console.log(`Found ${newUrls.size} new URLs.`);
 
     const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
       newUrls.has(titleAndUrl.url)
