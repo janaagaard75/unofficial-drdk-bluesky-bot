@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
-import { extract } from "@extractus/article-extractor";
 import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
+import { fetchHeroImage } from "./netlify-functions/post-new-links/postTitleAndUrl/fetchHeroImage";
 
 async function main() {
   const testUrls = [
@@ -20,29 +20,27 @@ async function main() {
   });
 
   for (const url of testUrls) {
-    const article = await extract(url);
+    const imageBuffer = await fetchHeroImage(url);
+    const uploadedImage =
+      imageBuffer === undefined
+        ? undefined
+        : await agent.uploadBlob(new Uint8Array(imageBuffer));
 
-    if (article?.image !== undefined) {
-      const downloadedImage = await fetch(article.image);
-      const imageBuffer = await downloadedImage.arrayBuffer();
-      const uploadedImage = await agent.uploadBlob(new Uint8Array(imageBuffer));
-
-      const post = {
-        embed: {
-          $type: "app.bsky.embed.external",
-          external: {
-            description: "",
-            title: "Title",
-            uri: url,
-            thumb: uploadedImage.data.blob,
-          },
+    const post = {
+      embed: {
+        $type: "app.bsky.embed.external",
+        external: {
+          description: "",
+          title: "Title",
+          uri: url,
+          thumb: uploadedImage?.data.blob,
         },
-        langs: ["da-DK"],
-        text: "",
-      };
+      },
+      langs: ["da-DK"],
+      text: "",
+    };
 
-      await agent.post(post);
-    }
+    await agent.post(post);
   }
 }
 
