@@ -7,6 +7,7 @@ export const postTitleAndUrl = async (
   title: string,
   url: string
 ) => {
+  console.log("Posting url.", url);
   const imageAndDescription = await fetchDescriptionAndImage(url);
   const imageBlob = await uploadImage(agent, imageAndDescription?.image);
 
