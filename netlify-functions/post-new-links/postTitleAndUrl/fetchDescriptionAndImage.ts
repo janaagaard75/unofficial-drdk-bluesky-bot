@@ -1,6 +1,6 @@
 import { extract } from "@extractus/article-extractor";
 
-export const fetchHeroImage = async (url: string) => {
+export const fetchDescriptionAndImage = async (url: string) => {
   const article = await extract(url);
 
   if (article?.image === undefined) {
@@ -9,5 +9,9 @@ export const fetchHeroImage = async (url: string) => {
 
   const downloadedImage = await fetch(article.image);
   const imageBuffer = await downloadedImage.arrayBuffer();
-  return imageBuffer;
+
+  return {
+    description: article.description,
+    image: Buffer.from(imageBuffer).toString("base64"),
+  };
 };

@@ -1,4 +1,4 @@
-import { extract } from "@extractus/article-extractor";
+import { fetchDescriptionAndImage } from "./netlify-functions/post-new-links/postTitleAndUrl/fetchDescriptionAndImage";
 
 async function main() {
   const testUrls = [
@@ -9,11 +9,9 @@ async function main() {
     "https://www.dr.dk/nyheder/seneste/sverige-flager-paa-halv-efter-skoleskyderi",
   ];
 
-  console.log();
   for (const url of testUrls) {
-    const article = await extract(url);
-    console.log(article?.description);
-    console.log();
+    const descriptionAndImage = await fetchDescriptionAndImage(url);
+    console.log("- ", descriptionAndImage?.description);
   }
 }
 
