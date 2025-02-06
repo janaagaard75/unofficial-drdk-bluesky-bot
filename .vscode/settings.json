@@ -4,7 +4,8 @@
     "atproto",
     "bsky",
     "dlxnthdtaz7qdflht47dpst6",
-    "drdk"
+    "drdk",
+    "extractus"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
