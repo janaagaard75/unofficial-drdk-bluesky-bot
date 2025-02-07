@@ -12,7 +12,19 @@ export const fetchDescriptionAndImage = async (url: string) => {
     const imageBuffer = await downloadedImage.arrayBuffer();
 
     return {
-      description: article.description ?? "",
+      description:
+        article.content
+          ?.replaceAll(/<figcaption>.*?<\/figcaption>/g, "")
+          .split(/<[^>]*>/)
+          .flatMap((text) => {
+            if (text === "") {
+              return [];
+            }
+
+            return [text];
+          })
+          .splice(0, 3)
+          .join(" ") ?? "",
       image: imageBuffer,
     };
   } catch (error) {
