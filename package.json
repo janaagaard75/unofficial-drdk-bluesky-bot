@@ -11,7 +11,7 @@
     "test-post-new-links": "tsx --env-file=.env ./test-post-new-links.ts"
   },
   "dependencies": {
-    "@atproto/api": "^0.13.32",
+    "@atproto/api": "^0.13.35",
     "@extractus/article-extractor": "^8.0.16",
     "@netlify/functions": "^3.0.0",
     "rss-parser": "^3.13.0",
