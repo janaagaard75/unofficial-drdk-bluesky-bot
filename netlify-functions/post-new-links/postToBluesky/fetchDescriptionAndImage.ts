@@ -2,14 +2,28 @@ import { extract } from "@extractus/article-extractor";
 
 export const fetchDescriptionAndImage = async (url: string) => {
   try {
-    const article = await extract(url);
+    const response = await fetch(url);
+    const html = await response.text();
 
-    if (article?.image === undefined) {
+    // Find first image in a figure element
+    const figureMatch = html.match(
+      /<figure[^>]*?>.*?<img[^>]*src="([^"]*?)".*?<\/figure>/s
+    );
+    const imageUrl = figureMatch?.[1];
+
+    const imageBuffer = await (async () => {
+      if (imageUrl === undefined) {
+        return undefined;
+      }
+
+      const downloadedImage = await fetch(imageUrl);
+      return await downloadedImage.arrayBuffer();
+    })();
+
+    const article = await extract(url);
+    if (!article) {
       return undefined;
     }
-
-    const downloadedImage = await fetch(article.image);
-    const imageBuffer = await downloadedImage.arrayBuffer();
 
     return {
       description:
