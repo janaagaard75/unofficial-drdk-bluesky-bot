@@ -1,4 +1,4 @@
-import { fetchDescriptionAndImage } from "./netlify-functions/post-new-links/postTitleAndUrl/fetchDescriptionAndImage";
+import { fetchDescriptionAndImage } from "./netlify-functions/post-new-links/postToBluesky/fetchDescriptionAndImage";
 
 async function main() {
   const testUrls = [

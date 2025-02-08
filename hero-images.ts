@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
-import { getHeroImageBlob } from "./netlify-functions/post-new-links/postTitleAndUrl/getHeroImageBlob";
+import { getHeroImageBlob } from "./netlify-functions/post-new-links/postToBluesky/getHeroImageBlob";
 
 async function main() {
   const testUrls = [

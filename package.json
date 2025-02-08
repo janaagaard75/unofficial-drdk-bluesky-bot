@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "description": "tsx --env-file=.env ./description.ts",
+    "description": "tsx --trace-deprecation --env-file=.env ./description.ts",
     "hero-images": "tsx --env-file=.env ./hero-images.ts",
     "test-post-new-links": "tsx --env-file=.env ./test-post-new-links.ts"
   },
