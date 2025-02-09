@@ -1,5 +1,3 @@
-import { downloadImage } from "./downloadImage";
-
 export const fetchDescriptionAndImage = async (url: string) => {
   try {
     const response = await fetch(url);
@@ -7,11 +5,10 @@ export const fetchDescriptionAndImage = async (url: string) => {
 
     const description = extractDescription(htmlDocument);
     const imageUrl = extractImageUrl(htmlDocument);
-    const imageBuffer = await downloadImage(imageUrl);
 
     return {
       description: description,
-      image: imageBuffer,
+      imageUrl: imageUrl,
     };
   } catch (error) {
     console.error("Failed to fetch description and image.", url, error);
