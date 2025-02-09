@@ -27,7 +27,7 @@ export const detectFacets = (stringText: string): Array<Facet> => {
       start,
       end: start + match[2].length,
     };
-    // Strip ending puncuation.
+    // Strip ending punctuation.
     if (/[.,;!?]$/.test(uri)) {
       uri = uri.slice(0, -1);
       index.end--;
