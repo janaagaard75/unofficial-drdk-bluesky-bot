@@ -1,15 +1,10 @@
-import { extract } from "@extractus/article-extractor";
-
 export const fetchDescriptionAndImage = async (url: string) => {
   try {
     const response = await fetch(url);
-    const html = await response.text();
+    const htmlDocument = await response.text();
 
-    // Find first image in a figure element
-    const figureMatch = html.match(
-      /<figure[^>]*?>.*?<img[^>]*src="([^"]*?)".*?<\/figure>/s
-    );
-    const imageUrl = figureMatch?.[1];
+    const description = extractDescription(htmlDocument);
+    const imageUrl = extractImageUrl(htmlDocument);
 
     const imageBuffer = await (async () => {
       if (imageUrl === undefined) {
@@ -20,29 +15,28 @@ export const fetchDescriptionAndImage = async (url: string) => {
       return await downloadedImage.arrayBuffer();
     })();
 
-    const article = await extract(url);
-    if (!article) {
-      return undefined;
-    }
-
     return {
-      description:
-        article.content
-          ?.replaceAll(/<figcaption>.*?<\/figcaption>/g, "")
-          .split(/<[^>]*>/)
-          .flatMap((text) => {
-            if (text === "") {
-              return [];
-            }
-
-            return [text];
-          })
-          .splice(0, 3)
-          .join(" ") ?? "",
+      description: description,
       image: imageBuffer,
     };
   } catch (error) {
     console.error("Failed to fetch description and image.", url, error);
     return undefined;
   }
+};
+
+/** Extract the description from the content of the <meta name="description"> element in htmlDocument. */
+const extractDescription = (htmlDocument: string): string => {
+  const descriptionMatch = htmlDocument.match(
+    /<meta[^>]*name="description"[^>]*content="([^"]*)"/
+  );
+  return descriptionMatch?.[1] ?? "";
+};
+
+/** Extract the image URL from the content of the <meta name="og:image"> element in htmlDocument. */
+const extractImageUrl = (htmlDocument: string): string | undefined => {
+  const imageMatch = htmlDocument.match(
+    /<meta[^>]*property="og:image"[^>]*content="([^"]*)"/
+  );
+  return imageMatch?.[1];
 };

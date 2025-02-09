@@ -11,7 +11,8 @@ async function main() {
 
   for (const url of testUrls) {
     const descriptionAndImage = await fetchDescriptionAndImage(url);
-    console.log("- ", descriptionAndImage?.description);
+    console.log();
+    console.log(descriptionAndImage);
   }
 }
 
