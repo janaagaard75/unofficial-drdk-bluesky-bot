@@ -1,4 +1,4 @@
-import { fetchDescriptionAndImage } from "./netlify-functions/post-new-links/postTitleAndUrl/fetchDescriptionAndImage";
+import { fetchDescriptionAndImageUrl } from "./netlify-functions/post-new-links/postToBluesky/fetchDescriptionAndImageUrl";
 
 async function main() {
   const testUrls = [
@@ -10,8 +10,9 @@ async function main() {
   ];
 
   for (const url of testUrls) {
-    const descriptionAndImage = await fetchDescriptionAndImage(url);
-    console.log("- ", descriptionAndImage?.description);
+    const descriptionAndImage = await fetchDescriptionAndImageUrl(url);
+    console.log();
+    console.log(descriptionAndImage);
   }
 }
 

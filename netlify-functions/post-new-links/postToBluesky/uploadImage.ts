@@ -4,11 +4,11 @@ export const uploadImage = async (
   agent: AtpAgent,
   imageBuffer: ArrayBuffer | undefined
 ) => {
-  try {
-    if (imageBuffer === undefined) {
-      return undefined;
-    }
+  if (imageBuffer === undefined) {
+    return undefined;
+  }
 
+  try {
     const uploadedImage = await agent.uploadBlob(new Uint8Array(imageBuffer));
     return uploadedImage?.data.blob;
   } catch (error) {

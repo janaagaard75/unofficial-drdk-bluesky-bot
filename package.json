@@ -6,21 +6,20 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "description": "tsx --env-file=.env ./description.ts",
+    "description": "tsx --trace-deprecation --env-file=.env ./description.ts",
     "hero-images": "tsx --env-file=.env ./hero-images.ts",
     "test-post-new-links": "tsx --env-file=.env ./test-post-new-links.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.35",
-    "@extractus/article-extractor": "^8.0.16",
     "@netlify/functions": "^3.0.0",
     "rss-parser": "^3.13.0",
-    "tldts": "^6.1.76",
+    "tldts": "^6.1.77",
     "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.1",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.0",
     "typescript": "^5.7.3"
   },
   "packageManager": "pnpm@9.15.4"

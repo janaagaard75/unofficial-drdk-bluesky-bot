@@ -3,7 +3,7 @@ import type { Config } from "@netlify/functions";
 import { fetchPostedUrlsOnBluesky } from "./fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "./getEnvironmentVariableValue";
-import { postTitleAndUrl } from "./postTitleAndUrl/postTitleAndUrl";
+import { postToBluesky } from "./postToBluesky/postToBluesky";
 import { setDifference } from "./setDifference";
 
 export default async (request: Request) => {
@@ -38,7 +38,7 @@ export default async (request: Request) => {
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
-      await postTitleAndUrl(agent, titleAndUrl.title, titleAndUrl.url);
+      await postToBluesky(agent, titleAndUrl.title, titleAndUrl.url);
     }
 
     console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);

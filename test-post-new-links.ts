@@ -2,7 +2,7 @@ import { AtpAgent } from "@atproto/api";
 import { fetchPostedUrlsOnBluesky } from "./netlify-functions/post-new-links/fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "./netlify-functions/post-new-links/fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
-import { postTitleAndUrl } from "./netlify-functions/post-new-links/postTitleAndUrl/postTitleAndUrl";
+import { postToBluesky } from "./netlify-functions/post-new-links/postToBluesky/postToBluesky";
 import { setDifference } from "./netlify-functions/post-new-links/setDifference";
 
 const main = async () => {
@@ -34,7 +34,7 @@ const main = async () => {
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
-      await postTitleAndUrl(agent, titleAndUrl.title, titleAndUrl.url);
+      await postToBluesky(agent, titleAndUrl.title, titleAndUrl.url);
     }
 
     console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);
