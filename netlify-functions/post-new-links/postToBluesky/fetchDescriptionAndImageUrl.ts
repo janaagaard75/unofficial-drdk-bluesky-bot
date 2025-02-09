@@ -1,4 +1,4 @@
-export const fetchDescriptionAndImage = async (url: string) => {
+export const fetchDescriptionAndImageUrl = async (url: string) => {
   try {
     const response = await fetch(url);
     const htmlDocument = await response.text();
