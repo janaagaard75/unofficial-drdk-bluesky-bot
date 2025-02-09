@@ -1,3 +1,5 @@
+import { downloadImage } from "./downloadImage";
+
 export const fetchDescriptionAndImage = async (url: string) => {
   try {
     const response = await fetch(url);
@@ -5,15 +7,7 @@ export const fetchDescriptionAndImage = async (url: string) => {
 
     const description = extractDescription(htmlDocument);
     const imageUrl = extractImageUrl(htmlDocument);
-
-    const imageBuffer = await (async () => {
-      if (imageUrl === undefined) {
-        return undefined;
-      }
-
-      const downloadedImage = await fetch(imageUrl);
-      return await downloadedImage.arrayBuffer();
-    })();
+    const imageBuffer = await downloadImage(imageUrl);
 
     return {
       description: description,
