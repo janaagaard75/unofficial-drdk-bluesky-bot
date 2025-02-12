@@ -8,7 +8,7 @@ export const fetchTitlesAndUrlsFromRssFeed = async (): Promise<
 > => {
   const parser = new Parser();
   const newsFeed = await parser.parseURL(
-    "https://www.dr.dk/nyheder/service/feeds/senestenyt"
+    "https://www.dr.dk/nyheder/service/feeds/senestenyt",
   );
 
   const titlesAndUrls = newsFeed.items.map((item) => {

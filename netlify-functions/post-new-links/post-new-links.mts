@@ -27,14 +27,14 @@ export default async (request: Request) => {
 
     const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
     console.log(
-      `Fetched ${titlesAndUrlsFromFeed.length} titles and URLs from RSS feed.`
+      `Fetched ${titlesAndUrlsFromFeed.length} titles and URLs from RSS feed.`,
     );
 
     const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
     const newUrls = setDifference(urlsFromFeed, postedUrls);
 
     const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
-      newUrls.has(titleAndUrl.url)
+      newUrls.has(titleAndUrl.url),
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {

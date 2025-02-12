@@ -3,7 +3,7 @@ import { Record } from "./Record";
 import { isDefined } from "./isDefined";
 
 export const fetchPostedUrlsOnBluesky = async (
-  agent: AtpAgent
+  agent: AtpAgent,
 ): Promise<Set<string>> => {
   const feedSize = 20;
   const timeline = await agent.getTimeline({
@@ -22,7 +22,7 @@ export const fetchPostedUrlsOnBluesky = async (
 
       if (record.facets !== undefined) {
         return record.facets.flatMap((facet) =>
-          facet.features.flatMap((feature) => feature.uri as string)
+          facet.features.flatMap((feature) => feature.uri as string),
         );
       }
 
