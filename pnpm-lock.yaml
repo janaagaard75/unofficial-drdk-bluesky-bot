@@ -14,6 +14,9 @@ importers:
       '@netlify/functions':
         specifier: ^3.0.0
         version: 3.0.0
+      html-entities:
+        specifier: ^2.5.2
+        version: 2.5.2
       rss-parser:
         specifier: ^3.13.0
         version: 3.13.0
@@ -231,6 +234,9 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
+
+  html-entities@2.5.2:
+    resolution: {integrity: sha512-K//PSRMQk4FZ78Kyau+mZurHn3FH0Vwr+H36eE0rPbeYkRRi9YxceYPhuN60UwWorxyKHhqoAJl2OFKa4BVtaA==}
 
   iso-datestring-validator@2.2.2:
     resolution: {integrity: sha512-yLEMkBbLZTlVQqOnQ4FiMujR6T4DEcCb1xizmvXS+OxuhwcbtynoosRzdMA69zZCShCNAbi+gJ71FxZBBXx1SA==}
@@ -454,6 +460,8 @@ snapshots:
       resolve-pkg-maps: 1.0.0
 
   graphemer@1.4.0: {}
+
+  html-entities@2.5.2: {}
 
   iso-datestring-validator@2.2.2: {}
 

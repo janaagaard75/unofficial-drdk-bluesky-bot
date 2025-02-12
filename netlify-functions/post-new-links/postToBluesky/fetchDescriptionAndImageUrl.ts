@@ -1,3 +1,5 @@
+import { decode } from "html-entities";
+
 export const fetchDescriptionAndImageUrl = async (url: string) => {
   try {
     const response = await fetch(url);
@@ -21,7 +23,7 @@ const extractDescription = (htmlDocument: string): string => {
   const descriptionMatch = htmlDocument.match(
     /<meta[^>]*name="description"[^>]*content="([^"]*)"/,
   );
-  return descriptionMatch?.[1] ?? "";
+  return decode(descriptionMatch?.[1] ?? "");
 };
 
 /** Extract the image URL from the content of the <meta name="og:image"> element in htmlDocument. */
