@@ -19,7 +19,7 @@ export const fetchDescriptionAndImageUrl = async (url: string) => {
 /** Extract the description from the content of the <meta name="description"> element in htmlDocument. */
 const extractDescription = (htmlDocument: string): string => {
   const descriptionMatch = htmlDocument.match(
-    /<meta[^>]*name="description"[^>]*content="([^"]*)"/
+    /<meta[^>]*name="description"[^>]*content="([^"]*)"/,
   );
   return descriptionMatch?.[1] ?? "";
 };
@@ -27,7 +27,7 @@ const extractDescription = (htmlDocument: string): string => {
 /** Extract the image URL from the content of the <meta name="og:image"> element in htmlDocument. */
 const extractImageUrl = (htmlDocument: string): string | undefined => {
   const imageMatch = htmlDocument.match(
-    /<meta[^>]*property="og:image"[^>]*content="([^"]*)"/
+    /<meta[^>]*property="og:image"[^>]*content="([^"]*)"/,
   );
   return imageMatch?.[1];
 };
