@@ -6,8 +6,6 @@ export const extractImageUrls = (articleHtml: string): Array<string> => {
     /<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/,
   )?.[1];
 
-  console.log("nextData: ", nextData);
-
   if (nextData === undefined) {
     return [];
   }
