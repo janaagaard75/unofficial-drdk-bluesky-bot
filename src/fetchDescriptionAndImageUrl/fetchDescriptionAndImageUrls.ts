@@ -1,5 +1,5 @@
+import { extractImageDescriptionsAndUrls } from "../extractImageUrls/extractImageDescriptionsAndUrls";
 import { extractDescription } from "./extractDescription";
-import { extractImageUrl } from "./extractImageUrl";
 
 export const fetchDescriptionAndImageUrls = async (url: string) => {
   try {
@@ -7,16 +7,12 @@ export const fetchDescriptionAndImageUrls = async (url: string) => {
     const htmlDocument = await response.text();
 
     const description = extractDescription(htmlDocument);
-    const imageUrl = extractImageUrl(htmlDocument);
+    const imageDescriptionsAndUrls =
+      extractImageDescriptionsAndUrls(htmlDocument);
 
     return {
       description: description,
-      images: [
-        {
-          description: undefined,
-          url: imageUrl,
-        },
-      ],
+      images: imageDescriptionsAndUrls,
     };
   } catch (error) {
     console.error("Failed to fetch description and image.", url, error);

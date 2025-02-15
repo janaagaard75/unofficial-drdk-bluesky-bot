@@ -1,4 +1,5 @@
 import { isDefined } from "../shared/isDefined";
+import { extractImageUrl } from "./extractImageUrl";
 import { NextData } from "./NextData";
 
 export const extractImageDescriptionsAndUrls = (
@@ -7,12 +8,23 @@ export const extractImageDescriptionsAndUrls = (
   description: string | undefined;
   url: string;
 }> => {
+  const singleImageUrl = extractImageUrl(articleHtml);
+
   const nextData = articleHtml.match(
     /<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/,
   )?.[1];
 
   if (nextData === undefined) {
-    return [];
+    if (singleImageUrl === undefined) {
+      return [];
+    }
+
+    return [
+      {
+        description: undefined,
+        url: singleImageUrl,
+      },
+    ];
   }
 
   const descriptionsAndUrls = (
@@ -34,7 +46,16 @@ export const extractImageDescriptionsAndUrls = (
     .filter(isDefined);
 
   if (descriptionsAndUrls === undefined) {
-    return [];
+    if (singleImageUrl === undefined) {
+      return [];
+    }
+
+    return [
+      {
+        description: undefined,
+        url: singleImageUrl,
+      },
+    ];
   }
 
   return descriptionsAndUrls;
