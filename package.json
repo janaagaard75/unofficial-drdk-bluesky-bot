@@ -8,6 +8,7 @@
     "check-types": "tsc",
     "description": "tsx --trace-deprecation --env-file=.env ./description.ts",
     "hero-images": "tsx --env-file=.env ./hero-images.ts",
+    "image-urls": "tsx --env-file=.env ./imageUrls.ts",
     "test": "vitest",
     "test-post-new-links": "tsx --env-file=.env ./test-post-new-links.ts"
   },
