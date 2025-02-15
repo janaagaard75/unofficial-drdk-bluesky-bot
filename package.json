@@ -8,6 +8,7 @@
     "check-types": "tsc",
     "description": "tsx --trace-deprecation --env-file=.env ./description.ts",
     "hero-images": "tsx --env-file=.env ./hero-images.ts",
+    "test": "vitest",
     "test-post-new-links": "tsx --env-file=.env ./test-post-new-links.ts"
   },
   "dependencies": {
@@ -21,7 +22,8 @@
   "devDependencies": {
     "@types/node": "^22.13.4",
     "prettier": "^3.5.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
   },
   "packageManager": "pnpm@9.15.4"
 }
