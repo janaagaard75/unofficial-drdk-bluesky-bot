@@ -10,7 +10,8 @@
     "test-description": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/description.ts",
     "test-hero-images": "tsx --env-file=.env ./src/consoleTests/heroImages.ts",
     "test-image-urls": "tsx --env-file=.env ./src/consoleTests/testImageUrls.ts",
-    "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts"
+    "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
+    "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.35",
