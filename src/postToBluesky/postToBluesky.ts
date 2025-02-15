@@ -10,7 +10,7 @@ export const postToBluesky = async (
 ) => {
   console.log("Posting url.", url);
   const descriptionAndImageUrl = await fetchDescriptionAndImageUrls(url);
-  const image = await downloadImage(descriptionAndImageUrl?.imageUrl[0]);
+  const image = await downloadImage(descriptionAndImageUrl?.images[0]?.url);
   const imageBlob = await uploadImage(agent, image);
 
   const post = {

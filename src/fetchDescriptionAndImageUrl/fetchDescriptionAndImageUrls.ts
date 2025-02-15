@@ -11,7 +11,12 @@ export const fetchDescriptionAndImageUrls = async (url: string) => {
 
     return {
       description: description,
-      imageUrl: [imageUrl],
+      images: [
+        {
+          description: undefined,
+          url: imageUrl,
+        },
+      ],
     };
   } catch (error) {
     console.error("Failed to fetch description and image.", url, error);

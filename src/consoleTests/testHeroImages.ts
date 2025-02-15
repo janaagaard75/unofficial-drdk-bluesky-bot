@@ -24,7 +24,7 @@ async function main() {
   for (const url of testUrls) {
     const descriptionAndImageUrl = await fetchDescriptionAndImageUrls(url);
     const downloadedImage = await downloadImage(
-      descriptionAndImageUrl?.imageUrl[0],
+      descriptionAndImageUrl?.images[0]?.url,
     );
     const heroImageBlob = await uploadImage(agent, downloadedImage);
 
