@@ -1,4 +1,4 @@
-import { isDefined } from "../isDefined";
+import { isDefined } from "../shared/isDefined";
 import { NextData } from "./NextData";
 
 export const extractImageUrls = (articleHtml: string): Array<string> => {

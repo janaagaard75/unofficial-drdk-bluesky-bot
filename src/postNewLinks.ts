@@ -3,7 +3,7 @@ import { fetchPostedUrlsOnBluesky } from "./fetchPostedUrlsOnBluesky/fetchPosted
 import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "./getEnvironmentVariableValue";
 import { postToBluesky } from "./postToBluesky/postToBluesky";
-import { setDifference } from "./setDifference";
+import { setDifference } from "./shared/setDifference";
 
 export const postNewLinks = async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };

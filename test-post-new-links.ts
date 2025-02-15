@@ -3,7 +3,7 @@ import { fetchPostedUrlsOnBluesky } from "./src/fetchPostedUrlsOnBluesky/fetchPo
 import { fetchTitlesAndUrlsFromRssFeed } from "./src/fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "./src/getEnvironmentVariableValue";
 import { postToBluesky } from "./src/postToBluesky/postToBluesky";
-import { setDifference } from "./src/setDifference";
+import { setDifference } from "./src/shared/setDifference";
 
 const main = async () => {
   try {
