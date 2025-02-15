@@ -1,4 +1,4 @@
-import { fetchDescriptionAndImageUrls } from "../fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrls";
+import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 
 async function main() {
   const testUrls = [
@@ -11,7 +11,7 @@ async function main() {
   ];
 
   for (const url of testUrls) {
-    const descriptionAndImage = await fetchDescriptionAndImageUrls(url);
+    const descriptionAndImage = await fetchDescriptionAndImages(url);
     console.log();
     console.log(descriptionAndImage);
   }

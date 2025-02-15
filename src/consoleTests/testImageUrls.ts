@@ -1,4 +1,4 @@
-import { extractImageDescriptionsAndUrls } from "../extractImageUrls/extractImageDescriptionsAndUrls";
+import { extractImageDescriptionsAndUrls } from "../extractImageDescriptionsAndUrls/extractImageDescriptionsAndUrls";
 
 async function main() {
   const testUrls = [

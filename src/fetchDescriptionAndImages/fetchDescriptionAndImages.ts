@@ -1,7 +1,7 @@
-import { extractImageDescriptionsAndUrls } from "../extractImageUrls/extractImageDescriptionsAndUrls";
+import { extractImageDescriptionsAndUrls } from "../extractImageDescriptionsAndUrls/extractImageDescriptionsAndUrls";
 import { extractDescription } from "./extractDescription";
 
-export const fetchDescriptionAndImageUrls = async (url: string) => {
+export const fetchDescriptionAndImages = async (url: string) => {
   try {
     const response = await fetch(url);
     const htmlDocument = await response.text();
