@@ -1,4 +1,4 @@
-import { fetchDescriptionAndImageUrl } from "./src/postToBluesky/fetchDescriptionAndImageUrl";
+import { fetchDescriptionAndImageUrl } from "./src/fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrl";
 
 async function main() {
   const testUrls = [

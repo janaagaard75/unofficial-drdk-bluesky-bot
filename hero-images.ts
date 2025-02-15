@@ -1,7 +1,7 @@
 import { AtpAgent } from "@atproto/api";
+import { fetchDescriptionAndImageUrl } from "./src/fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrl";
 import { getEnvironmentVariableValue } from "./src/getEnvironmentVariableValue";
 import { downloadImage } from "./src/postToBluesky/downloadImage";
-import { fetchDescriptionAndImageUrl } from "./src/postToBluesky/fetchDescriptionAndImageUrl";
 import { uploadImage } from "./src/postToBluesky/uploadImage";
 
 async function main() {
