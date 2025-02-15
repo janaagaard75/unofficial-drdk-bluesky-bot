@@ -1,4 +1,4 @@
-import { extractImageUrls } from "./src/extractImageUrls/extractImageUrls";
+import { extractImageDescriptionsAndUrls } from "./src/extractImageUrls/extractImageDescriptionsAndUrls";
 
 async function main() {
   const testUrls = [
@@ -15,7 +15,7 @@ async function main() {
   for (const url of testUrls) {
     const downloadedArticle = await fetch(url);
     const articleHtml = await downloadedArticle.text();
-    const extractedImageUrls = extractImageUrls(articleHtml);
+    const extractedImageUrls = extractImageDescriptionsAndUrls(articleHtml);
     console.log(url, extractedImageUrls);
   }
 }

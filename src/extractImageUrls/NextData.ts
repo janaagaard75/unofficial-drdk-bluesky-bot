@@ -7,6 +7,7 @@ export interface NextData {
             type: "ImageCollectionComponent";
             images: Array<{
               default?: {
+                description?: string;
                 url?: string;
               };
             }>;

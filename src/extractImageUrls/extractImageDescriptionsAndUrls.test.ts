@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import path from "path";
 import { expect, test } from "vitest";
-import { extractImageUrls } from "./extractImageUrls";
+import { extractImageDescriptionsAndUrls } from "./extractImageDescriptionsAndUrls";
 
 test("extractImageUrls", async () => {
   const articlePath = path.join(__dirname, "articleWithMultipleImages.html");
@@ -14,6 +14,6 @@ test("extractImageUrls", async () => {
     "https://www.dr.dk/images/other/2025/02/07/scanpix-20241217-161646-6.jpg",
   ];
 
-  const extractedUrls = extractImageUrls(articleHtml);
+  const extractedUrls = extractImageDescriptionsAndUrls(articleHtml);
   expect(extractedUrls).toEqual(expectedUrls);
 });
