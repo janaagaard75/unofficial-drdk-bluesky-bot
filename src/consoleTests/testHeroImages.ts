@@ -1,8 +1,8 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchDescriptionAndImageUrls } from "./src/fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrls";
-import { getEnvironmentVariableValue } from "./src/getEnvironmentVariableValue";
-import { downloadImage } from "./src/postToBluesky/downloadImage";
-import { uploadImage } from "./src/postToBluesky/uploadImage";
+import { fetchDescriptionAndImageUrls } from "../fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrls";
+import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { downloadImage } from "../postToBluesky/downloadImage";
+import { uploadImage } from "../postToBluesky/uploadImage";
 
 async function main() {
   const testUrls = [

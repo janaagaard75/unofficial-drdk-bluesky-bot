@@ -1,9 +1,9 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchPostedUrlsOnBluesky } from "./src/fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
-import { fetchTitlesAndUrlsFromRssFeed } from "./src/fetchTitlesAndUrlsFromRssFeed";
-import { getEnvironmentVariableValue } from "./src/getEnvironmentVariableValue";
-import { postToBluesky } from "./src/postToBluesky/postToBluesky";
-import { setDifference } from "./src/shared/setDifference";
+import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
+import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
+import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { setDifference } from "../shared/setDifference";
 
 const main = async () => {
   try {

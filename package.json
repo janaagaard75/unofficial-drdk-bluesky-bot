@@ -6,11 +6,11 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "description": "tsx --trace-deprecation --env-file=.env ./description.ts",
-    "hero-images": "tsx --env-file=.env ./hero-images.ts",
-    "image-urls": "tsx --env-file=.env ./imageUrls.ts",
     "test": "vitest",
-    "test-post-new-links": "tsx --env-file=.env ./test-post-new-links.ts"
+    "test-description": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/description.ts",
+    "test-hero-images": "tsx --env-file=.env ./src/consoleTests/heroImages.ts",
+    "test-image-urls": "tsx --env-file=.env ./src/consoleTests/testImageUrls.ts",
+    "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.35",

@@ -1,4 +1,4 @@
-import { fetchDescriptionAndImageUrls } from "./src/fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrls";
+import { fetchDescriptionAndImageUrls } from "../fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrls";
 
 async function main() {
   const testUrls = [
