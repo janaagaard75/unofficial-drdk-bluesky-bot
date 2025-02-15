@@ -1,8 +1,8 @@
 import { AtpAgent } from "@atproto/api";
-import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
-import { downloadImage } from "./netlify-functions/post-new-links/postToBluesky/downloadImage";
-import { fetchDescriptionAndImageUrl } from "./netlify-functions/post-new-links/postToBluesky/fetchDescriptionAndImageUrl";
-import { uploadImage } from "./netlify-functions/post-new-links/postToBluesky/uploadImage";
+import { getEnvironmentVariableValue } from "./src/getEnvironmentVariableValue";
+import { downloadImage } from "./src/postToBluesky/downloadImage";
+import { fetchDescriptionAndImageUrl } from "./src/postToBluesky/fetchDescriptionAndImageUrl";
+import { uploadImage } from "./src/postToBluesky/uploadImage";
 
 async function main() {
   const testUrls = [

@@ -1,10 +1,10 @@
 import { AtpAgent } from "@atproto/api";
 import type { Config } from "@netlify/functions";
-import { fetchPostedUrlsOnBluesky } from "./fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
-import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
-import { getEnvironmentVariableValue } from "./getEnvironmentVariableValue";
-import { postToBluesky } from "./postToBluesky/postToBluesky";
-import { setDifference } from "./setDifference";
+import { fetchPostedUrlsOnBluesky } from "../../src/fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
+import { fetchTitlesAndUrlsFromRssFeed } from "../../src/fetchTitlesAndUrlsFromRssFeed";
+import { getEnvironmentVariableValue } from "../../src/getEnvironmentVariableValue";
+import { postToBluesky } from "../../src/postToBluesky/postToBluesky";
+import { setDifference } from "../../src/setDifference";
 
 export default async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };

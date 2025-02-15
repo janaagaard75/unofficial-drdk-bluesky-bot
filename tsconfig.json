@@ -19,6 +19,9 @@
     "./*.ts",
     "./*.mts",
     "./netlify-functions/**/*.ts",
-    "./netlify-functions/**/*.mts"
+    "./netlify-functions/**/*.mts",
+    "src/fetchTitlesAndUrlsFromRssFeed.ts",
+    "src/getEnvironmentVariableValue.ts",
+    "src/setDifference.ts"
   ]
 }
