@@ -1,7 +1,7 @@
 import { extractDescription } from "./extractDescription";
 import { extractImageUrl } from "./extractImageUrl";
 
-export const fetchDescriptionAndImageUrl = async (url: string) => {
+export const fetchDescriptionAndImageUrls = async (url: string) => {
   try {
     const response = await fetch(url);
     const htmlDocument = await response.text();
@@ -11,7 +11,7 @@ export const fetchDescriptionAndImageUrl = async (url: string) => {
 
     return {
       description: description,
-      imageUrl: imageUrl,
+      imageUrl: [imageUrl],
     };
   } catch (error) {
     console.error("Failed to fetch description and image.", url, error);

@@ -1,5 +1,5 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchDescriptionAndImageUrl } from "../fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrl";
+import { fetchDescriptionAndImageUrls } from "../fetchDescriptionAndImageUrl/fetchDescriptionAndImageUrls";
 import { downloadImage } from "./downloadImage";
 import { uploadImage } from "./uploadImage";
 
@@ -9,8 +9,8 @@ export const postToBluesky = async (
   url: string,
 ) => {
   console.log("Posting url.", url);
-  const descriptionAndImageUrl = await fetchDescriptionAndImageUrl(url);
-  const image = await downloadImage(descriptionAndImageUrl?.imageUrl);
+  const descriptionAndImageUrl = await fetchDescriptionAndImageUrls(url);
+  const image = await downloadImage(descriptionAndImageUrl?.imageUrl[0]);
   const imageBlob = await uploadImage(agent, image);
 
   const post = {
