@@ -1,9 +1,9 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchPostedUrlsOnBluesky } from "./netlify-functions/post-new-links/fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
-import { fetchTitlesAndUrlsFromRssFeed } from "./netlify-functions/post-new-links/fetchTitlesAndUrlsFromRssFeed";
-import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
-import { postToBluesky } from "./netlify-functions/post-new-links/postToBluesky/postToBluesky";
-import { setDifference } from "./netlify-functions/post-new-links/setDifference";
+import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
+import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
+import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { setDifference } from "../shared/setDifference";
 
 const main = async () => {
   try {
@@ -23,14 +23,14 @@ const main = async () => {
 
     const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
     console.log(
-      `Fetched ${titlesAndUrlsFromFeed.length} titles and URLs from RSS feed.`
+      `Fetched ${titlesAndUrlsFromFeed.length} titles and URLs from RSS feed.`,
     );
 
     const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
     const newUrls = setDifference(urlsFromFeed, postedUrls);
 
     const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
-      newUrls.has(titleAndUrl.url)
+      newUrls.has(titleAndUrl.url),
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {

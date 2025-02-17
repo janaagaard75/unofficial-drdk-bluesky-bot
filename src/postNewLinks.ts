@@ -1,12 +1,11 @@
 import { AtpAgent } from "@atproto/api";
-import type { Config } from "@netlify/functions";
 import { fetchPostedUrlsOnBluesky } from "./fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "./getEnvironmentVariableValue";
 import { postToBluesky } from "./postToBluesky/postToBluesky";
-import { setDifference } from "./setDifference";
+import { setDifference } from "./shared/setDifference";
 
-export default async (request: Request) => {
+export const postNewLinks = async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };
   console.log(`Triggered. Next invocation at: ${next_run}.`);
 
@@ -45,8 +44,4 @@ export default async (request: Request) => {
   } catch (error) {
     console.error(error);
   }
-};
-
-export const config: Config = {
-  schedule: "*/6 * * * *",
 };

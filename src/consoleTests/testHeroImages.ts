@@ -1,8 +1,8 @@
 import { AtpAgent } from "@atproto/api";
-import { getEnvironmentVariableValue } from "./netlify-functions/post-new-links/getEnvironmentVariableValue";
-import { downloadImage } from "./netlify-functions/post-new-links/postToBluesky/downloadImage";
-import { fetchDescriptionAndImageUrl } from "./netlify-functions/post-new-links/postToBluesky/fetchDescriptionAndImageUrl";
-import { uploadImage } from "./netlify-functions/post-new-links/postToBluesky/uploadImage";
+import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
+import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { downloadImage } from "../postToBluesky/downloadImage";
+import { uploadImage } from "../postToBluesky/uploadImage";
 
 async function main() {
   const testUrls = [
@@ -22,9 +22,9 @@ async function main() {
   });
 
   for (const url of testUrls) {
-    const descriptionAndImageUrl = await fetchDescriptionAndImageUrl(url);
+    const descriptionAndImageUrl = await fetchDescriptionAndImages(url);
     const downloadedImage = await downloadImage(
-      descriptionAndImageUrl?.imageUrl,
+      descriptionAndImageUrl?.images[0]?.url,
     );
     const heroImageBlob = await uploadImage(agent, downloadedImage);
 

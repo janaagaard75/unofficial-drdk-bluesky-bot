@@ -6,9 +6,12 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "description": "tsx --trace-deprecation --env-file=.env ./description.ts",
-    "hero-images": "tsx --env-file=.env ./hero-images.ts",
-    "test-post-new-links": "tsx --env-file=.env ./test-post-new-links.ts"
+    "test": "vitest",
+    "test-description": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/description.ts",
+    "test-hero-images": "tsx --env-file=.env ./src/consoleTests/heroImages.ts",
+    "test-image-urls": "tsx --env-file=.env ./src/consoleTests/testImageUrls.ts",
+    "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
+    "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.35",
@@ -21,7 +24,8 @@
   "devDependencies": {
     "@types/node": "^22.13.4",
     "prettier": "^3.5.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
   },
   "packageManager": "pnpm@9.15.4"
 }
