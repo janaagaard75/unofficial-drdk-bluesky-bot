@@ -1,5 +1,5 @@
 import type { Config } from "@netlify/functions";
-import { postNewLinks } from "../../src/postNewLinks";
+import { postNewLinks } from "../../../src/postNewLinks";
 
 export default async (request: Request) => {
   postNewLinks(request);
