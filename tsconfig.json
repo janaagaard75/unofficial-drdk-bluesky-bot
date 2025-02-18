@@ -16,8 +16,8 @@
     "target": "ESNext"
   },
   "include": [
-    "./netlify-functions/**/*.mts",
-    "./netlify-functions/**/*.ts",
+    "./netlify/**/*.mts",
+    "./netlify/**/*.ts",
     "./src/**/*.ts",
     "./*.ts"
   ]
