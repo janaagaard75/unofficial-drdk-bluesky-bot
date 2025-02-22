@@ -6,6 +6,7 @@
     "drdk",
     "extractus",
     "icann",
+    "nvmrc",
     "tldts"
   ],
   "editor.codeActionsOnSave": {
