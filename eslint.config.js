@@ -158,9 +158,6 @@ export default tsEslint.config({
     // Do not allow alert boxes.
     "no-alert": "warn",
 
-    // Do not allow console.log statements to ensure that they aren't forgotten from a debug session.
-    "no-console": "warn",
-
     // Avoid redundant else statements to keep the code un-indented.
     "no-else-return": "warn",
 
