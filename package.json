@@ -6,6 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "check-formatting": "prettier --check \"**/*.{css,html,js,json,md,scss,ts,tsx,yml}\"",
     "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
     "test": "vitest",
