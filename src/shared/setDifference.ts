@@ -1,4 +1,4 @@
-export const setDifference = (setA: Set<any>, setB: Set<any>): Set<any> => {
+export const setDifference = <T>(setA: Set<T>, setB: Set<T>): Set<T> => {
   const result = new Set(setA);
   for (const item of setB) {
     result.delete(item);

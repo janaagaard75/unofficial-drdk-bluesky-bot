@@ -2,7 +2,7 @@ import { AtpAgent } from "@atproto/api";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 
-async function main() {
+const main = async () => {
   const testUrls = [
     "https://www.dr.dk/nyheder/indland/regeringen-vil-nedlaegge-jobcentrene-en-stor-og-omfattende-oevelse",
     "https://www.dr.dk/nyheder/seneste/66-aarig-mand-faar-nyre-fra-en-genmodificeret-gris",
@@ -17,7 +17,7 @@ async function main() {
   const testAgent = new AtpAgent({
     service: "https://bsky.social",
   });
-  testAgent.login({
+  await testAgent.login({
     identifier: getEnvironmentVariableValue("BLUESKY_TEST_USERNAME"),
     password: getEnvironmentVariableValue("BLUESKY_TEST_PASSWORD"),
   });
@@ -27,6 +27,6 @@ async function main() {
     await postToBluesky(testAgent, `Dummy title ${number}`, url);
     number++;
   }
-}
+};
 
-main();
+await main();

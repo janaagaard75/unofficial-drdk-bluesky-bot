@@ -1,6 +1,6 @@
 import { extractImageDescriptionsAndUrls } from "../extractImageDescriptionsAndUrls/extractImageDescriptionsAndUrls";
 
-async function main() {
+const main = async () => {
   const testUrls = [
     "https://www.dr.dk/nyheder/indland/regeringen-vil-nedlaegge-jobcentrene-en-stor-og-omfattende-oevelse",
     "https://www.dr.dk/nyheder/seneste/66-aarig-mand-faar-nyre-fra-en-genmodificeret-gris",
@@ -18,6 +18,6 @@ async function main() {
     const extractedImageUrls = extractImageDescriptionsAndUrls(articleHtml);
     console.log(url, extractedImageUrls);
   }
-}
+};
 
-main();
+await main();

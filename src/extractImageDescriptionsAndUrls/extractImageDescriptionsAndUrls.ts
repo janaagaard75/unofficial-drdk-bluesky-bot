@@ -10,9 +10,10 @@ export const extractImageDescriptionsAndUrls = (
 }> => {
   const singleImageUrl = extractImageUrl(articleHtml);
 
-  const nextData = articleHtml.match(
-    /<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/,
-  )?.[1];
+  const nextData =
+    /<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/.exec(
+      articleHtml,
+    )?.[1];
 
   if (nextData === undefined) {
     if (singleImageUrl === undefined) {

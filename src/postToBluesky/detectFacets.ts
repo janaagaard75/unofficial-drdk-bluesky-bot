@@ -17,15 +17,15 @@ export const detectFacets = (stringText: string): Array<Facet> => {
     let uri = match[2];
     if (!uri.startsWith("http")) {
       const domain = match.groups?.["domain"];
-      if (!domain || !isValidDomain(domain)) {
+      if (domain === undefined || !isValidDomain(domain)) {
         continue;
       }
       uri = `https://${uri}`;
     }
     const start = unicodeText.utf16.indexOf(match[2], match.index);
     const index = {
-      start,
       end: start + match[2].length,
+      start,
     };
     // Strip ending punctuation.
     if (/[.,;!?]$/.test(uri)) {
@@ -37,16 +37,16 @@ export const detectFacets = (stringText: string): Array<Facet> => {
       index.end--;
     }
     facets.push({
-      index: {
-        byteStart: unicodeText.utf16IndexToUtf8Index(index.start),
-        byteEnd: unicodeText.utf16IndexToUtf8Index(index.end),
-      },
       features: [
         {
           $type: "app.bsky.richtext.facet#link",
           uri,
         },
       ],
+      index: {
+        byteEnd: unicodeText.utf16IndexToUtf8Index(index.end),
+        byteStart: unicodeText.utf16IndexToUtf8Index(index.start),
+      },
     });
   }
 
