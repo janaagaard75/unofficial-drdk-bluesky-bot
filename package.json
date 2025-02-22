@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "author": "Jan Aagaard <jan@aagaard.net>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
+    "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
     "test": "vitest",
     "test-description": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/description.ts",
@@ -22,9 +24,16 @@
     "tsx": "^4.19.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin-js": "^4.0.1",
     "@types/node": "^22.13.4",
+    "eslint": "^9.21.0",
+    "eslint-formatter-unix": "^8.40.0",
+    "eslint-plugin-perfectionist": "^4.9.0",
+    "globals": "^16.0.0",
     "prettier": "^3.5.1",
     "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1",
     "vitest": "^3.0.5"
   },
   "packageManager": "pnpm@9.15.4"
