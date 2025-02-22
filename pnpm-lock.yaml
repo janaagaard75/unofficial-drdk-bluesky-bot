@@ -23,9 +23,6 @@ importers:
       tldts:
         specifier: ^6.1.77
         version: 6.1.77
-      tsx:
-        specifier: ^4.19.2
-        version: 4.19.2
     devDependencies:
       '@eslint/js':
         specifier: ^9.21.0
@@ -51,6 +48,9 @@ importers:
       prettier:
         specifier: ^3.5.1
         version: 3.5.1
+      tsx:
+        specifier: ^4.19.2
+        version: 4.19.2
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
