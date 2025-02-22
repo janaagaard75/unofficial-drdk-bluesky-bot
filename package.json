@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "author": "Jan Aagaard <jan@aagaard.net>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
+    "check-formatting": "prettier --check \"**/*.{css,html,js,json,md,scss,ts,tsx,yml}\"",
+    "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
     "test": "vitest",
     "test-description": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/description.ts",
@@ -18,14 +21,21 @@
     "@netlify/functions": "^3.0.0",
     "html-entities": "^2.5.2",
     "rss-parser": "^3.13.0",
-    "tldts": "^6.1.77",
-    "tsx": "^4.19.2"
+    "tldts": "^6.1.78"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4",
-    "prettier": "^3.5.1",
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin-js": "^4.0.1",
+    "@types/node": "^22.13.5",
+    "eslint": "^9.21.0",
+    "eslint-formatter-unix": "^8.40.0",
+    "eslint-plugin-perfectionist": "^4.9.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.2",
+    "tsx": "^4.19.3",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.5"
+    "typescript-eslint": "^8.24.1",
+    "vitest": "^3.0.6"
   },
   "packageManager": "pnpm@9.15.4"
 }

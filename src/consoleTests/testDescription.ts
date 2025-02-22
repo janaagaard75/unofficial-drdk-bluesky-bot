@@ -1,6 +1,6 @@
 import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 
-async function main() {
+const main = async () => {
   const testUrls = [
     "https://www.dr.dk/nyheder/seneste/svensk-politi-efterlyser-video-og-billeder-i-forbindelse-med-efterforskning-af",
     "https://www.dr.dk/nyheder/udland/eu-kommissionen-oensker-opgoer-med-online-platforme-som-temu-told-og-afgifter-kan",
@@ -15,6 +15,6 @@ async function main() {
     console.log();
     console.log(descriptionAndImage);
   }
-}
+};
 
-main();
+await main();

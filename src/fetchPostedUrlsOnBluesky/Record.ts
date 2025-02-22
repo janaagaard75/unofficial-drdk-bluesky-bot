@@ -1,7 +1,6 @@
 import { Facet } from "@atproto/api";
 
 export interface Record {
-  facets?: Array<Facet>;
   embed?: {
     external?: {
       description: string;
@@ -9,4 +8,5 @@ export interface Record {
       uri?: string;
     };
   };
+  facets?: Array<Facet>;
 }

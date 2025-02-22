@@ -4,7 +4,7 @@ import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { downloadImage } from "../postToBluesky/downloadImage";
 import { uploadImage } from "../postToBluesky/uploadImage";
 
-async function main() {
+const main = async () => {
   const testUrls = [
     "https://www.dr.dk/nyheder/seneste/svensk-politi-efterlyser-video-og-billeder-i-forbindelse-med-efterforskning-af",
     "https://www.dr.dk/nyheder/udland/eu-kommissionen-oensker-opgoer-med-online-platforme-som-temu-told-og-afgifter-kan",
@@ -44,6 +44,6 @@ async function main() {
 
     await agent.post(post);
   }
-}
+};
 
-main();
+await main();
