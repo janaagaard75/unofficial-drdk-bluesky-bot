@@ -16,6 +16,7 @@
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
     "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts"
   },
+  "packageManager": "yarn@4.6.0",
   "dependencies": {
     "@atproto/api": "^0.13.35",
     "@netlify/functions": "^3.0.0",
@@ -36,6 +37,5 @@
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.24.1",
     "vitest": "^3.0.6"
-  },
-  "packageManager": "pnpm@9.15.4"
+  }
 }

@@ -1,3 +1,11 @@
 .netlify/
 node_modules/
 .env
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
