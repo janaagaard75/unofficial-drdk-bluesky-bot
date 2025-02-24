@@ -23,13 +23,13 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Check types
-        run: yarn check-types
+        run: pnpm check-types
 
       - name: Check lint rules
-        run: yarn check-lint
+        run: pnpm check-lint
 
       - name: Check formatting
-        run: yarn check-formatting
+        run: pnpm check-formatting
