@@ -14,11 +14,12 @@
     "test-hero-images": "tsx --env-file=.env ./src/consoleTests/heroImages.ts",
     "test-image-urls": "tsx --env-file=.env ./src/consoleTests/testImageUrls.ts",
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
-    "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts"
+    "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts",
+    "update-dependencies": "yarn upgrade-interactive && npx rimraf yarn.lock && yarn install"
   },
   "packageManager": "yarn@4.6.0",
   "dependencies": {
-    "@atproto/api": "^0.13.35",
+    "@atproto/api": "^0.14.5",
     "@netlify/functions": "^3.0.0",
     "html-entities": "^2.5.2",
     "rss-parser": "^3.13.0",
@@ -35,7 +36,7 @@
     "prettier": "^3.5.2",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.1",
-    "vitest": "^3.0.6"
+    "typescript-eslint": "^8.25.0",
+    "vitest": "^3.0.7"
   }
 }
