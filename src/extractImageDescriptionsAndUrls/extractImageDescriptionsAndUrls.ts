@@ -1,4 +1,3 @@
-import { isDefined } from "../shared/isDefined";
 import { extractImageUrl } from "./extractImageUrl";
 import { NextData } from "./NextData";
 
@@ -33,7 +32,7 @@ export const extractImageDescriptionsAndUrls = (
   ).props?.pageProps?.viewProps?.resource?.head
     ?.find((headElement) => headElement.type === "ImageCollectionComponent")
     ?.images.map((imageElement) => imageElement.default)
-    .filter(isDefined)
+    .filter((imageElement) => imageElement !== undefined)
     .map((definedImageElement) => {
       if (definedImageElement.url === undefined) {
         return undefined;
@@ -44,7 +43,7 @@ export const extractImageDescriptionsAndUrls = (
         url: definedImageElement.url,
       };
     })
-    .filter(isDefined);
+    .filter((descriptionAndUrl) => descriptionAndUrl !== undefined);
 
   if (descriptionsAndUrls === undefined) {
     if (singleImageUrl === undefined) {

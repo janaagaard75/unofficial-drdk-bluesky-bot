@@ -1,5 +1,4 @@
 import { AtpAgent } from "@atproto/api";
-import { isDefined } from "../shared/isDefined";
 import { Record } from "./Record";
 
 export const fetchPostedUrlsOnBluesky = async (
@@ -14,7 +13,7 @@ export const fetchPostedUrlsOnBluesky = async (
 
   const postedUrls = feedViewPosts
     .map((feedViewPost) => feedViewPost.post.record as Record)
-    .filter(isDefined)
+    .filter((record) => record !== undefined)
     .flatMap((record) => {
       if (record.embed?.external?.uri !== undefined) {
         return [record.embed.external.uri];
