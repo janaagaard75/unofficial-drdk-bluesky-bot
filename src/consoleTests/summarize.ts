@@ -1,4 +1,4 @@
-import { htmlToText } from "html-to-text";
+import { JSDOM } from "jsdom";
 
 const testSummarize = async () => {
   const testUrls = [
@@ -20,9 +20,18 @@ const testSummarize = async () => {
     const articleMatch = articleRegex.exec(articleHtml);
 
     if (articleMatch !== null && articleMatch[1] !== undefined) {
-      const articleHtml = articleMatch[1].trim();
-      const articleText = htmlToText(articleHtml);
-      console.log(articleText.substring(0, 300));
+      const articleHtml = articleMatch[1]
+        .trim()
+        .replace(/<\/div>/gi, "</div> ")
+        .replace(/<\/h[1-6]>/gi, "</h$1> ")
+        .replace(/<\/li>/gi, "</li> ")
+        .replace(/<\/p>/gi, "</p> ")
+        .replace(/<\/span>/gi, "</p> ")
+        .replace(/<br\s*\/?>/gi, " ");
+      const articleText = (JSDOM.fragment(articleHtml).textContent ?? "")
+        .replace(/\s+/g, " ")
+        .trim();
+      console.log(articleText.substring(0, 200));
     } else {
       console.log("No article content found in the article.");
     }
@@ -30,5 +39,3 @@ const testSummarize = async () => {
 };
 
 await testSummarize();
-
-export {};
