@@ -1,4 +1,4 @@
-import { JSDOM } from "jsdom";
+import { fetchArticleText } from "../summarizer/fetchArticleText";
 import { summarize } from "../summarizer/summarize";
 
 const testSummarize = async () => {
@@ -15,39 +15,13 @@ const testSummarize = async () => {
 
   for (const url of testUrls) {
     console.log(`\n\n--\nURL: ${url}`);
-    const response = await fetch(url);
-    const articleHtml = await response.text();
-    const articleRegex = /<article[^>]*>([\s\S]*?)<\/article>/;
-    const articleMatch = articleRegex.exec(articleHtml);
 
-    if (articleMatch !== null && articleMatch[1] !== undefined) {
-      const articleHtml = articleMatch[1]
-        .trim()
-        .replace(/<\/div>/gi, "</div> ")
-        .replace(/<\/h[1-6]>/gi, "</h$1> ")
-        .replace(/<\/li>/gi, "</li> ")
-        .replace(/<\/p>/gi, "</p>\n")
-        .replace(/<\/span>/gi, "</span> ")
-        .replace(/<\/strong>/gi, "</strong> ")
-        .replace(/<\/em>/gi, "</em> ")
-        .replace(/<br\s*\/?>/gi, " ")
-        .replace(/\n/gi, " ");
+    const articleText = await fetchArticleText(url);
+    console.log(`\n${articleText.substring(0, 400)}`);
 
-      const articleText = (JSDOM.fragment(articleHtml).textContent ?? "")
-        .replace(/\s{2,}/gi, ". ")
-        .replaceAll(":.", ":")
-        .replaceAll("..", ".")
-        .replace(/^. /, "")
-        .trim();
-
-      console.log(`\n${articleText.substring(0, 400)}`);
-
-      const summary = await summarize(articleText);
-      console.log(`\n${summary}`);
-      console.log(`\nLength: ${summary.length}.`);
-    } else {
-      console.log("No article content found in the article.");
-    }
+    const summary = await summarize(articleText);
+    console.log(`\n${summary}`);
+    console.log(`\nLength: ${summary.length}.`);
   }
 };
 
