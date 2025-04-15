@@ -14,7 +14,7 @@ const testSummarize = async () => {
   ];
 
   for (const url of testUrls) {
-    console.log(`\n\n--URL: ${url}`);
+    console.log(`\n\n--\nURL: ${url}`);
     const response = await fetch(url);
     const articleHtml = await response.text();
     const articleRegex = /<article[^>]*>([\s\S]*?)<\/article>/;
@@ -24,17 +24,23 @@ const testSummarize = async () => {
       const articleHtml = articleMatch[1]
         .trim()
         .replace(/<\/div>/gi, "</div> ")
-        .replace(/<\/h[1-6]>/gi, "</h$1>. ")
+        .replace(/<\/h[1-6]>/gi, "</h$1> ")
         .replace(/<\/li>/gi, "</li> ")
-        .replace(/<\/p>/gi, "</p> ")
-        .replace(/<\/span>/gi, "</p> ")
+        .replace(/<\/p>/gi, "</p>\n")
+        .replace(/<\/span>/gi, "</span> ")
         .replace(/<\/strong>/gi, "</strong> ")
         .replace(/<\/em>/gi, "</em> ")
-        .replace(/<br\s*\/?>/gi, " ");
+        .replace(/<br\s*\/?>/gi, " ")
+        .replace(/\n/gi, " ");
+
       const articleText = (JSDOM.fragment(articleHtml).textContent ?? "")
-        .replace(/\s+/g, " ")
+        .replace(/\s{2,}/gi, ". ")
+        .replaceAll(":.", ":")
+        .replaceAll("..", ".")
+        .replace(/^. /, "")
         .trim();
-      console.log(`\n${articleText.substring(0, 200)}...`);
+
+      console.log(`\n${articleText.substring(0, 400)}`);
 
       const summary = await summarize(articleText);
       console.log(`\n${summary}`);
