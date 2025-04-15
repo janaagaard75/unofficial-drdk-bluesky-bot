@@ -26,18 +26,6 @@ export const summarize = async (fullText: string): Promise<string> => {
   ];
   const poller = await client.beginAnalyzeBatch(actions, [fullText]);
 
-  // poller.onProgress(() => {
-  //   console.log(
-  //     `Last time the operation was updated was on: ${poller.getOperationState().modifiedOn.toISOString()}.`,
-  //   );
-  // });
-  // console.log(
-  //   `The operation was created on ${poller.getOperationState().createdOn.toISOString()}.`,
-  // );
-  // console.log(
-  //   `The operation results will expire on ${poller.getOperationState().expiresOn?.toISOString() ?? "?"}.`,
-  // );
-
   const actionResults = await poller.pollUntilDone();
   const summary = await extractSummary(actionResults);
   return summary;
