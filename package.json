@@ -15,7 +15,7 @@
     "test-image-urls": "tsx --env-file=.env ./src/consoleTests/testImageUrls.ts",
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
     "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts",
-    "test-summarize": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/summarize.ts"
+    "test-summarize": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testSummarize.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.13.35",
