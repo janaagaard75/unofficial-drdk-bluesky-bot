@@ -24,7 +24,7 @@ export const summarize = async (fullText: string): Promise<string> => {
       maxSentenceCount: 2,
     },
   ];
-  const poller = await client.beginAnalyzeBatch(actions, [fullText], "da");
+  const poller = await client.beginAnalyzeBatch(actions, [fullText]);
 
   // poller.onProgress(() => {
   //   console.log(
