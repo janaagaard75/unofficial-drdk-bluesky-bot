@@ -13,7 +13,7 @@ export const fetchArticleText = async (url: string): Promise<string> => {
   const cleanedArticleHtml = articleMatch[1]
     .trim()
     .replace(/<\/div>/gi, "</div> ")
-    .replace(/<\/h[1-6]>/gi, "</h$1> ")
+    .replace(/<\/h([1-6])>/gi, "</h$1> ")
     .replace(/<\/li>/gi, "</li> ")
     .replace(/<\/p>/gi, "</p>\n")
     .replace(/<\/span>/gi, "</span> ")
