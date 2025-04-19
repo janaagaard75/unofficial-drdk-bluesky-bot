@@ -1,16 +1,11 @@
 import { JSDOM } from "jsdom";
 
-export const fetchArticleText = async (url: string): Promise<string> => {
-  const response = await fetch(url);
-  const pageHtml = await response.text();
-  const articleRegex = /<article[^>]*>([\s\S]*?)<\/article>/;
-  const articleMatch = articleRegex.exec(pageHtml);
-
-  if (articleMatch === null || articleMatch[1] === undefined) {
+export const extractArticleText = (articleHtml: string): string => {
+  if (articleHtml === "") {
     return "";
   }
 
-  const cleanedArticleHtml = articleMatch[1]
+  const cleanedArticleHtml = articleHtml
     .trim()
     .replace(/<\/div>/gi, "</div> ")
     .replace(/<\/h([1-6])>/gi, "</h$1> ")

@@ -4,16 +4,17 @@ import {
   TextAnalysisClient,
 } from "@azure/ai-language-text";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { extractArticleText } from "./extractArticleText";
 import { extractSummary } from "./extractSummary";
+import { limitLength } from "./limitLength";
 
-export const summarize = async (fullText: string): Promise<string> => {
+export const summarize = async (articleHtml: string): Promise<string> => {
   const azureAiLanguageKey = getEnvironmentVariableValue(
     "AZURE_AI_LANGUAGE_KEY",
   );
   const azureAiLanguageEndpoint = getEnvironmentVariableValue(
     "AZURE_AI_LANGUAGE_ENDPOINT",
   );
-
   const client = new TextAnalysisClient(
     azureAiLanguageEndpoint,
     new AzureKeyCredential(azureAiLanguageKey),
@@ -24,9 +25,12 @@ export const summarize = async (fullText: string): Promise<string> => {
       maxSentenceCount: 2,
     },
   ];
-  const poller = await client.beginAnalyzeBatch(actions, [fullText]);
 
+  const articleText = extractArticleText(articleHtml);
+  const poller = await client.beginAnalyzeBatch(actions, [articleText]);
   const actionResults = await poller.pollUntilDone();
   const summary = await extractSummary(actionResults);
-  return summary;
+  const limitedSummary = limitLength(summary);
+  console.log(`Summarized article into ${limitedSummary.length} characters.`);
+  return limitedSummary;
 };
