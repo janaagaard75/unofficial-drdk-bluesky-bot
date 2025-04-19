@@ -1,7 +1,8 @@
 import { AtpAgent } from "@atproto/api";
 import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
-import { fetchAndSummarize } from "../summarizer/fetchAndSummarize";
+import { summarize } from "../summarizer/summarize";
 import { downloadImage } from "./downloadImage";
+import { fetchArticleHtml } from "./fetchArticleHtml";
 import { uploadImage } from "./uploadImage";
 
 export const postToBluesky = async (
@@ -13,7 +14,8 @@ export const postToBluesky = async (
   const descriptionAndImageUrl = await fetchDescriptionAndImages(url);
   const image = await downloadImage(descriptionAndImageUrl?.images[0]?.url);
   const imageBlob = await uploadImage(agent, image);
-  const summary = await fetchAndSummarize(url);
+  const articleHtml = await fetchArticleHtml(url);
+  const summary = await summarize(articleHtml);
 
   const post = {
     embed: {

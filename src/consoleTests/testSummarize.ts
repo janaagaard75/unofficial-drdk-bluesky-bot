@@ -1,4 +1,4 @@
-import { fetchArticleText } from "../summarizer/fetchArticleText";
+import { fetchArticleHtml } from "../postToBluesky/fetchArticleHtml";
 import { summarize } from "../summarizer/summarize";
 
 const testSummarize = async () => {
@@ -16,12 +16,9 @@ const testSummarize = async () => {
   for (const url of testUrls) {
     console.log(`\n\n--\nURL: ${url}`);
 
-    const articleText = await fetchArticleText(url);
-    console.log(`\n${articleText.substring(0, 400)}`);
-
-    const summary = await summarize(articleText);
+    const articleHtml = await fetchArticleHtml(url);
+    const summary = await summarize(articleHtml);
     console.log(`\n${summary}`);
-    console.log(`\nLength: ${summary.length}.`);
   }
 };
 
