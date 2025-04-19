@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
-import { summarize } from "../summarizer/summarize";
+import { summarize } from "../summarize/summarize";
 import { downloadImage } from "./downloadImage";
 import { fetchArticleHtml } from "./fetchArticleHtml";
 import { uploadImage } from "./uploadImage";

@@ -1,5 +1,5 @@
 import { fetchArticleHtml } from "../postToBluesky/fetchArticleHtml";
-import { summarize } from "../summarizer/summarize";
+import { summarize } from "../summarize/summarize";
 
 const testSummarize = async () => {
   const testUrls = [
