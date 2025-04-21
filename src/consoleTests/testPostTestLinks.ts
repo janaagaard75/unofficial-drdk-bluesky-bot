@@ -1,6 +1,10 @@
 import { AtpAgent } from "@atproto/api";
+import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { extractArticleImageUrl } from "../postToBluesky/extractArticleImageUrl";
+import { fetchArticleHtml } from "../postToBluesky/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
 const main = async () => {
   const testUrls = [
@@ -25,7 +29,21 @@ const main = async () => {
 
   let number = 1;
   for (const url of testUrls) {
-    await postToBluesky(testAgent, `Dummy title ${number}`, url);
+    const descriptionAndImageUrl = await fetchDescriptionAndImages(url);
+    const articleHtml = await fetchArticleHtml(url);
+    const articleImage = extractArticleImageUrl(articleHtml);
+    const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
+    const summary = await summarizeWithAzure(articleHtml);
+
+    await postToBluesky(
+      testAgent,
+      descriptionAndImageUrl?.description ?? "",
+      imageUrl,
+      summary,
+      `Dummy title ${number}`,
+      url,
+    );
+
     number++;
   }
 };
