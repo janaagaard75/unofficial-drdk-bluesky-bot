@@ -1,5 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import { downloadImage } from "./downloadImage";
+import { limitLength } from "./limitLength";
 import { uploadImage } from "./uploadImage";
 
 export const postToBluesky = async (
@@ -14,6 +15,7 @@ export const postToBluesky = async (
 
   const imageBuffer = await downloadImage(imageUrl);
   const imageBlob = await uploadImage(agent, imageBuffer);
+  const limitedText = limitLength(text);
 
   const post = {
     embed: {
@@ -26,7 +28,7 @@ export const postToBluesky = async (
       },
     },
     langs: ["da-DK"],
-    text: text,
+    text: limitedText,
   };
 
   await agent.post(post);

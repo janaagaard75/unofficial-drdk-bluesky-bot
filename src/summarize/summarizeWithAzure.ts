@@ -6,7 +6,6 @@ import {
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { extractArticleText } from "./extractArticleText";
 import { extractSummary } from "./extractSummary";
-import { limitLength } from "./limitLength";
 
 export const summarizeWithAzure = async (
   articleHtml: string,
@@ -34,6 +33,5 @@ export const summarizeWithAzure = async (
   const summary = await extractSummary(actionResults);
   console.log(`Azure summary (${summary.length} characters): ${summary}`);
 
-  const limitedSummary = limitLength(summary);
-  return limitedSummary;
+  return summary;
 };

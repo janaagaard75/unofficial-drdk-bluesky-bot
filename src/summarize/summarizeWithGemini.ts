@@ -1,6 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
-import { limitLength } from "./limitLength";
 
 export const summarizeWithGemini = async (
   articleHtml: string,
@@ -20,6 +19,5 @@ export const summarizeWithGemini = async (
   const summary = response.text ?? "";
   console.log(`Gemini summary (${summary.length} characters): ${summary}`);
 
-  const limitedSummary = limitLength(summary);
-  return limitedSummary;
+  return summary;
 };
