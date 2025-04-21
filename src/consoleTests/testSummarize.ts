@@ -1,4 +1,4 @@
-import { fetchArticleHtml } from "../postToBluesky/fetchArticleHtml";
+import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
 const testSummarize = async () => {

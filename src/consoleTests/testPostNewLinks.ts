@@ -3,8 +3,8 @@ import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDes
 import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
-import { extractArticleImageUrl } from "../postToBluesky/extractArticleImageUrl";
-import { fetchArticleHtml } from "../postToBluesky/fetchArticleHtml";
+import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
+import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { setDifference } from "../shared/setDifference";
 import { summarizeWithAzure } from "../summarize/summarizeWithAzure";

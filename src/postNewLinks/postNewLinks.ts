@@ -1,13 +1,13 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchDescriptionAndImages } from "./fetchDescriptionAndImages/fetchDescriptionAndImages";
-import { fetchPostedUrlsOnBluesky } from "./fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
-import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
-import { getEnvironmentVariableValue } from "./getEnvironmentVariableValue";
-import { extractArticleImageUrl } from "./postToBluesky/extractArticleImageUrl";
-import { fetchArticleHtml } from "./postToBluesky/fetchArticleHtml";
-import { postToBluesky } from "./postToBluesky/postToBluesky";
-import { setDifference } from "./shared/setDifference";
-import { summarizeWithAzure } from "./summarize/summarizeWithAzure";
+import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
+import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
+import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
+import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { setDifference } from "../shared/setDifference";
+import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
+import { extractArticleImageUrl } from "./extractArticleImageUrl";
+import { fetchArticleHtml } from "./fetchArticleHtml";
 
 export const postNewLinks = async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };
