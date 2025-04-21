@@ -4,12 +4,14 @@ import {
   TextAnalysisClient,
 } from "@azure/ai-language-text";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { HtmlString } from "../shared/HtmlString";
+import { PlainTextString } from "../shared/PlainTextString";
 import { extractArticleText } from "./extractArticleText";
 import { extractSummary } from "./extractSummary";
 
 export const summarizeWithAzure = async (
-  articleHtml: string,
-): Promise<string> => {
+  articleHtml: HtmlString,
+): Promise<PlainTextString> => {
   const azureAiLanguageKey = getEnvironmentVariableValue(
     "AZURE_AI_LANGUAGE_KEY",
   );

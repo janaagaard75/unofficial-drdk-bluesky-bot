@@ -1,4 +1,6 @@
 import { extractImageDescriptionsAndUrls } from "../extractImageDescriptionsAndUrls/extractImageDescriptionsAndUrls";
+import { HtmlString } from "../shared/HtmlString";
+import { UrlString } from "../shared/UrlString";
 
 const main = async () => {
   const testUrls = [
@@ -10,11 +12,11 @@ const main = async () => {
     "https://www.dr.dk/nyheder/udland/efter-meldinger-fra-usa-ser-mette-frederiksen-kun-en-loesning-paa-truslen-fra-rusland",
     "https://www.dr.dk/nyheder/udland/eu-kommissionen-oensker-opgoer-med-online-platforme-som-temu-told-og-afgifter-kan",
     "https://www.dr.dk/sporten/seneste-sport/esbjerg-og-odense-buldrer-videre-i-kvindeligaen",
-  ];
+  ] as Array<UrlString>;
 
   for (const url of testUrls) {
     const downloadedArticle = await fetch(url);
-    const articleHtml = await downloadedArticle.text();
+    const articleHtml = (await downloadedArticle.text()) as HtmlString;
     const extractedImageUrls = extractImageDescriptionsAndUrls(articleHtml);
     console.log(url, extractedImageUrls);
   }

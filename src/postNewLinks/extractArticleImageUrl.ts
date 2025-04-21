@@ -1,8 +1,10 @@
 import { JSDOM } from "jsdom";
+import { HtmlString } from "../shared/HtmlString";
+import { UrlString } from "../shared/UrlString";
 
 export const extractArticleImageUrl = (
-  articleHtml: string,
-): string | undefined => {
+  articleHtml: HtmlString,
+): UrlString | undefined => {
   // <div itemProp="image" itemType="https://schema.org/ImageObject">
   //   <meta itemProp="url" content="https://..."/>
   // </div>
@@ -16,5 +18,5 @@ export const extractArticleImageUrl = (
     return undefined;
   }
 
-  return imageUrl.trim();
+  return imageUrl.trim() as UrlString;
 };

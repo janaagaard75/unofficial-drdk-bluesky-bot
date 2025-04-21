@@ -1,9 +1,10 @@
 import { PagedAnalyzeBatchResult } from "@azure/ai-language-text";
+import { PlainTextString } from "../shared/PlainTextString";
 
 export const extractSummary = async (
   actionResults: PagedAnalyzeBatchResult,
-): Promise<string> => {
-  const sentences: Array<string> = [];
+): Promise<PlainTextString> => {
+  const sentences: Array<PlainTextString> = [];
 
   for await (const actionResult of actionResults) {
     if (actionResult.kind !== "ExtractiveSummarization") {
@@ -24,10 +25,10 @@ export const extractSummary = async (
       }
 
       for (const sentence of result.sentences) {
-        sentences.push(sentence.text);
+        sentences.push(sentence.text as PlainTextString);
       }
     }
   }
 
-  return sentences.join(" ");
+  return sentences.join(" ") as PlainTextString;
 };

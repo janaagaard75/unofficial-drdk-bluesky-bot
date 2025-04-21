@@ -1,10 +1,14 @@
 import Parser from "rss-parser";
+import { PlainTextString } from "./shared/PlainTextString";
+import { UrlString } from "./shared/UrlString";
+
+interface TitleAndUrl {
+  title: PlainTextString;
+  url: UrlString;
+}
 
 export const fetchTitlesAndUrlsFromRssFeed = async (): Promise<
-  Array<{
-    title: string;
-    url: string;
-  }>
+  ReadonlyArray<TitleAndUrl>
 > => {
   const parser = new Parser();
   const newsFeed = await parser.parseURL(
@@ -13,8 +17,8 @@ export const fetchTitlesAndUrlsFromRssFeed = async (): Promise<
 
   const titlesAndUrls = newsFeed.items.map((item) => {
     return {
-      title: item.title ?? "",
-      url: item.link ?? "",
+      title: (item.title ?? "") as PlainTextString,
+      url: (item.link ?? "") as UrlString,
     };
   });
 

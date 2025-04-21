@@ -48,7 +48,7 @@ const main = async () => {
 
       await postToBluesky(
         agent,
-        descriptionAndImageUrl?.description ?? "",
+        descriptionAndImageUrl?.description,
         imageUrl,
         summary,
         titleAndUrl.title,

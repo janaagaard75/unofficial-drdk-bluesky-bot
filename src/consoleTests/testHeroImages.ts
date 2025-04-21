@@ -3,6 +3,7 @@ import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDes
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { downloadImage } from "../postToBluesky/downloadImage";
 import { uploadImage } from "../postToBluesky/uploadImage";
+import { UrlString } from "../shared/UrlString";
 
 const main = async () => {
   const testUrls = [
@@ -11,7 +12,7 @@ const main = async () => {
     "https://www.dr.dk/nyheder/indland/regeringen-vil-nedlaegge-jobcentrene-en-stor-og-omfattende-oevelse",
     "https://www.dr.dk/sporten/seneste-sport/esbjerg-og-odense-buldrer-videre-i-kvindeligaen",
     "https://www.dr.dk/nyheder/seneste/sverige-flager-paa-halv-efter-skoleskyderi",
-  ];
+  ] as Array<UrlString>;
 
   const agent = new AtpAgent({
     service: "https://bsky.social",
