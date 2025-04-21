@@ -32,7 +32,8 @@ export const summarizeWithAzure = async (
   const poller = await client.beginAnalyzeBatch(actions, [articleText]);
   const actionResults = await poller.pollUntilDone();
   const summary = await extractSummary(actionResults);
+  console.log(`Azure summary (${summary.length} characters): ${summary}`);
+
   const limitedSummary = limitLength(summary);
-  console.log(`Summarized article into ${limitedSummary.length} characters.`);
   return limitedSummary;
 };
