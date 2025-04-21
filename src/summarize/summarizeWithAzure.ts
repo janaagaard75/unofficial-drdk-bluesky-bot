@@ -8,7 +8,9 @@ import { extractArticleText } from "./extractArticleText";
 import { extractSummary } from "./extractSummary";
 import { limitLength } from "./limitLength";
 
-export const summarize = async (articleHtml: string): Promise<string> => {
+export const summarizeWithAzure = async (
+  articleHtml: string,
+): Promise<string> => {
   const azureAiLanguageKey = getEnvironmentVariableValue(
     "AZURE_AI_LANGUAGE_KEY",
   );

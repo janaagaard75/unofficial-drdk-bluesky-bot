@@ -1,5 +1,5 @@
 import { fetchArticleHtml } from "../postToBluesky/fetchArticleHtml";
-import { summarize } from "../summarize/summarize";
+import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
 const testSummarize = async () => {
   const testUrls = [
@@ -17,7 +17,7 @@ const testSummarize = async () => {
     console.log(`\n\n--\nURL: ${url}`);
 
     const articleHtml = await fetchArticleHtml(url);
-    const summary = await summarize(articleHtml);
+    const summary = await summarizeWithAzure(articleHtml);
     console.log(`\n${summary}`);
   }
 };
