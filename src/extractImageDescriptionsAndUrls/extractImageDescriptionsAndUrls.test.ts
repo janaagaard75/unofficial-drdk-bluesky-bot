@@ -16,6 +16,6 @@ test("extractImageUrls", async () => {
     "https://www.dr.dk/images/other/2025/02/07/scanpix-20241217-161646-6.jpg",
   ] as Array<UrlString>;
 
-  const extractedUrls = extractImageDescriptionsAndUrls(articleHtml);
+  const extractedUrls = extractImageDescriptionsAndUrls(articleHtml).map(item => item.url);
   expect(extractedUrls).toEqual(expectedUrls);
 });
