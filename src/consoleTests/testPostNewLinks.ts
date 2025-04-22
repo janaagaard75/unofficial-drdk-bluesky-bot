@@ -45,6 +45,7 @@ const main = async () => {
       const articleImage = extractArticleImageUrl(articleHtml);
       const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
       const summary = await summarizeWithAzure(articleHtml);
+      // const summary = await summarizeWithGemini(articleHtml);
 
       await postToBluesky(
         agent,
