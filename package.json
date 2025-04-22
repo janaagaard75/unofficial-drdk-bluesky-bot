@@ -21,26 +21,26 @@
     "@atproto/api": "^0.13.35",
     "@azure/ai-language-text": "^1.1.0",
     "@google/genai": "^0.9.0",
-    "@netlify/functions": "^3.0.0",
-    "html-entities": "^2.5.2",
-    "jsdom": "^26.0.0",
+    "@netlify/functions": "^3.1.2",
+    "html-entities": "^2.6.0",
+    "jsdom": "^26.1.0",
     "rss-parser": "^3.13.0",
-    "tldts": "^6.1.82"
+    "tldts": "^6.1.86"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
-    "@stylistic/eslint-plugin-js": "^4.1.0",
+    "@eslint/js": "^9.25.1",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.13.8",
-    "eslint": "^9.21.0",
+    "@types/node": "^22.14.1",
+    "eslint": "^9.25.1",
     "eslint-formatter-unix": "^8.40.0",
-    "eslint-plugin-perfectionist": "^4.9.0",
+    "eslint-plugin-perfectionist": "^4.12.1",
     "globals": "^16.0.0",
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.25.0",
-    "vitest": "^3.0.7"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0",
+    "vitest": "^3.1.2"
   },
   "packageManager": "pnpm@9.15.4"
 }
