@@ -21,7 +21,5 @@ export const summarizeWithGemini = async (
     model: "gemini-2.5-flash-preview-04-17",
   });
   const summary = (response.text ?? "") as PlainTextString;
-  console.log(`Gemini summary (${summary.length} characters): ${summary}`);
-
   return summary;
 };

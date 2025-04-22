@@ -13,11 +13,11 @@ export const postToBluesky = async (
   title: PlainTextString,
   url: UrlString,
 ) => {
-  console.log("Posting url.", url);
-
   const imageBuffer = await downloadImage(imageUrl);
   const imageBlob = await uploadImage(agent, imageBuffer);
   const limitedText = limitLength(text);
+
+  console.log(`Posting ${url} to Bluesky with text ${limitedText}`);
 
   const post = {
     embed: {
