@@ -1,9 +1,13 @@
 import { AtpAgent } from "@atproto/api";
+import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
+import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { setDifference } from "../shared/setDifference";
+import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
 const main = async () => {
   try {
@@ -34,7 +38,23 @@ const main = async () => {
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
-      await postToBluesky(agent, titleAndUrl.title, titleAndUrl.url);
+      const descriptionAndImageUrl = await fetchDescriptionAndImages(
+        titleAndUrl.url,
+      );
+      const articleHtml = await fetchArticleHtml(titleAndUrl.url);
+      const articleImage = extractArticleImageUrl(articleHtml);
+      const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
+      const summary = await summarizeWithAzure(articleHtml);
+      // const summary = await summarizeWithGemini(articleHtml);
+
+      await postToBluesky(
+        agent,
+        descriptionAndImageUrl?.description,
+        imageUrl,
+        summary,
+        titleAndUrl.title,
+        titleAndUrl.url,
+      );
     }
 
     console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);

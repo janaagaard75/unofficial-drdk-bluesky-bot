@@ -1,4 +1,5 @@
 import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
+import { UrlString } from "../shared/UrlString";
 
 const main = async () => {
   const testUrls = [
@@ -8,7 +9,7 @@ const main = async () => {
     "https://www.dr.dk/sporten/seneste-sport/esbjerg-og-odense-buldrer-videre-i-kvindeligaen",
     "https://www.dr.dk/nyheder/seneste/sverige-flager-paa-halv-efter-skoleskyderi",
     "https://www.dr.dk/nyheder/seneste/donald-trump-vil-ikke-producere-flere-pennies",
-  ];
+  ] as Array<UrlString>;
 
   for (const url of testUrls) {
     const descriptionAndImage = await fetchDescriptionAndImages(url);

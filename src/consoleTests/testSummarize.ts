@@ -1,5 +1,6 @@
-import { fetchArticleHtml } from "../postToBluesky/fetchArticleHtml";
-import { summarize } from "../summarize/summarize";
+import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
+import { UrlString } from "../shared/UrlString";
+import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
 const testSummarize = async () => {
   const testUrls = [
@@ -11,13 +12,13 @@ const testSummarize = async () => {
     "https://www.dr.dk/nyheder/udland/efter-meldinger-fra-usa-ser-mette-frederiksen-kun-en-loesning-paa-truslen-fra-rusland",
     "https://www.dr.dk/nyheder/udland/eu-kommissionen-oensker-opgoer-med-online-platforme-som-temu-told-og-afgifter-kan",
     "https://www.dr.dk/sporten/seneste-sport/esbjerg-og-odense-buldrer-videre-i-kvindeligaen",
-  ];
+  ] as Array<UrlString>;
 
   for (const url of testUrls) {
     console.log(`\n\n--\nURL: ${url}`);
 
     const articleHtml = await fetchArticleHtml(url);
-    const summary = await summarize(articleHtml);
+    const summary = await summarizeWithAzure(articleHtml);
     console.log(`\n${summary}`);
   }
 };

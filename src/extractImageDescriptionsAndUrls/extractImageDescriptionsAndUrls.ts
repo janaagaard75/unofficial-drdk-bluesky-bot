@@ -1,12 +1,17 @@
+import { HtmlString } from "../shared/HtmlString";
+import { PlainTextString } from "../shared/PlainTextString";
+import { UrlString } from "../shared/UrlString";
 import { extractImageUrl } from "./extractImageUrl";
 import { NextData } from "./NextData";
 
+interface DescriptionAndUrl {
+  description: PlainTextString | undefined;
+  url: UrlString;
+}
+
 export const extractImageDescriptionsAndUrls = (
-  articleHtml: string,
-): Array<{
-  description: string | undefined;
-  url: string;
-}> => {
+  articleHtml: HtmlString,
+): Array<DescriptionAndUrl> => {
   const singleImageUrl = extractImageUrl(articleHtml);
 
   const nextData =
@@ -39,8 +44,10 @@ export const extractImageDescriptionsAndUrls = (
       }
 
       return {
-        description: definedImageElement.description,
-        url: definedImageElement.url,
+        description: definedImageElement.description as
+          | PlainTextString
+          | undefined,
+        url: definedImageElement.url as UrlString,
       };
     })
     .filter((descriptionAndUrl) => descriptionAndUrl !== undefined);

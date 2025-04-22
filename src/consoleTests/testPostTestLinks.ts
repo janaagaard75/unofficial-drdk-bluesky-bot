@@ -1,6 +1,12 @@
 import { AtpAgent } from "@atproto/api";
+import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
+import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { PlainTextString } from "../shared/PlainTextString";
+import { UrlString } from "../shared/UrlString";
+import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
 const main = async () => {
   const testUrls = [
@@ -13,7 +19,7 @@ const main = async () => {
     "https://www.dr.dk/nyheder/udland/eu-kommissionen-oensker-opgoer-med-online-platforme-som-temu-told-og-afgifter-kan",
     "https://www.dr.dk/sporten/seneste-sport/dansk-doublespiller-foerer-i-turneringssejr-i-german-open",
     "https://www.dr.dk/sporten/seneste-sport/esbjerg-og-odense-buldrer-videre-i-kvindeligaen",
-  ];
+  ] as Array<UrlString>;
 
   const testAgent = new AtpAgent({
     service: "https://bsky.social",
@@ -25,7 +31,21 @@ const main = async () => {
 
   let number = 1;
   for (const url of testUrls) {
-    await postToBluesky(testAgent, `Dummy title ${number}`, url);
+    const descriptionAndImageUrl = await fetchDescriptionAndImages(url);
+    const articleHtml = await fetchArticleHtml(url);
+    const articleImage = extractArticleImageUrl(articleHtml);
+    const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
+    const summary = await summarizeWithAzure(articleHtml);
+
+    await postToBluesky(
+      testAgent,
+      descriptionAndImageUrl?.description,
+      imageUrl,
+      summary,
+      `Dummy title ${number}` as PlainTextString,
+      url,
+    );
+
     number++;
   }
 };

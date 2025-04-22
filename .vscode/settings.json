@@ -5,6 +5,7 @@
     "bsky",
     "drdk",
     "extractus",
+    "genai",
     "icann",
     "nvmrc",
     "tldts"
@@ -13,6 +14,5 @@
     "source.organizeImports": "always"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "editor.formatOnSave": true
 }

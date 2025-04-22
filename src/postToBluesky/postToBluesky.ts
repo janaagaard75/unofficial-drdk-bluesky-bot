@@ -1,37 +1,36 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
-import { summarize } from "../summarize/summarize";
+import { PlainTextString } from "../shared/PlainTextString";
+import { UrlString } from "../shared/UrlString";
 import { downloadImage } from "./downloadImage";
-import { extractArticleImageUrl } from "./extractArticleImageUrl";
-import { fetchArticleHtml } from "./fetchArticleHtml";
+import { limitLength } from "./limitLength";
 import { uploadImage } from "./uploadImage";
 
 export const postToBluesky = async (
   agent: AtpAgent,
-  title: string,
-  url: string,
+  description: PlainTextString | undefined,
+  imageUrl: UrlString | undefined,
+  text: PlainTextString,
+  title: PlainTextString,
+  url: UrlString,
 ) => {
-  console.log("Posting url.", url);
-  const descriptionAndImageUrl = await fetchDescriptionAndImages(url);
-  const articleHtml = await fetchArticleHtml(url);
-  const articleImage = extractArticleImageUrl(articleHtml);
-  const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
-  const image = await downloadImage(imageUrl);
-  const imageBlob = await uploadImage(agent, image);
-  const summary = await summarize(articleHtml);
+  const imageBuffer = await downloadImage(imageUrl);
+  const imageBlob = await uploadImage(agent, imageBuffer);
+  const limitedText = limitLength(text);
+
+  console.log(`Posting ${url} to Bluesky with text ${limitedText}`);
 
   const post = {
     embed: {
       $type: "app.bsky.embed.external",
       external: {
-        description: descriptionAndImageUrl?.description ?? "",
+        description: description ?? "",
         thumb: imageBlob,
         title: title,
         uri: url,
       },
     },
     langs: ["da-DK"],
-    text: summary,
+    text: limitedText,
   };
 
   await agent.post(post);
