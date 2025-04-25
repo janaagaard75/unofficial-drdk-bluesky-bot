@@ -13,12 +13,16 @@ export const summarizeWithGemini = async (
   });
 
   const articleText = extractArticleText(articleHtml);
+  const systemPrompt =
+    "Please summarize this text. Use a maximum of 300 characters.";
+  const inputText = `${systemPrompt}\n\n${articleText}`;
+
   const response = await ai.models.generateContent({
     config: {
       maxOutputTokens: 512,
       responseMimeType: "text/plain",
     },
-    contents: `Please summarize this text. Use a maximum of 300 characters.\n\n${articleText}`,
+    contents: inputText,
     model: "gemini-2.5-flash-preview-04-17",
   });
 
