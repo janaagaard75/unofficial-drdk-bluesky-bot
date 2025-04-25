@@ -7,7 +7,7 @@ import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
 import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { setDifference } from "../shared/setDifference";
-import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
+import { summarizeWithGemini } from "../summarize/summarizeWithGemini";
 
 const main = async () => {
   try {
@@ -44,8 +44,8 @@ const main = async () => {
       const articleHtml = await fetchArticleHtml(titleAndUrl.url);
       const articleImage = extractArticleImageUrl(articleHtml);
       const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
-      const summary = await summarizeWithAzure(articleHtml);
-      // const summary = await summarizeWithGemini(articleHtml);
+      // const summary = await summarizeWithAzure(articleHtml);
+      const summary = await summarizeWithGemini(articleHtml);
 
       await postToBluesky(
         agent,
