@@ -1,6 +1,7 @@
 import { JSDOM } from "jsdom";
 import { HtmlString } from "../shared/HtmlString";
 import { UrlString } from "../shared/UrlString";
+import { createUrlString } from "../shared/createUrlString";
 
 export const extractArticleImageUrl = (
   articleHtml: HtmlString,
@@ -18,5 +19,5 @@ export const extractArticleImageUrl = (
     return undefined;
   }
 
-  return imageUrl.trim() as UrlString;
+  return createUrlString(imageUrl.trim());
 };

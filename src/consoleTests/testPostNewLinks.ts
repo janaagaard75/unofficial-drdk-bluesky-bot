@@ -6,6 +6,7 @@ import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
 import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
 import { summarizeWithGemini } from "../summarize/summarizeWithGemini";
 
@@ -49,7 +50,9 @@ const main = async () => {
 
       await postToBluesky(
         agent,
-        descriptionAndImageUrl?.description,
+        descriptionAndImageUrl === undefined
+          ? createPlainTextString("")
+          : descriptionAndImageUrl.description,
         imageUrl,
         summary,
         titleAndUrl.title,

@@ -4,6 +4,7 @@ import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPoste
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
 import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 import { extractArticleImageUrl } from "./extractArticleImageUrl";
@@ -51,7 +52,9 @@ export const postNewLinks = async (request: Request) => {
 
       await postToBluesky(
         agent,
-        descriptionAndImageUrl?.description,
+        descriptionAndImageUrl === undefined
+          ? createPlainTextString("")
+          : descriptionAndImageUrl.description,
         imageUrl,
         summary,
         titleAndUrl.title,

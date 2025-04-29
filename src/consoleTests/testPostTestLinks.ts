@@ -4,7 +4,7 @@ import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
 import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
-import { PlainTextString } from "../shared/PlainTextString";
+import { createPlainTextString } from "../shared/createPlainTextString";
 import { UrlString } from "../shared/UrlString";
 import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
@@ -39,10 +39,12 @@ const main = async () => {
 
     await postToBluesky(
       testAgent,
-      descriptionAndImageUrl?.description,
+      descriptionAndImageUrl === undefined
+        ? createPlainTextString("")
+        : descriptionAndImageUrl.description,
       imageUrl,
       summary,
-      `Dummy title ${number}` as PlainTextString,
+      createPlainTextString(`Dummy title ${number}`),
       url,
     );
 

@@ -1,6 +1,8 @@
 import Parser from "rss-parser";
 import { PlainTextString } from "./shared/PlainTextString";
 import { UrlString } from "./shared/UrlString";
+import { createPlainTextString } from "./shared/createPlainTextString";
+import { createUrlString } from "./shared/createUrlString";
 
 interface TitleAndUrl {
   title: PlainTextString;
@@ -17,8 +19,8 @@ export const fetchTitlesAndUrlsFromRssFeed = async (): Promise<
 
   const titlesAndUrls = newsFeed.items.map((item) => {
     return {
-      title: (item.title ?? "") as PlainTextString,
-      url: (item.link ?? "") as UrlString,
+      title: createPlainTextString(item.title ?? ""),
+      url: createUrlString(item.link ?? ""),
     };
   });
 

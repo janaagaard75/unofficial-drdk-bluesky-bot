@@ -5,6 +5,7 @@ import {
   TextAnalysisClient,
 } from "@azure/ai-language-text";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { createPlainTextString } from "../shared/createPlainTextString";
 import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { extractArticleText } from "./extractArticleText";
@@ -60,10 +61,10 @@ const extractSummary = async (
       }
 
       for (const sentence of result.sentences) {
-        sentences.push(sentence.text as PlainTextString);
+        sentences.push(createPlainTextString(sentence.text));
       }
     }
   }
 
-  return sentences.join(" ") as PlainTextString;
+  return createPlainTextString(sentences.join(" "));
 };

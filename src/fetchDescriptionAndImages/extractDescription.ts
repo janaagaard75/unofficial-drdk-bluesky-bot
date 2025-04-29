@@ -1,6 +1,7 @@
 import { decode } from "html-entities";
 import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
+import { createPlainTextString } from "../shared/createPlainTextString";
 
 /** Extract the description from the content of the <meta name="description"> element in htmlDocument. */
 export const extractDescription = (
@@ -8,5 +9,5 @@ export const extractDescription = (
 ): PlainTextString => {
   const descriptionMatch =
     /<meta[^>]*name="description"[^>]*content="([^"]*)"/.exec(htmlDocument);
-  return decode(descriptionMatch?.[1] ?? "") as PlainTextString;
+  return createPlainTextString(decode(descriptionMatch?.[1] ?? ""));
 };

@@ -1,3 +1,5 @@
+import { createPlainTextString } from "../shared/createPlainTextString";
+import { createUrlString } from "../shared/createUrlString";
 import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { UrlString } from "../shared/UrlString";
@@ -5,7 +7,7 @@ import { extractImageUrl } from "./extractImageUrl";
 import { NextData } from "./NextData";
 
 interface DescriptionAndUrl {
-  description: PlainTextString | undefined;
+  description: PlainTextString;
   url: UrlString;
 }
 
@@ -26,7 +28,7 @@ export const extractImageDescriptionsAndUrls = (
 
     return [
       {
-        description: undefined,
+        description: createPlainTextString(""),
         url: singleImageUrl,
       },
     ];
@@ -44,10 +46,10 @@ export const extractImageDescriptionsAndUrls = (
       }
 
       return {
-        description: definedImageElement.description as
-          | PlainTextString
-          | undefined,
-        url: definedImageElement.url as UrlString,
+        description: createPlainTextString(
+          definedImageElement.description ?? "",
+        ),
+        url: createUrlString(definedImageElement.url),
       };
     })
     .filter((descriptionAndUrl) => descriptionAndUrl !== undefined);
@@ -59,7 +61,7 @@ export const extractImageDescriptionsAndUrls = (
 
     return [
       {
-        description: undefined,
+        description: createPlainTextString(""),
         url: singleImageUrl,
       },
     ];

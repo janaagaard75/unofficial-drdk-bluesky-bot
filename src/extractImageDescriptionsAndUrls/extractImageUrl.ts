@@ -1,3 +1,4 @@
+import { createUrlString } from "../shared/createUrlString";
 import { HtmlString } from "../shared/HtmlString";
 import { UrlString } from "../shared/UrlString";
 
@@ -17,5 +18,5 @@ export const extractImageUrl = (
     return undefined;
   }
 
-  return imageMatch[1] as UrlString;
+  return createUrlString(imageMatch[1]);
 };
