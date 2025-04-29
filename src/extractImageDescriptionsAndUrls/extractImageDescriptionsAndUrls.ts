@@ -1,3 +1,4 @@
+import { createUrlString } from "../shared/createUrlString";
 import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { UrlString } from "../shared/UrlString";
@@ -47,7 +48,7 @@ export const extractImageDescriptionsAndUrls = (
         description: definedImageElement.description as
           | PlainTextString
           | undefined,
-        url: definedImageElement.url as UrlString,
+        url: createUrlString(definedImageElement.url),
       };
     })
     .filter((descriptionAndUrl) => descriptionAndUrl !== undefined);

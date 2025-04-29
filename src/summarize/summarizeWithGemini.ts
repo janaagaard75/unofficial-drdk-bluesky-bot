@@ -1,5 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { createPlainTextString } from "../shared/createPlainTextString";
 import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { sleep } from "../shared/sleep";
@@ -29,6 +30,6 @@ export const summarizeWithGemini = async (
   // Add a delay to adhere to rate limits.
   await sleep(400);
 
-  const summary = (response.text ?? "") as PlainTextString;
+  const summary = createPlainTextString(response.text ?? "");
   return summary;
 };

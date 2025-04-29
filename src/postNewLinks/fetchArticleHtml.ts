@@ -1,3 +1,4 @@
+import { createHtmlString } from "../shared/createHtmlString";
 import { HtmlString } from "../shared/HtmlString";
 import { UrlString } from "../shared/UrlString";
 
@@ -8,8 +9,8 @@ export const fetchArticleHtml = async (url: UrlString): Promise<HtmlString> => {
   const articleMatch = articleRegex.exec(pageHtml);
 
   if (articleMatch === null || articleMatch[1] === undefined) {
-    return "" as HtmlString;
+    return createHtmlString("");
   }
 
-  return articleMatch[1] as HtmlString;
+  return createHtmlString(articleMatch[1]);
 };

@@ -1,5 +1,5 @@
 import { extractImageUrl } from "../extractImageDescriptionsAndUrls/extractImageUrl";
-import { HtmlString } from "../shared/HtmlString";
+import { createHtmlString } from "../shared/createHtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { UrlString } from "../shared/UrlString";
 import { extractDescription } from "./extractDescription";
@@ -17,7 +17,7 @@ export const fetchDescriptionAndImages = async (
 ): Promise<DescriptionAndImages | undefined> => {
   try {
     const response = await fetch(url);
-    const articleHtml = (await response.text()) as HtmlString;
+    const articleHtml = createHtmlString(await response.text());
 
     const description = extractDescription(articleHtml);
     const imageUrl = extractImageUrl(articleHtml);
