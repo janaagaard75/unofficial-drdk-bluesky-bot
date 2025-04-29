@@ -7,7 +7,7 @@ import { uploadImage } from "./uploadImage";
 
 export const postToBluesky = async (
   agent: AtpAgent,
-  description: PlainTextString | undefined,
+  description: PlainTextString,
   imageUrl: UrlString | undefined,
   text: PlainTextString,
   title: PlainTextString,
@@ -23,7 +23,7 @@ export const postToBluesky = async (
     embed: {
       $type: "app.bsky.embed.external",
       external: {
-        description: description ?? "",
+        description: description,
         thumb: imageBlob,
         title: title,
         uri: url,

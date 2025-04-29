@@ -1,13 +1,14 @@
 import { extractImageUrl } from "../extractImageDescriptionsAndUrls/extractImageUrl";
 import { createHtmlString } from "../shared/createHtmlString";
+import { createPlainTextString } from "../shared/createPlainTextString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { UrlString } from "../shared/UrlString";
 import { extractDescription } from "./extractDescription";
 
 interface DescriptionAndImages {
-  description: PlainTextString | undefined;
+  description: PlainTextString;
   images: Array<{
-    description: PlainTextString | undefined;
+    description: PlainTextString;
     url: UrlString | undefined;
   }>;
 }
@@ -26,7 +27,7 @@ export const fetchDescriptionAndImages = async (
       description: description,
       images: [
         {
-          description: undefined,
+          description: createPlainTextString(""),
           url: imageUrl,
         },
       ],

@@ -39,7 +39,9 @@ const main = async () => {
 
     await postToBluesky(
       testAgent,
-      descriptionAndImageUrl?.description,
+      descriptionAndImageUrl === undefined
+        ? createPlainTextString("")
+        : descriptionAndImageUrl.description,
       imageUrl,
       summary,
       createPlainTextString(`Dummy title ${number}`),
