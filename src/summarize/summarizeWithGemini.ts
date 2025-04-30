@@ -30,6 +30,6 @@ export const summarizeWithGemini = async (
   // Add a delay to adhere to rate limits.
   await sleep(400);
 
-  const summary = createPlainTextString(response.text ?? "");
-  return summary;
+  const summary = response.text ?? "";
+  return createPlainTextString(summary);
 };
