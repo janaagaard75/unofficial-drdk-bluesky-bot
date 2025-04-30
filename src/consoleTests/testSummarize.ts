@@ -18,7 +18,10 @@ const testSummarize = async () => {
     console.log(`\n--\nURL: ${url}`);
 
     const articleHtml = await fetchArticleHtml(url);
-    const summary = await summarizeWithOpenRouter(articleHtml, "openai/gpt-4o");
+    const summary = await summarizeWithOpenRouter(
+      articleHtml,
+      "deepseek/deepseek-chat-v3-0324:free",
+    );
     console.log(`\n${summary}`);
   }
 };

@@ -6,7 +6,10 @@ import { createPlainTextString } from "../shared/createPlainTextString";
 
 export const summarizeWithOpenRouter = async (
   articleHtml: HtmlString,
-  model: "openai/gpt-4o",
+  model:
+    | "deepseek/deepseek-chat-v3-0324:free"
+    | "google/gemini-2.5-flash-preview"
+    | "openai/gpt-4o",
 ): Promise<PlainTextString> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
 
