@@ -20,21 +20,19 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
-      - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: "pnpm"
+          cache: "yarn"
 
       - name: Install dependencies
-        run: pnpm install
+        run: yarn install
 
       - name: Check types
-        run: pnpm check-types
+        run: yarn check-types
 
       - name: Check lint rules
-        run: pnpm check-lint
+        run: yarn check-lint
 
       - name: Check formatting
-        run: pnpm check-formatting
+        run: yarn check-formatting
