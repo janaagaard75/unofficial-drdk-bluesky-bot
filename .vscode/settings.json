@@ -8,6 +8,7 @@
     "genai",
     "icann",
     "nvmrc",
+    "openai",
     "tldts"
   ],
   "editor.codeActionsOnSave": {
