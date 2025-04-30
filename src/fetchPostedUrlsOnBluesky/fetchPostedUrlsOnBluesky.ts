@@ -1,4 +1,4 @@
-import { AtpAgent } from "@atproto/api";
+import { AtpAgent, FacetLink } from "@atproto/api";
 import { Record } from "./Record";
 
 export const fetchPostedUrlsOnBluesky = async (
@@ -20,7 +20,11 @@ export const fetchPostedUrlsOnBluesky = async (
 
       if (record.facets !== undefined) {
         return record.facets.flatMap((facet) =>
-          facet.features.flatMap((feature) => feature.uri as string),
+          facet.features
+            .filter(
+              (feature) => feature.$type === "app.bsky.richtext.facet#link",
+            )
+            .map((link) => (link as FacetLink).uri),
         );
       }
 

@@ -15,12 +15,13 @@
     "test-image-urls": "tsx --env-file=.env ./src/consoleTests/testImageUrls.ts",
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
     "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts",
-    "test-summarize": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testSummarize.ts"
+    "test-summarize": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testSummarize.ts",
+    "update-dependencies": "yarn upgrade-interactive && rm yarn.lock && yarn install"
   },
   "dependencies": {
-    "@atproto/api": "^0.13.35",
+    "@atproto/api": "^0.15.5",
     "@azure/ai-language-text": "^1.1.0",
-    "@google/genai": "^0.9.0",
+    "@google/genai": "^0.12.0",
     "@netlify/functions": "^3.1.2",
     "html-entities": "^2.6.0",
     "jsdom": "^26.1.0",
@@ -31,15 +32,15 @@
     "@eslint/js": "^9.25.1",
     "@stylistic/eslint-plugin-js": "^4.2.0",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.15.2",
+    "@types/node": "^22.15.3",
     "eslint": "^9.25.1",
     "eslint-formatter-unix": "^8.40.0",
     "eslint-plugin-perfectionist": "^4.12.3",
     "globals": "^16.0.0",
     "prettier": "^3.5.3",
-    "tsx": "^4.19.3",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0",
+    "typescript-eslint": "^8.31.1",
     "vitest": "^3.1.2"
   },
   "packageManager": "yarn@4.9.1"

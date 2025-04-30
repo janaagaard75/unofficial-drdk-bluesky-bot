@@ -18,23 +18,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atproto/api@npm:^0.13.35":
-  version: 0.13.35
-  resolution: "@atproto/api@npm:0.13.35"
+"@atproto/api@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "@atproto/api@npm:0.15.5"
   dependencies:
-    "@atproto/common-web": "npm:^0.4.0"
-    "@atproto/lexicon": "npm:^0.4.6"
-    "@atproto/syntax": "npm:^0.3.2"
-    "@atproto/xrpc": "npm:^0.6.8"
+    "@atproto/common-web": "npm:^0.4.1"
+    "@atproto/lexicon": "npm:^0.4.10"
+    "@atproto/syntax": "npm:^0.4.0"
+    "@atproto/xrpc": "npm:^0.6.12"
     await-lock: "npm:^2.2.2"
     multiformats: "npm:^9.9.0"
     tlds: "npm:^1.234.0"
     zod: "npm:^3.23.8"
-  checksum: 10c0/084c38ee2956fa95499c6b268f4eda8c7129955240fafdcbdaf68341ee46b140c2dde1d483e842885281cf7627beb0fd9060d98c6cfa009b74e5b96de8cf1344
+  checksum: 10c0/9dfc4045b51170e26bcc25db9fb8421f8227fdfb799d1cc0da71cb4bb4f7bc04cc314b9b293087aa4846076b6aaac5621bfde9bf2211c452d65f58ed8dc1ad26
   languageName: node
   linkType: hard
 
-"@atproto/common-web@npm:^0.4.0, @atproto/common-web@npm:^0.4.1":
+"@atproto/common-web@npm:^0.4.1":
   version: 0.4.1
   resolution: "@atproto/common-web@npm:0.4.1"
   dependencies:
@@ -46,7 +46,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atproto/lexicon@npm:^0.4.10, @atproto/lexicon@npm:^0.4.6":
+"@atproto/lexicon@npm:^0.4.10":
   version: 0.4.10
   resolution: "@atproto/lexicon@npm:0.4.10"
   dependencies:
@@ -59,13 +59,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atproto/syntax@npm:^0.3.2":
-  version: 0.3.4
-  resolution: "@atproto/syntax@npm:0.3.4"
-  checksum: 10c0/8aab98d0aa601268cd9a9d184228fea019f7149bc3a246fc73aab280c6bc910b35603bc278de3f36e470152f9163bf267822c98f9d01e74172ff459a6f33f0a4
-  languageName: node
-  linkType: hard
-
 "@atproto/syntax@npm:^0.4.0":
   version: 0.4.0
   resolution: "@atproto/syntax@npm:0.4.0"
@@ -73,7 +66,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atproto/xrpc@npm:^0.6.8":
+"@atproto/xrpc@npm:^0.6.12":
   version: 0.6.12
   resolution: "@atproto/xrpc@npm:0.6.12"
   dependencies:
@@ -156,18 +149,17 @@ __metadata:
   linkType: hard
 
 "@azure/core-rest-pipeline@npm:^1.8.1, @azure/core-rest-pipeline@npm:^1.9.1":
-  version: 1.19.1
-  resolution: "@azure/core-rest-pipeline@npm:1.19.1"
+  version: 1.20.0
+  resolution: "@azure/core-rest-pipeline@npm:1.20.0"
   dependencies:
     "@azure/abort-controller": "npm:^2.0.0"
     "@azure/core-auth": "npm:^1.8.0"
     "@azure/core-tracing": "npm:^1.0.1"
     "@azure/core-util": "npm:^1.11.0"
     "@azure/logger": "npm:^1.0.0"
-    http-proxy-agent: "npm:^7.0.0"
-    https-proxy-agent: "npm:^7.0.0"
+    "@typespec/ts-http-runtime": "npm:^0.2.2"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/23f2cb9d08e9535bcdca3123aa89bcfe8c5b9d37d6e9c0f87fa8009a089989bebfa11f5bc6fd96ceb6acee210b00b754ec7e02f3f7ee8916e8593e9ef0d610b8
+  checksum: 10c0/d82094805fad3ef7b5c2646c21e3fc62ff9534806bfc9840a9439244800cdb3ea7e539f40f5077e7c4db2656f882d8a56ea736e81167ee39dd9f426919fe72f2
   languageName: node
   linkType: hard
 
@@ -181,21 +173,23 @@ __metadata:
   linkType: hard
 
 "@azure/core-util@npm:^1.11.0, @azure/core-util@npm:^1.2.0, @azure/core-util@npm:^1.6.1":
-  version: 1.11.0
-  resolution: "@azure/core-util@npm:1.11.0"
+  version: 1.12.0
+  resolution: "@azure/core-util@npm:1.12.0"
   dependencies:
     "@azure/abort-controller": "npm:^2.0.0"
+    "@typespec/ts-http-runtime": "npm:^0.2.2"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/245c93ec7fb3f2cb3a0b2f3a3be8d02ee401acba3cdd71620aa9e4e3ca50d831849f692332327bdbe1238ab979a76218f16a5166488ee31d5b67004298d110a3
+  checksum: 10c0/9335e619078781a14c616840125deaaaef89198d9c99e6c9cd4452e9b18d4f95823246da4b8277ba186647e05ebcd88b419372616d1acad020c0172340ae02e5
   languageName: node
   linkType: hard
 
 "@azure/logger@npm:^1.0.0":
-  version: 1.1.4
-  resolution: "@azure/logger@npm:1.1.4"
+  version: 1.2.0
+  resolution: "@azure/logger@npm:1.2.0"
   dependencies:
+    "@typespec/ts-http-runtime": "npm:^0.2.2"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/5bc7792ef334e18f4893814e83cc61780a0effb927ba898095c75df1a01e1f3093dc7a63b6de549694cef76c25f43db850b82a48ec0fab5f9f1c1d2053af791d
+  checksum: 10c0/a04693423143204d25e82bde1c57ddb53456fd00be0dbd91d1b078b0e17a1d564ababfd92467d9e51e201a0a756c6611918d7207b17bc4feb417885b80770ecd
   languageName: node
   linkType: hard
 
@@ -695,9 +689,9 @@ __metadata:
   linkType: hard
 
 "@eslint/config-helpers@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "@eslint/config-helpers@npm:0.2.1"
-  checksum: 10c0/3e829a78b0bb4f7c44384ba1df3986e5de24b7f440ad5c6bb3cfc366ded773a869ca9ee8d212b5a563ae94596c5940dea6fd2ea1ee53a84c6241ac953dcb8bb7
+  version: 0.2.2
+  resolution: "@eslint/config-helpers@npm:0.2.2"
+  checksum: 10c0/98f7cefe484bb754674585d9e73cf1414a3ab4fd0783c385465288d13eb1a8d8e7d7b0611259fc52b76b396c11a13517be5036d1f48eeb877f6f0a6b9c4f03ad
   languageName: node
   linkType: hard
 
@@ -758,15 +752,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google/genai@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "@google/genai@npm:0.9.0"
+"@google/genai@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "@google/genai@npm:0.12.0"
   dependencies:
     google-auth-library: "npm:^9.14.2"
     ws: "npm:^8.18.0"
     zod: "npm:^3.22.4"
     zod-to-json-schema: "npm:^3.22.4"
-  checksum: 10c0/c0d2d7ff915e397f09bfdb03f1a13b306e48f9354e3e03f943361d133c451eac51de59e8f3f07c575d868f83df3ce1ed3f696cb75534c8e9a8d06ba03f25f304
+  checksum: 10c0/f7d4e0e7c9e943688847eac1bae630e7a1ecde222c2fe4f296ce92e060c2cb63cb90e41ac18eb49582d01d2a6e7a7d8f39d7fa479b47af43a620ae48d6347c84
   languageName: node
   linkType: hard
 
@@ -1243,7 +1237,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.15.2":
+"@types/node@npm:*, @types/node@npm:^22.15.3":
   version: 22.15.3
   resolution: "@types/node@npm:22.15.3"
   dependencies:
@@ -1435,6 +1429,17 @@ __metadata:
     "@typescript-eslint/types": "npm:8.31.1"
     eslint-visitor-keys: "npm:^4.2.0"
   checksum: 10c0/09dbd8e1fdff72802a10bae2c12fa6d25f7e2dab1ff9b720afc2eb4e848b723c179109032aeaeb409d0c9e4107ab4fab8c8b1b47a55d58713d3f29a1365db3ea
+  languageName: node
+  linkType: hard
+
+"@typespec/ts-http-runtime@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@typespec/ts-http-runtime@npm:0.2.2"
+  dependencies:
+    http-proxy-agent: "npm:^7.0.0"
+    https-proxy-agent: "npm:^7.0.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/0f7d633f9885bd7fb065b205887eb6a85639c37ef2d4b50a1b55cee3ef7ad270dcf4757db0882a39157624e8888c6f1f29aaf4c163403c91e75a4b646d362c49
   languageName: node
   linkType: hard
 
@@ -5947,7 +5952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:^4.19.3":
+"tsx@npm:^4.19.4":
   version: 4.19.4
   resolution: "tsx@npm:4.19.4"
   dependencies:
@@ -5979,7 +5984,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-eslint@npm:^8.31.0":
+"typescript-eslint@npm:^8.31.1":
   version: 8.31.1
   resolution: "typescript-eslint@npm:8.31.1"
   dependencies:
@@ -6074,14 +6079,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "unofficial-drdk-bluesky-bot@workspace:."
   dependencies:
-    "@atproto/api": "npm:^0.13.35"
+    "@atproto/api": "npm:^0.15.5"
     "@azure/ai-language-text": "npm:^1.1.0"
     "@eslint/js": "npm:^9.25.1"
-    "@google/genai": "npm:^0.9.0"
+    "@google/genai": "npm:^0.12.0"
     "@netlify/functions": "npm:^3.1.2"
     "@stylistic/eslint-plugin-js": "npm:^4.2.0"
     "@types/jsdom": "npm:^21.1.7"
-    "@types/node": "npm:^22.15.2"
+    "@types/node": "npm:^22.15.3"
     eslint: "npm:^9.25.1"
     eslint-formatter-unix: "npm:^8.40.0"
     eslint-plugin-perfectionist: "npm:^4.12.3"
@@ -6091,9 +6096,9 @@ __metadata:
     openai: "npm:^4.96.2"
     prettier: "npm:^3.5.3"
     rss-parser: "npm:^3.13.0"
-    tsx: "npm:^4.19.3"
+    tsx: "npm:^4.19.4"
     typescript: "npm:^5.8.3"
-    typescript-eslint: "npm:^8.31.0"
+    typescript-eslint: "npm:^8.31.1"
     vitest: "npm:^3.1.2"
   languageName: unknown
   linkType: soft
