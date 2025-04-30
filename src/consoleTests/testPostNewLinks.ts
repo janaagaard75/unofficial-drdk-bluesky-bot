@@ -8,7 +8,7 @@ import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
-import { summarizeWithGemini } from "../summarize/summarizeWithGemini";
+import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
 
 const main = async () => {
   try {
@@ -45,8 +45,10 @@ const main = async () => {
       const articleHtml = await fetchArticleHtml(titleAndUrl.url);
       const articleImage = extractArticleImageUrl(articleHtml);
       const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
-      // const summary = await summarizeWithAzure(articleHtml);
-      const summary = await summarizeWithGemini(articleHtml);
+      const summary = await summarizeWithOpenRouter(
+        articleHtml,
+        "openai/gpt-4o",
+      );
 
       await postToBluesky(
         agent,

@@ -1,6 +1,6 @@
 import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
 import { UrlString } from "../shared/UrlString";
-import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
+import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
 
 const testSummarize = async () => {
   const testUrls = [
@@ -15,10 +15,10 @@ const testSummarize = async () => {
   ] as Array<UrlString>;
 
   for (const url of testUrls) {
-    console.log(`\n\n--\nURL: ${url}`);
+    console.log(`\n--\nURL: ${url}`);
 
     const articleHtml = await fetchArticleHtml(url);
-    const summary = await summarizeWithAzure(articleHtml);
+    const summary = await summarizeWithOpenRouter(articleHtml, "openai/gpt-4o");
     console.log(`\n${summary}`);
   }
 };
