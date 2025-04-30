@@ -8,8 +8,7 @@
     "genai",
     "icann",
     "nvmrc",
-    "openai",
-    "tldts"
+    "openai"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"

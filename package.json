@@ -25,8 +25,7 @@
     "html-entities": "^2.6.0",
     "jsdom": "^26.1.0",
     "openai": "^4.96.2",
-    "rss-parser": "^3.13.0",
-    "tldts": "^6.1.86"
+    "rss-parser": "^3.13.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",
