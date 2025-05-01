@@ -1,11 +1,10 @@
 import OpenAI from "openai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
-import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { createPlainTextString } from "../shared/createPlainTextString";
 
 export const summarizeWithOpenRouter = async (
-  articleHtml: HtmlString,
+  articleText: PlainTextString,
   model:
     | "deepseek/deepseek-chat-v3-0324:free"
     | "google/gemini-2.5-flash-preview"
@@ -23,11 +22,11 @@ export const summarizeWithOpenRouter = async (
   });
 
   const prompt =
-    "Opsummer følgende nyhedsartikel i et par sætninger. Brug op til 300 karakter.";
+    "Opsummer venligst følgende nyhedsartikel i et par sætninger på maksimalt 300 tegn. Undgå linjeskift og markdown-formatering. Bevar en neutral og informativ tone, og fokuser på hovedbudskabet uden overflødige detaljer. Det er vigtigt at opsummeringen højst er på 300 tegn. Her er teksten:";
 
   const completion = await openai.completions.create({
     model: model,
-    prompt: `${prompt}\n\n${articleHtml}`,
+    prompt: `${prompt}\n\n${articleText}`,
   });
 
   const summary = completion.choices[0]?.text.trim() ?? "";
