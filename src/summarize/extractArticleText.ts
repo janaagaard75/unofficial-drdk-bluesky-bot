@@ -1,8 +1,13 @@
 import { JSDOM } from "jsdom";
+import { createPlainTextString } from "../shared/createPlainTextString";
+import { HtmlString } from "../shared/HtmlString";
+import { PlainTextString } from "../shared/PlainTextString";
 
-export const extractArticleText = (articleHtml: string): string => {
+export const extractArticleText = (
+  articleHtml: HtmlString,
+): PlainTextString => {
   if (articleHtml === "") {
-    return "";
+    return createPlainTextString("");
   }
 
   const cleanedArticleHtml = articleHtml
@@ -24,5 +29,5 @@ export const extractArticleText = (articleHtml: string): string => {
     .replace(/^. /, "")
     .trim();
 
-  return articleText;
+  return createPlainTextString(articleText);
 };
