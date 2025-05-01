@@ -1,19 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { createPlainTextString } from "../shared/createPlainTextString";
-import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
 import { sleep } from "../shared/sleep";
-import { extractArticleText } from "./extractArticleText";
 
 export const summarizeWithGemini = async (
-  articleHtml: HtmlString,
+  articleText: PlainTextString,
 ): Promise<PlainTextString> => {
   const ai = new GoogleGenAI({
     apiKey: getEnvironmentVariableValue("GEMINI_API_KEY"),
   });
 
-  const articleText = extractArticleText(articleHtml);
   const systemPrompt =
     "Please summarize this text. Use a maximum of 300 characters.";
   const inputText = `${systemPrompt}\n\n${articleText}`;

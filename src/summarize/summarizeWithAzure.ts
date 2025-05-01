@@ -6,12 +6,10 @@ import {
 } from "@azure/ai-language-text";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { createPlainTextString } from "../shared/createPlainTextString";
-import { HtmlString } from "../shared/HtmlString";
 import { PlainTextString } from "../shared/PlainTextString";
-import { extractArticleText } from "./extractArticleText";
 
 export const summarizeWithAzure = async (
-  articleHtml: HtmlString,
+  articleText: PlainTextString,
 ): Promise<PlainTextString> => {
   const azureAiLanguageKey = getEnvironmentVariableValue(
     "AZURE_AI_LANGUAGE_KEY",
@@ -30,7 +28,6 @@ export const summarizeWithAzure = async (
     },
   ];
 
-  const articleText = extractArticleText(articleHtml);
   const poller = await client.beginAnalyzeBatch(actions, [articleText]);
   const actionResults = await poller.pollUntilDone();
   const summary = await extractSummary(actionResults);
