@@ -10,6 +10,7 @@
     "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
     "test": "vitest",
+    "test-extract-article-text": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testExtractArticleText.ts",
     "test-description": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testDescription.ts",
     "test-hero-images": "tsx --env-file=.env ./src/consoleTests/testHeroImages.ts",
     "test-image-urls": "tsx --env-file=.env ./src/consoleTests/testImageUrls.ts",
