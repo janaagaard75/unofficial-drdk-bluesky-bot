@@ -5,6 +5,7 @@ import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed"
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
 import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
+import { postLink } from "../postNewLinks/postLink";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
@@ -39,6 +40,8 @@ const main = async () => {
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
+      await postLink(agent, titleAndUrl.title, titleAndUrl.url);
+
       const descriptionAndImageUrl = await fetchDescriptionAndImages(
         titleAndUrl.url,
       );

@@ -1,14 +1,9 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
-import { postToBluesky } from "../postToBluesky/postToBluesky";
-import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
-import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
-import { extractArticleImageUrl } from "./extractArticleImageUrl";
-import { fetchArticleHtml } from "./fetchArticleHtml";
+import { postLink } from "./postLink";
 
 export const postNewLinks = async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };
@@ -42,24 +37,7 @@ export const postNewLinks = async (request: Request) => {
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
-      const descriptionAndImageUrl = await fetchDescriptionAndImages(
-        titleAndUrl.url,
-      );
-      const articleHtml = await fetchArticleHtml(titleAndUrl.url);
-      const articleImage = extractArticleImageUrl(articleHtml);
-      const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
-      const summary = await summarizeWithAzure(articleHtml);
-
-      await postToBluesky(
-        agent,
-        descriptionAndImageUrl === undefined
-          ? createPlainTextString("")
-          : descriptionAndImageUrl.description,
-        imageUrl,
-        summary,
-        titleAndUrl.title,
-        titleAndUrl.url,
-      );
+      await postLink(agent, titleAndUrl.title, titleAndUrl.url);
     }
 
     console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);
