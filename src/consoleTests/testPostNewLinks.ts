@@ -9,7 +9,7 @@ import { postLink } from "../postNewLinks/postLink";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
-import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
+import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
 
 const testPostNewLinks = async () => {
   try {
@@ -48,10 +48,7 @@ const testPostNewLinks = async () => {
       const articleHtml = await fetchArticleHtml(titleAndUrl.url);
       const articleImage = extractArticleImageUrl(articleHtml);
       const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
-      const summary = await summarizeWithOpenRouter(
-        articleHtml,
-        "openai/gpt-4o",
-      );
+      const summary = await summarizeWithAzure(articleHtml);
 
       await postToBluesky(
         agent,
