@@ -11,7 +11,7 @@ import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
 import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
 
-const main = async () => {
+const testPostNewLinks = async () => {
   try {
     const username = getEnvironmentVariableValue("BLUESKY_TEST_USERNAME");
     const password = getEnvironmentVariableValue("BLUESKY_TEST_PASSWORD");
@@ -71,4 +71,4 @@ const main = async () => {
   }
 };
 
-await main();
+await testPostNewLinks();

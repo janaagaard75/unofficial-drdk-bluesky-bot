@@ -1,7 +1,7 @@
 import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 import { testUrls } from "./testUrls";
 
-const main = async () => {
+const testDescription = async () => {
   for (const url of testUrls) {
     const descriptionAndImage = await fetchDescriptionAndImages(url);
     console.log();
@@ -9,4 +9,4 @@ const main = async () => {
   }
 };
 
-await main();
+await testDescription();

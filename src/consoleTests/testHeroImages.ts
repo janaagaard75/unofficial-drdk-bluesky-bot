@@ -5,7 +5,7 @@ import { downloadImage } from "../postToBluesky/downloadImage";
 import { uploadImage } from "../postToBluesky/uploadImage";
 import { testUrls } from "./testUrls";
 
-const main = async () => {
+const testHeroImages = async () => {
   const agent = new AtpAgent({
     service: "https://bsky.social",
   });
@@ -39,4 +39,4 @@ const main = async () => {
   }
 };
 
-await main();
+await testHeroImages();

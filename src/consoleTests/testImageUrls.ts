@@ -2,7 +2,7 @@ import { extractImageDescriptionsAndUrls } from "../extractImageDescriptionsAndU
 import { createHtmlString } from "../shared/createHtmlString";
 import { testUrls } from "./testUrls";
 
-const main = async () => {
+const testImageUrls = async () => {
   for (const url of testUrls) {
     const downloadedArticle = await fetch(url);
     const articleHtml = createHtmlString(await downloadedArticle.text());
@@ -11,4 +11,4 @@ const main = async () => {
   }
 };
 
-await main();
+await testImageUrls();

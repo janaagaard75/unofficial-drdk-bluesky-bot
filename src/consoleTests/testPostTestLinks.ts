@@ -4,7 +4,7 @@ import { postLink } from "../postNewLinks/postLink";
 import { createPlainTextString } from "../shared/createPlainTextString";
 import { testUrls } from "./testUrls";
 
-const main = async () => {
+const testPostTestLinks = async () => {
   const testAgent = new AtpAgent({
     service: "https://bsky.social",
   });
@@ -24,4 +24,4 @@ const main = async () => {
   }
 };
 
-await main();
+await testPostTestLinks();
