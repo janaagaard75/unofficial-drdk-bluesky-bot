@@ -159,7 +159,12 @@ export default tsEslint.config({
     "no-alert": "warn",
 
     // Avoid redundant else statements to keep the code un-indented.
-    "no-else-return": "warn",
+    "no-else-return": [
+      "warn",
+      {
+        allowElseIf: false,
+      },
+    ],
 
     // Do not allowing using shorthands to convert between types.
     "no-implicit-coercion": "warn",
