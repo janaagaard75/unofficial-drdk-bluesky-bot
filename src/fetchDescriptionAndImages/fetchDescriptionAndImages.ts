@@ -1,4 +1,4 @@
-import { extractImageUrl } from "../extractImageDescriptionsAndUrls/extractImageUrl";
+import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
 import { createHtmlString } from "../shared/createHtmlString";
 import { createPlainTextString } from "../shared/createPlainTextString";
 import { PlainTextString } from "../shared/PlainTextString";
