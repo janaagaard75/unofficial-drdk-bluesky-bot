@@ -6,8 +6,8 @@ import { UrlString } from "../shared/UrlString";
 import { extractDescription } from "./extractDescription";
 
 interface DescriptionAndImages {
-  description: PlainTextString;
-  images: Array<{
+  readonly description: PlainTextString;
+  readonly images: ReadonlyArray<{
     description: PlainTextString;
     url: UrlString | undefined;
   }>;

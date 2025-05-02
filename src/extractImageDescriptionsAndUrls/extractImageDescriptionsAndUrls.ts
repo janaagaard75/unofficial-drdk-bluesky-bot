@@ -13,7 +13,7 @@ interface DescriptionAndUrl {
 
 export const extractImageDescriptionsAndUrls = (
   articleHtml: HtmlString,
-): Array<DescriptionAndUrl> => {
+): ReadonlyArray<DescriptionAndUrl> => {
   const singleImageUrl = extractImageUrl(articleHtml);
 
   const nextData =

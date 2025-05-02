@@ -1,12 +1,12 @@
 import { Facet } from "@atproto/api";
 
 export interface Record {
-  embed?: {
-    external?: {
-      description: string;
-      title: string;
-      uri?: string;
+  readonly embed?: {
+    readonly external?: {
+      readonly description: string;
+      readonly title: string;
+      readonly uri?: string;
     };
   };
-  facets?: Array<Facet>;
+  readonly facets?: ReadonlyArray<Facet>;
 }

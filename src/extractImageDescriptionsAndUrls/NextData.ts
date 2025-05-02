@@ -1,17 +1,17 @@
 export interface NextData {
-  props?: {
-    pageProps?: {
-      viewProps?: {
-        resource?: {
-          head?: Array<{
-            images: Array<{
-              default?: {
-                description?: string;
-                url?: string;
+  readonly props?: {
+    readonly pageProps?: {
+      readonly viewProps?: {
+        readonly resource?: {
+          readonly head?: ReadonlyArray<{
+            readonly images: ReadonlyArray<{
+              readonly default?: {
+                readonly description?: string;
+                readonly url?: string;
               };
             }>;
             /** ImageCollectionComponent */
-            type: string;
+            readonly type: string;
           }>;
         };
       };
