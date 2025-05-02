@@ -10,7 +10,7 @@ import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
 import { extractArticleText } from "../summarize/extractArticleText";
-import { summarizeWithAzure } from "../summarize/summarizeWithAzure";
+import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
 
 const testPostNewLinks = async () => {
   try {
@@ -50,7 +50,10 @@ const testPostNewLinks = async () => {
       const articleImage = extractArticleImageUrl(articleHtml);
       const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
       const articleText = extractArticleText(articleHtml);
-      const summary = await summarizeWithAzure(articleText);
+      const summary = await summarizeWithOpenRouter(
+        articleText,
+        "google/gemini-2.5-flash-preview",
+      );
 
       await postToBluesky(
         agent,
