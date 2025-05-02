@@ -3,17 +3,9 @@ import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDes
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { downloadImage } from "../postToBluesky/downloadImage";
 import { uploadImage } from "../postToBluesky/uploadImage";
-import { UrlString } from "../shared/UrlString";
+import { testUrls } from "./testUrls";
 
-const main = async () => {
-  const testUrls = [
-    "https://www.dr.dk/nyheder/seneste/svensk-politi-efterlyser-video-og-billeder-i-forbindelse-med-efterforskning-af",
-    "https://www.dr.dk/nyheder/udland/eu-kommissionen-oensker-opgoer-med-online-platforme-som-temu-told-og-afgifter-kan",
-    "https://www.dr.dk/nyheder/indland/regeringen-vil-nedlaegge-jobcentrene-en-stor-og-omfattende-oevelse",
-    "https://www.dr.dk/sporten/seneste-sport/esbjerg-og-odense-buldrer-videre-i-kvindeligaen",
-    "https://www.dr.dk/nyheder/seneste/sverige-flager-paa-halv-efter-skoleskyderi",
-  ] as Array<UrlString>;
-
+const testHeroImages = async () => {
   const agent = new AtpAgent({
     service: "https://bsky.social",
   });
@@ -47,4 +39,4 @@ const main = async () => {
   }
 };
 
-await main();
+await testHeroImages();

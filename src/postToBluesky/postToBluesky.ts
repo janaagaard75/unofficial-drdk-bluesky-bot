@@ -17,7 +17,9 @@ export const postToBluesky = async (
   const imageBlob = await uploadImage(agent, imageBuffer);
   const limitedText = limitLength(text);
 
-  console.log(`Posting ${url} to Bluesky with the text "${limitedText}"`);
+  console.log(
+    `Posting ${url} to Bluesky with the text "${limitedText}" (${limitLength.length}).`,
+  );
 
   const post = {
     embed: {

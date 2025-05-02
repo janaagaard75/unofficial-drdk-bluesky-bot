@@ -5,12 +5,14 @@ import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed"
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { extractArticleImageUrl } from "../postNewLinks/extractArticleImageUrl";
 import { fetchArticleHtml } from "../postNewLinks/fetchArticleHtml";
+import { postLink } from "../postNewLinks/postLink";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { createPlainTextString } from "../shared/createPlainTextString";
 import { setDifference } from "../shared/setDifference";
-import { summarizeWithGemini } from "../summarize/summarizeWithGemini";
+import { extractArticleText } from "../summarize/extractArticleText";
+import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
 
-const main = async () => {
+const testPostNewLinks = async () => {
   try {
     const username = getEnvironmentVariableValue("BLUESKY_TEST_USERNAME");
     const password = getEnvironmentVariableValue("BLUESKY_TEST_PASSWORD");
@@ -39,14 +41,19 @@ const main = async () => {
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
+      await postLink(agent, titleAndUrl.title, titleAndUrl.url);
+
       const descriptionAndImageUrl = await fetchDescriptionAndImages(
         titleAndUrl.url,
       );
       const articleHtml = await fetchArticleHtml(titleAndUrl.url);
       const articleImage = extractArticleImageUrl(articleHtml);
       const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
-      // const summary = await summarizeWithAzure(articleHtml);
-      const summary = await summarizeWithGemini(articleHtml);
+      const articleText = extractArticleText(articleHtml);
+      const summary = await summarizeWithOpenRouter(
+        articleText,
+        "google/gemini-2.5-flash-preview",
+      );
 
       await postToBluesky(
         agent,
@@ -66,4 +73,4 @@ const main = async () => {
   }
 };
 
-await main();
+await testPostNewLinks();

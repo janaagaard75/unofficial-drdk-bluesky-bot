@@ -1,14 +1,16 @@
 {
+  "cSpell.language": "en,da",
   "cSpell.words": [
     "Aagaard",
     "atproto",
     "bsky",
+    "deepseek",
     "drdk",
     "extractus",
     "genai",
     "icann",
     "nvmrc",
-    "tldts"
+    "openai"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
