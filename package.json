@@ -10,12 +10,12 @@
     "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
     "test": "vitest",
-    "test-extract-article-text": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testExtractArticleText.ts",
-    "test-description": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testDescription.ts",
+    "test-extract-article-text": "tsx --env-file=.env ./src/consoleTests/testExtractArticleText.ts",
+    "test-description": "tsx --env-file=.env ./src/consoleTests/testDescription.ts",
     "test-hero-images": "tsx --env-file=.env ./src/consoleTests/testHeroImages.ts",
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
     "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts",
-    "test-summarize": "tsx --trace-deprecation --env-file=.env ./src/consoleTests/testSummarize.ts",
+    "test-summarize": "tsx --env-file=.env ./src/consoleTests/testSummarize.ts",
     "update-dependencies": "yarn upgrade-interactive && rm yarn.lock && yarn install"
   },
   "dependencies": {
