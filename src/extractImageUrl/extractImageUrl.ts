@@ -17,6 +17,9 @@ export const extractImageUrl = (
     return undefined;
   }
 
-  const imageUrl = rawImageUrl.substring(0, rawImageUrl.indexOf("?"));
+  const cropHeight = 627;
+  const cropWidth = 1200;
+  const imageCrop = `AspectCrop=(${cropWidth},${cropHeight}),xPosition=.5,yPosition=.5;Resize=(${cropWidth},${cropHeight})&impolicy=low`;
+  const imageUrl = `${rawImageUrl.substring(0, rawImageUrl.indexOf("?"))}?${imageCrop}`;
   return createUrlString(imageUrl);
 };
