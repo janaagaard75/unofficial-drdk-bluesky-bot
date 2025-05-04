@@ -1,8 +1,8 @@
 import { readFile } from "fs/promises";
 import path from "path";
 import { expect, test } from "vitest";
-import { createHtmlArticleString } from "../shared/createHtmlArticleString";
-import { createUrlString } from "../shared/createUrlString";
+import { createHtmlArticleString } from "../shared/brandedTypes/createHtmlArticleString";
+import { createUrlString } from "../shared/brandedTypes/createUrlString";
 import { extractImageUrl } from "./extractImageUrl";
 
 const testCases = [

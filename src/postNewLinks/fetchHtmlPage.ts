@@ -1,6 +1,6 @@
-import { createHtmlPageString } from "../shared/createHtmlPageString";
-import { HtmlPageString } from "../shared/HtmlPageString";
-import { UrlString } from "../shared/UrlString";
+import { createHtmlPageString } from "../shared/brandedTypes/createHtmlPageString";
+import { HtmlPageString } from "../shared/brandedTypes/HtmlPageString";
+import { UrlString } from "../shared/brandedTypes/UrlString";
 
 export const fetchHtmlPage = async (
   url: UrlString,

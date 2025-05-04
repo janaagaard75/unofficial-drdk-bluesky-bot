@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
-import { createPlainTextString } from "../shared/createPlainTextString";
-import { PlainTextString } from "../shared/PlainTextString";
+import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { sleep } from "../shared/sleep";
 
 export const summarizeWithGemini = async (

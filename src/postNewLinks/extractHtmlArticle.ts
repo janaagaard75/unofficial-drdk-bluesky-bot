@@ -1,6 +1,6 @@
-import { createHtmlArticleString } from "../shared/createHtmlArticleString";
-import { HtmlArticleString } from "../shared/HtmlArticleString";
-import { HtmlPageString } from "../shared/HtmlPageString";
+import { createHtmlArticleString } from "../shared/brandedTypes/createHtmlArticleString";
+import { HtmlArticleString } from "../shared/brandedTypes/HtmlArticleString";
+import { HtmlPageString } from "../shared/brandedTypes/HtmlPageString";
 
 export const extractHtmlArticle = (
   htmlPage: HtmlPageString,

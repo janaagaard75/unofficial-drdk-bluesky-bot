@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
-import { PlainTextString } from "../shared/PlainTextString";
-import { UrlString } from "../shared/UrlString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { UrlString } from "../shared/brandedTypes/UrlString";
 import { downloadImage } from "./downloadImage";
 import { limitLength } from "./limitLength";
 import { uploadImage } from "./uploadImage";

@@ -1,5 +1,5 @@
-import { createPlainTextString } from "../shared/createPlainTextString";
-import { PlainTextString } from "../shared/PlainTextString";
+import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 
 export const limitLength = (text: PlainTextString): PlainTextString => {
   const blueskyPostLengthLimit = 300;

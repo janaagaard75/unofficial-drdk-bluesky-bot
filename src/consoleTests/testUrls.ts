@@ -1,4 +1,4 @@
-import { createUrlString } from "../shared/createUrlString";
+import { createUrlString } from "../shared/brandedTypes/createUrlString";
 
 export const testUrls = [
   createUrlString(

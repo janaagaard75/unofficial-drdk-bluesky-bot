@@ -1,7 +1,7 @@
 import { decode } from "html-entities";
-import { createPlainTextString } from "../shared/createPlainTextString";
-import { HtmlPageString } from "../shared/HtmlPageString";
-import { PlainTextString } from "../shared/PlainTextString";
+import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
+import { HtmlPageString } from "../shared/brandedTypes/HtmlPageString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 
 /** Extract the description from the content of the <meta name="description"> element in htmlDocument. */
 export const extractDescription = (

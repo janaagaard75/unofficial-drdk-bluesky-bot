@@ -1,4 +1,4 @@
-import { createPlainTextString } from "../shared/createPlainTextString";
+import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
 
 export const testArticleTexts = [
   createPlainTextString(
