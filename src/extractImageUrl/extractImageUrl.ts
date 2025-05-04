@@ -9,7 +9,7 @@ export const extractImageUrl = (
 ): UrlString | undefined => {
   const articleDocument = JSDOM.fragment(articleHtml);
   const imageElement = articleDocument.querySelector(
-    "div[itemProp='image'] meta[itemProp='url']",
+    'div[itemProp="image"][itemType="https://schema.org/ImageObject"] meta[itemProp="url"]',
   );
   const rawImageUrl = imageElement?.getAttribute("content");
 

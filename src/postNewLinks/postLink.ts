@@ -1,4 +1,5 @@
 import { AtpAgent } from "@atproto/api";
+import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
 import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { createPlainTextString } from "../shared/createPlainTextString";
@@ -6,7 +7,6 @@ import { PlainTextString } from "../shared/PlainTextString";
 import { UrlString } from "../shared/UrlString";
 import { extractArticleText } from "../summarize/extractArticleText";
 import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
-import { extractArticleImageUrl } from "./extractArticleImageUrl";
 import { fetchArticleHtml } from "./fetchArticleHtml";
 
 export const postLink = async (
@@ -20,7 +20,7 @@ export const postLink = async (
       ? createPlainTextString("")
       : descriptionAndImageUrl.description;
   const articleHtml = await fetchArticleHtml(url);
-  const articleImage = extractArticleImageUrl(articleHtml);
+  const articleImage = extractImageUrl(articleHtml);
   const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
   const articleText = extractArticleText(articleHtml);
   const summary = await summarizeWithOpenRouter(
