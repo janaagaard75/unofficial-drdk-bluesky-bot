@@ -1,5 +1,5 @@
-import { PlainTextString } from "./shared/PlainTextString";
-import { UrlString } from "./shared/UrlString";
+import { PlainTextString } from "./shared/brandedTypes/PlainTextString";
+import { UrlString } from "./shared/brandedTypes/UrlString";
 
 export const getEnvironmentVariableValue = (
   variableName: string,

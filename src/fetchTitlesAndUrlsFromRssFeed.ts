@@ -1,8 +1,8 @@
 import Parser from "rss-parser";
-import { PlainTextString } from "./shared/PlainTextString";
-import { UrlString } from "./shared/UrlString";
-import { createPlainTextString } from "./shared/createPlainTextString";
-import { createUrlString } from "./shared/createUrlString";
+import { createPlainTextString } from "./shared/brandedTypes/createPlainTextString";
+import { createUrlString } from "./shared/brandedTypes/createUrlString";
+import { PlainTextString } from "./shared/brandedTypes/PlainTextString";
+import { UrlString } from "./shared/brandedTypes/UrlString";
 
 interface TitleAndUrl {
   title: PlainTextString;

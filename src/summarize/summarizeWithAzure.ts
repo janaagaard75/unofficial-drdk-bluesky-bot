@@ -5,8 +5,8 @@ import {
   TextAnalysisClient,
 } from "@azure/ai-language-text";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
-import { createPlainTextString } from "../shared/createPlainTextString";
-import { PlainTextString } from "../shared/PlainTextString";
+import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 
 export const summarizeWithAzure = async (
   articleText: PlainTextString,

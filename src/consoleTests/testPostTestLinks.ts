@@ -1,7 +1,7 @@
 import { AtpAgent } from "@atproto/api";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { postLink } from "../postNewLinks/postLink";
-import { createPlainTextString } from "../shared/createPlainTextString";
+import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
 import { testUrls } from "./testUrls";
 
 const testPostTestLinks = async () => {

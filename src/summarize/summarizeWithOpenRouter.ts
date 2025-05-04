@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
-import { PlainTextString } from "../shared/PlainTextString";
-import { createPlainTextString } from "../shared/createPlainTextString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
 
 export const summarizeWithOpenRouter = async (
   articleText: PlainTextString,

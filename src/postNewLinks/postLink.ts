@@ -1,28 +1,24 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
+import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
-import { createPlainTextString } from "../shared/createPlainTextString";
-import { PlainTextString } from "../shared/PlainTextString";
-import { UrlString } from "../shared/UrlString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { UrlString } from "../shared/brandedTypes/UrlString";
 import { extractArticleText } from "../summarize/extractArticleText";
 import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
-import { extractArticleImageUrl } from "./extractArticleImageUrl";
-import { fetchArticleHtml } from "./fetchArticleHtml";
+import { extractDescription } from "./extractDescription";
+import { extractHtmlArticle } from "./extractHtmlArticle";
+import { fetchHtmlPage } from "./fetchHtmlPage";
 
 export const postLink = async (
   agent: AtpAgent,
   title: PlainTextString,
   url: UrlString,
 ) => {
-  const descriptionAndImageUrl = await fetchDescriptionAndImages(url);
-  const description =
-    descriptionAndImageUrl === undefined
-      ? createPlainTextString("")
-      : descriptionAndImageUrl.description;
-  const articleHtml = await fetchArticleHtml(url);
-  const articleImage = extractArticleImageUrl(articleHtml);
-  const imageUrl = articleImage ?? descriptionAndImageUrl?.images[0]?.url;
-  const articleText = extractArticleText(articleHtml);
+  const htmlPage = await fetchHtmlPage(url);
+  const description = extractDescription(htmlPage);
+  const htmlArticle = extractHtmlArticle(htmlPage);
+  const imageUrl = extractImageUrl(htmlArticle);
+  const articleText = extractArticleText(htmlArticle);
   const summary = await summarizeWithOpenRouter(
     articleText,
     "google/gemini-2.5-flash-preview",
