@@ -1,11 +1,13 @@
-import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
+import { extractDescription } from "../postNewLinks/extractDescription";
+import { fetchHtmlPage } from "../postNewLinks/fetchHtmlPage";
 import { testUrls } from "./testUrls";
 
 const testDescription = async () => {
   for (const url of testUrls) {
-    const descriptionAndImage = await fetchDescriptionAndImages(url);
+    const htmlPage = await fetchHtmlPage(url);
+    const description = extractDescription(htmlPage);
     console.log();
-    console.log(descriptionAndImage);
+    console.log(description);
   }
 };
 

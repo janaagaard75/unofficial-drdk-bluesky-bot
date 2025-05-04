@@ -1,6 +1,8 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchDescriptionAndImages } from "../fetchDescriptionAndImages/fetchDescriptionAndImages";
+import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { extractHtmlArticle } from "../postNewLinks/extractHtmlArticle";
+import { fetchHtmlPage } from "../postNewLinks/fetchHtmlPage";
 import { downloadImage } from "../postToBluesky/downloadImage";
 import { uploadImage } from "../postToBluesky/uploadImage";
 import { testUrls } from "./testUrls";
@@ -15,10 +17,10 @@ const testHeroImages = async () => {
   });
 
   for (const url of testUrls) {
-    const descriptionAndImageUrl = await fetchDescriptionAndImages(url);
-    const downloadedImage = await downloadImage(
-      descriptionAndImageUrl?.images[0]?.url,
-    );
+    const htmlPage = await fetchHtmlPage(url);
+    const htmlArticle = extractHtmlArticle(htmlPage);
+    const imageUrl = extractImageUrl(htmlArticle);
+    const downloadedImage = await downloadImage(imageUrl);
     const heroImageBlob = await uploadImage(agent, downloadedImage);
 
     const post = {

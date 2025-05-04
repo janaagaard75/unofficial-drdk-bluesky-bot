@@ -1,10 +1,10 @@
 import { JSDOM } from "jsdom";
 import { createPlainTextString } from "../shared/createPlainTextString";
-import { HtmlString } from "../shared/HtmlString";
+import { HtmlArticleString } from "../shared/HtmlArticleString";
 import { PlainTextString } from "../shared/PlainTextString";
 
 export const extractArticleText = (
-  articleHtml: HtmlString,
+  articleHtml: HtmlArticleString,
 ): PlainTextString => {
   if (articleHtml === "") {
     return createPlainTextString("");

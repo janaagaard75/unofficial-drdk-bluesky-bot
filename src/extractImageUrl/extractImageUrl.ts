@@ -1,11 +1,11 @@
 import { JSDOM } from "jsdom";
 import { createUrlString } from "../shared/createUrlString";
-import { HtmlString } from "../shared/HtmlString";
+import { HtmlArticleString } from "../shared/HtmlArticleString";
 import { UrlString } from "../shared/UrlString";
 
 /** Extract the image URL from the content of the <meta name="og:image"> element in htmlDocument. */
 export const extractImageUrl = (
-  articleHtml: HtmlString,
+  articleHtml: HtmlArticleString,
 ): UrlString | undefined => {
   const articleDocument = JSDOM.fragment(articleHtml);
   const imageElement = articleDocument.querySelector(
