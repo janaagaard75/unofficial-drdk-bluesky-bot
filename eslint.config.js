@@ -1,5 +1,5 @@
 import jsEslint from "@eslint/js";
-import stylisticJs from "@stylistic/eslint-plugin-js";
+import stylistic from "@stylistic/eslint-plugin";
 import eslintPluginPerfectionist from "eslint-plugin-perfectionist";
 import globals from "globals";
 import tsEslint from "typescript-eslint";
@@ -14,7 +14,7 @@ export default tsEslint.config({
     },
   },
   plugins: {
-    "@stylistic/js": stylisticJs,
+    "@stylistic": stylistic,
   },
   extends: [
     jsEslint.configs.recommended,
@@ -45,7 +45,7 @@ export default tsEslint.config({
   }),
   rules: {
     // Do not allow backtick strings unless they are template strings.
-    "@stylistic/js/quotes": ["warn", "double", { avoidEscape: true }],
+    "@stylistic/quotes": ["warn", "double", { avoidEscape: true }],
 
     // Use the Array<Foo> and ReadonlyArray<Foo> syntaxes to distinguish declaring types from empty arrays, and treat arrays like all other generic types.
     "@typescript-eslint/array-type": [
