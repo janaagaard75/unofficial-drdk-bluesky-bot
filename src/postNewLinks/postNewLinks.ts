@@ -3,11 +3,16 @@ import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPoste
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { setDifference } from "../shared/setDifference";
+import { sleep } from "../shared/sleep";
 import { postLink } from "./postLink";
 
 export const postNewLinks = async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };
   console.log(`Triggered. Next invocation at: ${next_run}.`);
+
+  const random0To59seconds = Math.floor(Math.random() * 60);
+  console.log(`Waiting ${random0To59seconds} seconds before proceeding...`);
+  await sleep(random0To59seconds * 1000);
 
   try {
     const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
@@ -20,6 +25,21 @@ export const postNewLinks = async (request: Request) => {
       password: password,
     });
     console.log(`Signed in to Bluesky as ${username}.`);
+
+    // This assumes that the bot isn't following anyone.
+    const mostRecentPost = await agent.getTimeline({ limit: 1 });
+    const twoMinutesAgo = new Date(Date.now() - 2 * 60 * 1000);
+    const hasVeryRecentPost = mostRecentPost.data.feed.some((post) => {
+      const postDate = new Date(post.post.indexedAt);
+      return postDate > twoMinutesAgo && post.post.author.handle === username;
+    });
+
+    if (hasVeryRecentPost) {
+      console.log(
+        "Found posts from the last 2 minutes. Another instance likely completed. Exiting.",
+      );
+      return;
+    }
 
     const postedUrls = await fetchPostedUrlsOnBluesky(agent);
     console.log(`Fetched ${postedUrls.size} posted URLs.`);
