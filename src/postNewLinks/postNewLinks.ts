@@ -17,21 +17,6 @@ const postNewLinks = async () => {
   });
   console.log(`Signed in to Bluesky as ${username}.`);
 
-  // This assumes that the bot isn't following anyone.
-  const mostRecentPost = await agent.getTimeline({ limit: 1 });
-  const twoMinutesAgo = new Date(Date.now() - 2 * 60 * 1000);
-  const hasVeryRecentPost = mostRecentPost.data.feed.some((post) => {
-    const postDate = new Date(post.post.indexedAt);
-    return postDate > twoMinutesAgo && post.post.author.handle === username;
-  });
-
-  if (hasVeryRecentPost) {
-    console.log(
-      "Found posts from the last 2 minutes. Another instance likely completed. Exiting.",
-    );
-    return;
-  }
-
   const postedUrls = await fetchPostedUrlsOnBluesky(agent);
   console.log(`Fetched ${postedUrls.size} posted URLs.`);
 
