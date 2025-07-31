@@ -9,6 +9,7 @@
     "check-formatting": "prettier --check \"**/*.{css,html,js,json,md,scss,ts,tsx,yml}\"",
     "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
+    "post-new-links": "tsx --env-file=.env ./src/postNewLinks/postNewLinks.ts",
     "test": "vitest",
     "test-extract-article-text": "tsx --env-file=.env ./src/consoleTests/testExtractArticleText.ts",
     "test-description": "tsx --env-file=.env ./src/consoleTests/testDescription.ts",

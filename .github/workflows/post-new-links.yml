@@ -1,0 +1,36 @@
+name: Post New Links
+
+permissions:
+  contents: read
+
+on:
+  schedule:
+    # Run every 6 minutes.
+    - cron: "*/6 * * * *"
+  # Allow manual triggering.
+  workflow_dispatch:
+
+jobs:
+  post-new-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Yarn
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Post new links
+        env:
+          BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+          BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: yarn run post-new-links
