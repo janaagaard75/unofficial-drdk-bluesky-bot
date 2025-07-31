@@ -3,18 +3,9 @@ import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPoste
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { setDifference } from "../shared/setDifference";
-import { sleep } from "../shared/sleep";
 import { postLink } from "./postLink";
 
-export const postNewLinks = async (request: Request) => {
-  const { next_run } = (await request.json()) as { next_run: string };
-  console.log(`Triggered. Next invocation at: ${next_run}.`);
-
-  const random0To59seconds = Math.floor(Math.random() * 60);
-  console.log(`Waiting ${random0To59seconds} seconds before proceeding...`);
-  await sleep(random0To59seconds * 1000);
-  console.log("... Proceeding.");
-
+const postNewLinks = async () => {
   try {
     const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
     const password = getEnvironmentVariableValue("BLUESKY_PASSWORD");
@@ -64,5 +55,8 @@ export const postNewLinks = async (request: Request) => {
     console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);
   } catch (error) {
     console.error(error);
+    process.exit(1);
   }
 };
+
+void postNewLinks();
