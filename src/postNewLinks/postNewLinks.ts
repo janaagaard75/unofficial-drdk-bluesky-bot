@@ -10,12 +10,11 @@ export const postNewLinks = async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };
   console.log(`Triggered. Next invocation at: ${next_run}.`);
 
-  // Add random delay 0-59 seconds to reduce the risk of simultaneous execution.
-  const randomDelay = Math.floor(Math.random() * 60 * 1000); // 0-60 seconds
+  const random0To59seconds = Math.floor(Math.random() * 60 * 1000);
   console.log(
-    `Waiting ${Math.round(randomDelay / 1000)} seconds before proceeding...`,
+    `Waiting ${Math.round(random0To59seconds / 1000)} seconds before proceeding...`,
   );
-  await sleep(randomDelay);
+  await sleep(random0To59seconds);
 
   try {
     const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
