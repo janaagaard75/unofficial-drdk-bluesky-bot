@@ -7,7 +7,7 @@ export const summarizeWithOpenRouter = async (
   articleText: PlainTextString,
   model:
     | "deepseek/deepseek-chat-v3-0324:free"
-    | "google/gemini-2.5-flash-preview"
+    | "google/gemini-2.5-flash"
     | "openai/gpt-4o",
 ): Promise<PlainTextString> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");

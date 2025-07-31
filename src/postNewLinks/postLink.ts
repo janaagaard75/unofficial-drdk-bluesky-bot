@@ -21,7 +21,7 @@ export const postLink = async (
   const articleText = extractArticleText(htmlArticle);
   const summary = await summarizeWithOpenRouter(
     articleText,
-    "google/gemini-2.5-flash-preview",
+    "google/gemini-2.5-flash",
   );
 
   await postToBluesky(agent, description, imageUrl, summary, title, url);
