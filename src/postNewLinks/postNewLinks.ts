@@ -13,6 +13,7 @@ export const postNewLinks = async (request: Request) => {
   const random0To59seconds = Math.floor(Math.random() * 60);
   console.log(`Waiting ${random0To59seconds} seconds before proceeding...`);
   await sleep(random0To59seconds * 1000);
+  console.log("... Proceeding.");
 
   try {
     const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
