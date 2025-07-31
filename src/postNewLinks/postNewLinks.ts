@@ -3,11 +3,19 @@ import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPoste
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { setDifference } from "../shared/setDifference";
+import { sleep } from "../shared/sleep";
 import { postLink } from "./postLink";
 
 export const postNewLinks = async (request: Request) => {
   const { next_run } = (await request.json()) as { next_run: string };
   console.log(`Triggered. Next invocation at: ${next_run}.`);
+
+  // Add random delay 0-59 seconds to reduce the risk of simultaneous execution.
+  const randomDelay = Math.floor(Math.random() * 60 * 1000); // 0-60 seconds
+  console.log(
+    `Waiting ${Math.round(randomDelay / 1000)} seconds before proceeding...`,
+  );
+  await sleep(randomDelay);
 
   try {
     const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
