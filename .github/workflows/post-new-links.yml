@@ -1,5 +1,8 @@
 name: Post New Links
 
+permissions:
+  contents: read
+
 on:
   schedule:
     - cron: "*/6 * * * *"
