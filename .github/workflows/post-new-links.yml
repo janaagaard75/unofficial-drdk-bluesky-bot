@@ -5,8 +5,10 @@ permissions:
 
 on:
   schedule:
+    # Run every 6 minutes.
     - cron: "*/6 * * * *"
-  workflow_dispatch: # Allow manual triggering
+  # Allow manual triggering.
+  workflow_dispatch:
 
 jobs:
   post-new-links:
