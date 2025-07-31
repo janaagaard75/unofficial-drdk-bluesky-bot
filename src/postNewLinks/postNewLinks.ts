@@ -28,6 +28,7 @@ export const postNewLinks = async (request: Request) => {
     });
     console.log(`Signed in to Bluesky as ${username}.`);
 
+    // This assumes that the bot isn't following anyone.
     const mostRecentPost = await agent.getTimeline({ limit: 1 });
     const twoMinutesAgo = new Date(Date.now() - 2 * 60 * 1000);
     const hasVeryRecentPost = mostRecentPost.data.feed.some((post) => {
