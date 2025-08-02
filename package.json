@@ -24,6 +24,7 @@
     "@atproto/api": "^0.16.0",
     "@netlify/functions": "^4.2.1",
     "html-entities": "^2.6.0",
+    "image-resize-compress": "^2.1.1",
     "jsdom": "^26.1.0",
     "openai": "^5.11.0",
     "rss-parser": "^3.13.0"
