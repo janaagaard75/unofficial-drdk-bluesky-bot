@@ -7,7 +7,7 @@ export const downloadImage = async (imageUrl: UrlString | undefined) => {
 
   try {
     const downloadedImage = await fetch(imageUrl);
-    return await downloadedImage.arrayBuffer();
+    return await downloadedImage.blob();
   } catch (error) {
     console.error("Failed to download image.", imageUrl, error);
     return undefined;
