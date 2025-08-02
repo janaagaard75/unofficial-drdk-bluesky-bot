@@ -21,7 +21,7 @@
     "update-dependencies": "yarn upgrade-interactive && rm yarn.lock && yarn install"
   },
   "dependencies": {
-    "@atproto/api": "^0.15.27",
+    "@atproto/api": "^0.16.0",
     "@netlify/functions": "^4.2.1",
     "html-entities": "^2.6.0",
     "jsdom": "^26.1.0",
