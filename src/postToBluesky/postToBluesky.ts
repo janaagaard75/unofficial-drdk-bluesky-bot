@@ -1,6 +1,7 @@
 import { AtpAgent } from "@atproto/api";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
+import { compressImage } from "./compressImage";
 import { downloadImage } from "./downloadImage";
 import { limitLength } from "./limitLength";
 import { uploadImage } from "./uploadImage";
@@ -13,8 +14,9 @@ export const postToBluesky = async (
   title: PlainTextString,
   url: UrlString,
 ) => {
-  const imageBuffer = await downloadImage(imageUrl);
-  const imageBlob = await uploadImage(agent, imageBuffer);
+  const downloadedImage = await downloadImage(imageUrl);
+  const compressedImage = await compressImage(downloadedImage);
+  const uploadedImageReference = await uploadImage(agent, compressedImage);
   const limitedText = limitLength(text);
 
   console.log(
@@ -26,7 +28,7 @@ export const postToBluesky = async (
       $type: "app.bsky.embed.external",
       external: {
         description: description,
-        thumb: imageBlob,
+        thumb: uploadedImageReference,
         title: title,
         uri: url,
       },
