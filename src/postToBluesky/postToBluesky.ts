@@ -15,7 +15,7 @@ export const postToBluesky = async (
   url: UrlString,
 ) => {
   const downloadedImage = await downloadImage(imageUrl);
-  const compressedImage = await compressImage(downloadedImage, 976.56);
+  const compressedImage = await compressImage(downloadedImage);
   const uploadedImageReference = await uploadImage(agent, compressedImage);
   const limitedText = limitLength(text);
 

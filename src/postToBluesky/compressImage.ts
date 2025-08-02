@@ -2,13 +2,14 @@ import { fromBlob } from "image-resize-compress";
 
 export const compressImage = async (
   image: Blob | undefined,
-  maxSizeBytes: number,
 ): Promise<Blob | undefined> => {
   if (image === undefined) {
     return undefined;
   }
 
-  if (image.size <= maxSizeBytes) {
+  const maximumSizeAllowedOnBluesky = 976.56 * 1024;
+
+  if (image.size <= maximumSizeAllowedOnBluesky) {
     return image;
   }
 
@@ -23,7 +24,7 @@ export const compressImage = async (
       "webp",
     );
 
-    if (compressedImage.size <= maxSizeBytes) {
+    if (compressedImage.size <= maximumSizeAllowedOnBluesky) {
       return compressedImage;
     }
 
