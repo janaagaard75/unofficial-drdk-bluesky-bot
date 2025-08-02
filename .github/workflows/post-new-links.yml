@@ -5,8 +5,8 @@ permissions:
 
 on:
   schedule:
-    # Run every 6 minutes.
-    - cron: "*/6 * * * *"
+    # Run every 10 minutes.
+    - cron: "*/10 * * * *"
   # Allow manual triggering.
   workflow_dispatch:
 
