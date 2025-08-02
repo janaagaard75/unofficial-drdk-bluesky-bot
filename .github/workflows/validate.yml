@@ -36,3 +36,15 @@ jobs:
 
       - name: Check formatting
         run: yarn check-formatting
+
+      - name: Check for unused code
+        run: |
+          output=$(yarn check-unused)
+          if [ -z "$output" ]; then
+            echo "No unused code found."
+            exit 0;
+          else
+            echo "Unused code found. Failing."
+            echo $output
+            exit 1;
+          fi
