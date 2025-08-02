@@ -1,4 +1,6 @@
-import { fromBlob } from "image-resize-compress";
+import sharp from "sharp";
+
+const maximumImageSizeOnBlueskyInBytes = 1_000_000;
 
 export const compressImage = async (
   image: Blob | undefined,
@@ -7,25 +9,22 @@ export const compressImage = async (
     return undefined;
   }
 
-  const maximumSizeAllowedOnBluesky = 976.56 * 1024;
+  const sharpImage = sharp(await image.arrayBuffer());
+  const metadata = await sharpImage.metadata();
 
-  if (image.size <= maximumSizeAllowedOnBluesky) {
-    return image;
+  if (metadata.size === undefined) {
+    return undefined;
   }
 
-  let quality = 80;
+  let quality = 85;
 
   do {
-    const compressedImage = await fromBlob(
-      image,
-      quality,
-      "auto",
-      "auto",
-      "webp",
-    );
+    const compressedBuffer = await sharpImage
+      .webp({ quality: quality })
+      .toBuffer();
 
-    if (compressedImage.size <= maximumSizeAllowedOnBluesky) {
-      return compressedImage;
+    if (compressedBuffer.byteLength <= maximumImageSizeOnBlueskyInBytes) {
+      return new Blob([compressedBuffer], { type: "image/webp" });
     }
 
     quality -= 5;
