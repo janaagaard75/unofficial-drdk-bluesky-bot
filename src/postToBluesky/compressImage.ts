@@ -16,6 +16,8 @@ export const compressImage = async (
     return undefined;
   }
 
+  const originalSize = metadata.size;
+
   let quality = 85;
 
   do {
@@ -23,7 +25,12 @@ export const compressImage = async (
       .webp({ quality: quality })
       .toBuffer();
 
-    if (compressedBuffer.byteLength <= maximumImageSizeOnBlueskyInBytes) {
+    const compressedSize = compressedBuffer.byteLength;
+    if (compressedSize <= maximumImageSizeOnBlueskyInBytes) {
+      console.log(
+        `Compressed the image from ${originalSize} bytes to ${compressedSize} bytes with quality ${quality}.`,
+      );
+
       return new Blob([compressedBuffer], { type: "image/webp" });
     }
 
