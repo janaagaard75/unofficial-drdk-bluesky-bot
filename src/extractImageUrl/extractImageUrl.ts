@@ -1,7 +1,7 @@
 import { JSDOM } from "jsdom";
-import { createUrlString } from "../shared/brandedTypes/createUrlString";
 import { HtmlArticleString } from "../shared/brandedTypes/HtmlArticleString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
+import { brand } from "../shared/brandedTypes/brand";
 
 /** Extract the image URL from the content of the <meta name="og:image"> element in htmlDocument. */
 export const extractImageUrl = (
@@ -21,5 +21,5 @@ export const extractImageUrl = (
   const cropWidth = 1200;
   const imageCrop = `AspectCrop=(${cropWidth},${cropHeight}),xPosition=.5,yPosition=.5;Resize=(${cropWidth},${cropHeight})&impolicy=low`;
   const imageUrl = `${rawImageUrl.substring(0, rawImageUrl.indexOf("?"))}?${imageCrop}`;
-  return createUrlString(imageUrl);
+  return brand<UrlString>(imageUrl);
 };

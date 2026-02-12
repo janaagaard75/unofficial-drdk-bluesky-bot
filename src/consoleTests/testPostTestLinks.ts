@@ -1,7 +1,8 @@
 import { AtpAgent } from "@atproto/api";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { postLink } from "../postNewLinks/postLink";
-import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
+import { brand } from "../shared/brandedTypes/brand";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { testUrls } from "./testUrls";
 
 const testPostTestLinks = async () => {
@@ -17,7 +18,7 @@ const testPostTestLinks = async () => {
   for (const url of testUrls) {
     await postLink(
       testAgent,
-      createPlainTextString(`Dummy title ${number}`),
+      brand<PlainTextString>(`Dummy title ${number}`),
       url,
     );
     number++;

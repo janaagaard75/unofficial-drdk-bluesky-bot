@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
+import { brand } from "../shared/brandedTypes/brand";
 
 export const summarizeWithOpenRouter = async (
   articleText: PlainTextString,
@@ -30,5 +30,5 @@ export const summarizeWithOpenRouter = async (
   });
 
   const summary = completion.choices[0]?.text.trim() ?? "";
-  return createPlainTextString(summary);
+  return brand<PlainTextString>(summary);
 };

@@ -1,4 +1,4 @@
-import { createHtmlArticleString } from "../shared/brandedTypes/createHtmlArticleString";
+import { brand } from "../shared/brandedTypes/brand";
 import { HtmlArticleString } from "../shared/brandedTypes/HtmlArticleString";
 import { HtmlPageString } from "../shared/brandedTypes/HtmlPageString";
 
@@ -9,8 +9,8 @@ export const extractHtmlArticle = (
   const articleMatch = articleRegex.exec(htmlPage);
 
   if (articleMatch === null || articleMatch[1] === undefined) {
-    return createHtmlArticleString("");
+    return brand<HtmlArticleString>("");
   }
 
-  return createHtmlArticleString(articleMatch[1]);
+  return brand<HtmlArticleString>(articleMatch[1]);
 };

@@ -1,7 +1,7 @@
 import { decode } from "html-entities";
-import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
 import { HtmlPageString } from "../shared/brandedTypes/HtmlPageString";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { brand } from "../shared/brandedTypes/brand";
 
 /** Extract the description from the content of the <meta name="description"> element in htmlDocument. */
 export const extractDescription = (
@@ -9,5 +9,5 @@ export const extractDescription = (
 ): PlainTextString => {
   const descriptionMatch =
     /<meta[^>]*name="description"[^>]*content="([^"]*)"/.exec(htmlPage);
-  return createPlainTextString(decode(descriptionMatch?.[1] ?? ""));
+  return brand<PlainTextString>(decode(descriptionMatch?.[1] ?? ""));
 };

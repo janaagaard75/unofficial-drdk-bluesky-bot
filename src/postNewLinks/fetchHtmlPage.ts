@@ -1,4 +1,4 @@
-import { createHtmlPageString } from "../shared/brandedTypes/createHtmlPageString";
+import { brand } from "../shared/brandedTypes/brand";
 import { HtmlPageString } from "../shared/brandedTypes/HtmlPageString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 
@@ -7,5 +7,5 @@ export const fetchHtmlPage = async (
 ): Promise<HtmlPageString> => {
   const response = await fetch(url);
   const pageHtml = await response.text();
-  return createHtmlPageString(pageHtml);
+  return brand<HtmlPageString>(pageHtml);
 };
