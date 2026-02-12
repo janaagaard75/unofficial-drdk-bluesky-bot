@@ -1,7 +1,7 @@
 import { AtpAgent, FacetLink } from "@atproto/api";
 import { BlueskyPostRecord } from "./BlueskyPostRecord";
 
-export const fetchPostedUrlsOnBluesky = async (
+export const fetchUrlsPostedOnBluesky = async (
   agent: AtpAgent,
 ): Promise<Set<string>> => {
   const feedSize = 20;

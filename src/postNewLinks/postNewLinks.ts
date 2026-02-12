@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchPostedUrlsOnBluesky } from "../fetchPostedUrlsOnBluesky/fetchPostedUrlsOnBluesky";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
+import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { setDifference } from "../shared/setDifference";
 import { postLink } from "./postLink";
@@ -17,7 +17,7 @@ const postNewLinks = async () => {
   });
   console.log(`Signed in to Bluesky as ${username}.`);
 
-  const postedUrls = await fetchPostedUrlsOnBluesky(agent);
+  const postedUrls = await fetchUrlsPostedOnBluesky(agent);
   console.log(`Fetched ${postedUrls.size} posted URLs.`);
 
   const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
