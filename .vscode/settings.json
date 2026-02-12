@@ -11,7 +11,8 @@
     "genai",
     "icann",
     "nvmrc",
-    "openai"
+    "openai",
+    "pollopt"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
