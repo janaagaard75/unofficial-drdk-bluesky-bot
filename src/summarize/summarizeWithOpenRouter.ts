@@ -16,7 +16,7 @@ export const summarizeWithOpenRouter = async (
     apiKey: openRouterApiKey,
     baseURL: "https://openrouter.ai/api/v1",
     defaultHeaders: {
-      "HTTP-Referer": "https://unofficial-drdk-bluesky-bot.netlify.app",
+      "HTTP-Referer": "https://janaagaard.com/unofficial-drdk-bluesky-bot/",
       "X-Title": "Unofficial dr.dk news bot for Bluesky",
     },
   });

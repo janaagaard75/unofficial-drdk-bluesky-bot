@@ -31,7 +31,9 @@ export const compressImage = async (
         `Compressed the image from ${originalSize} bytes to ${compressedSize} bytes with quality ${quality}.`,
       );
 
-      return new Blob([compressedBuffer], { type: "image/webp" });
+      return new Blob([new Uint8Array(compressedBuffer)], {
+        type: "image/webp",
+      });
     }
 
     quality -= 5;
