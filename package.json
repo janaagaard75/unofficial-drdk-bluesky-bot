@@ -16,6 +16,7 @@
     "test-description": "tsx --env-file=.env ./src/consoleTests/testDescription.ts",
     "test-fetch-article": "tsx --env-file=.env ./src/consoleTests/testFetchArticle.ts",
     "test-hero-images": "tsx --env-file=.env ./src/consoleTests/testHeroImages.ts",
+    "test-hn-ids": "tsx --env-file=.env ./src/hackerNews/testHnStoryIds.ts",
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
     "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts",
     "test-summarize": "tsx --env-file=.env ./src/consoleTests/testSummarize.ts",
