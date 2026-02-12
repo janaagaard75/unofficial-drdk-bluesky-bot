@@ -5,7 +5,7 @@ import globals from "globals";
 import tsEslint from "typescript-eslint";
 
 export default tsEslint.config({
-  files: ["netlify/functions/*.mts", "src/**/*.ts"],
+  files: ["src/**/*.ts"],
   languageOptions: {
     globals: globals.browser,
     parserOptions: {

@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@atproto/api": "^0.16.0",
-    "@netlify/functions": "^4.2.1",
     "html-entities": "^2.6.0",
     "jsdom": "^26.1.0",
     "openai": "^5.11.0",
