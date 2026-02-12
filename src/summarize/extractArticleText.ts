@@ -22,8 +22,8 @@ export const extractArticleText = (
     .replace(/<br\s*\/?>/gi, " ")
     .replace(/\n/gi, " ");
 
-  const articleText = (JSDOM.fragment(cleanedArticleHtml).textContent ?? "")
-    .replace(/\s{2,}/gi, ". ")
+  const articleText = JSDOM.fragment(cleanedArticleHtml)
+    .textContent.replace(/\s{2,}/gi, ". ")
     .replaceAll(":.", ":")
     .replaceAll("..", ".")
     .replace(/^. /, "")
