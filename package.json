@@ -27,8 +27,8 @@
     "@atproto/api": "^0.18.21",
     "@mozilla/readability": "^0.6.0",
     "html-entities": "^2.6.0",
-    "jsdom": "^28.0.0",
-    "openai": "^6.21.0",
+    "jsdom": "^28.1.0",
+    "openai": "^6.22.0",
     "puppeteer": "^24.37.3",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
@@ -50,5 +50,5 @@
     "typescript-eslint": "^8.55.0",
     "vitest": "^4.0.18"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.12.0"
 }
