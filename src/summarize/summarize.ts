@@ -3,7 +3,7 @@ import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { brand } from "../shared/brandedTypes/brand";
 
-export const summarizeWithOpenRouter = async (
+export const summarize = async (
   articleText: PlainTextString,
   model: "google/gemini-2.5-flash" | "openai/gpt-4o",
 ): Promise<PlainTextString> => {

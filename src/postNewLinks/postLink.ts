@@ -4,7 +4,7 @@ import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 import { extractArticleText } from "../summarize/extractArticleText";
-import { summarizeWithOpenRouter } from "../summarize/summarizeWithOpenRouter";
+import { summarize } from "../summarize/summarize";
 import { extractDescription } from "./extractDescription";
 import { extractHtmlArticle } from "./extractHtmlArticle";
 import { fetchHtmlPage } from "./fetchHtmlPage";
@@ -19,10 +19,7 @@ export const postLink = async (
   const htmlArticle = extractHtmlArticle(htmlPage);
   const imageUrl = extractImageUrl(htmlArticle);
   const articleText = extractArticleText(htmlArticle);
-  const summary = await summarizeWithOpenRouter(
-    articleText,
-    "google/gemini-2.5-flash",
-  );
+  const summary = await summarize(articleText, "google/gemini-2.5-flash");
 
   await postToBluesky(agent, description, imageUrl, summary, title, url);
 };
