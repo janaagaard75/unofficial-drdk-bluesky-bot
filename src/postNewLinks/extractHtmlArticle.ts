@@ -1,16 +1,13 @@
 import { brand } from "../shared/brandedTypes/brand";
-import { HtmlArticleString } from "../shared/brandedTypes/HtmlArticleString";
-import { HtmlPageString } from "../shared/brandedTypes/HtmlPageString";
+import { HtmlString } from "../shared/brandedTypes/HtmlString";
 
-export const extractHtmlArticle = (
-  htmlPage: HtmlPageString,
-): HtmlArticleString => {
+export const extractHtmlArticle = (htmlPage: HtmlString): HtmlString => {
   const articleRegex = /<article[^>]*>([\s\S]*?)<\/article>/;
   const articleMatch = articleRegex.exec(htmlPage);
 
   if (articleMatch === null || articleMatch[1] === undefined) {
-    return brand<HtmlArticleString>("");
+    return brand<HtmlString>("");
   }
 
-  return brand<HtmlArticleString>(articleMatch[1]);
+  return brand<HtmlString>(articleMatch[1]);
 };

@@ -2,7 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { expect, test } from "vitest";
 import { brand } from "../shared/brandedTypes/brand";
-import { HtmlArticleString } from "../shared/brandedTypes/HtmlArticleString";
+import { HtmlString } from "../shared/brandedTypes/HtmlString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 import { extractImageUrl } from "./extractImageUrl";
 
@@ -67,7 +67,7 @@ test.each(testCases)(
   "extractImageUrl extracts $expectedImageUrl from $articleFileName",
   async ({ articleFileName, expectedImageUrl }) => {
     const articleFullName = path.join(__dirname, "articles", articleFileName);
-    const articleHtml = brand<HtmlArticleString>(
+    const articleHtml = brand<HtmlString>(
       await readFile(articleFullName, {
         encoding: "utf-8",
       }),
