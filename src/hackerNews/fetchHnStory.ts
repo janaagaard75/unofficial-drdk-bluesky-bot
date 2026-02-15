@@ -1,9 +1,9 @@
 import { brand } from "../shared/brandedTypes/brand";
-import { HtmlTitleString } from "../shared/brandedTypes/HtmlTitleString";
+import { HtmlString } from "../shared/brandedTypes/HtmlString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 
 interface HnStory {
-  title: HtmlTitleString;
+  title: HtmlString;
   url: UrlString;
 }
 
@@ -43,7 +43,7 @@ export const fetchHnStory = async (
   }
 
   return {
-    title: brand<HtmlTitleString>(storyData.title),
+    title: brand<HtmlString>(storyData.title),
     url: brand<UrlString>(storyData.url),
   };
 };
