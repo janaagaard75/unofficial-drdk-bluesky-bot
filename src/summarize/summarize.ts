@@ -1,14 +1,11 @@
 import OpenAI from "openai";
 import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
+import { brand } from "../shared/brandedTypes/brand";
 
-export const summarizeWithOpenRouter = async (
+export const summarize = async (
   articleText: PlainTextString,
-  model:
-    | "deepseek/deepseek-chat-v3-0324:free"
-    | "google/gemini-2.5-flash"
-    | "openai/gpt-4o",
+  model: "google/gemini-2.5-flash" | "openai/gpt-4o",
 ): Promise<PlainTextString> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
 
@@ -30,5 +27,5 @@ export const summarizeWithOpenRouter = async (
   });
 
   const summary = completion.choices[0]?.text.trim() ?? "";
-  return createPlainTextString(summary);
+  return brand<PlainTextString>(summary);
 };

@@ -1,6 +1,6 @@
 import { Facet } from "@atproto/api";
 
-export interface Record {
+export interface BlueskyPostRecord {
   readonly embed?: {
     readonly external?: {
       readonly description: string;

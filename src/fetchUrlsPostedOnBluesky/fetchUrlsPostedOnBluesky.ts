@@ -1,7 +1,7 @@
 import { AtpAgent, FacetLink } from "@atproto/api";
-import { Record } from "./Record";
+import { BlueskyPostRecord } from "./BlueskyPostRecord";
 
-export const fetchPostedUrlsOnBluesky = async (
+export const fetchUrlsPostedOnBluesky = async (
   agent: AtpAgent,
 ): Promise<Set<string>> => {
   const feedSize = 20;
@@ -12,7 +12,7 @@ export const fetchPostedUrlsOnBluesky = async (
   const feedViewPosts = timeline.data.feed;
 
   const postedUrls = feedViewPosts
-    .map((feedViewPost) => feedViewPost.post.record as Record)
+    .map((feedViewPost) => feedViewPost.post.record as BlueskyPostRecord)
     .flatMap((record) => {
       if (record.embed?.external?.uri !== undefined) {
         return [record.embed.external.uri];

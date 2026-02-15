@@ -10,8 +10,11 @@
     "extractus",
     "genai",
     "icann",
+    "mozilla",
+    "networkidle",
     "nvmrc",
-    "openai"
+    "openai",
+    "pollopt"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"

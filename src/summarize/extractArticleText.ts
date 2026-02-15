@@ -1,13 +1,13 @@
 import { JSDOM } from "jsdom";
-import { createPlainTextString } from "../shared/brandedTypes/createPlainTextString";
-import { HtmlArticleString } from "../shared/brandedTypes/HtmlArticleString";
+import { HtmlString } from "../shared/brandedTypes/HtmlString";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { brand } from "../shared/brandedTypes/brand";
 
 export const extractArticleText = (
-  articleHtml: HtmlArticleString,
+  articleHtml: HtmlString,
 ): PlainTextString => {
   if (articleHtml === "") {
-    return createPlainTextString("");
+    return brand<PlainTextString>("");
   }
 
   const cleanedArticleHtml = articleHtml
@@ -29,5 +29,5 @@ export const extractArticleText = (
     .replace(/^. /, "")
     .trim();
 
-  return createPlainTextString(articleText);
+  return brand<PlainTextString>(articleText);
 };

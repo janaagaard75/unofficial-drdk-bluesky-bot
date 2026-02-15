@@ -1,0 +1,37 @@
+import { fetchHnFrontPageStoryIds } from "./fetchHnFrontPageStoryIds";
+import { fetchHnStory } from "./fetchHnStory";
+import { getImageAndText } from "./getImageAndText";
+import { summarize } from "./summarize";
+
+const allStoryIds = await fetchHnFrontPageStoryIds();
+const randomStoryId =
+  allStoryIds[Math.floor(Math.random() * allStoryIds.length)];
+
+if (randomStoryId === undefined) {
+  throw new Error(
+    `Something went wrong getting a random story ID. Number of story IDs: ${allStoryIds.length}`,
+  );
+}
+
+const story = await fetchHnStory(randomStoryId);
+console.log(`Story ID: ${randomStoryId}`);
+
+if (story === undefined) {
+  throw new Error(
+    `Something went wrong fetching the story with ID ${randomStoryId}.`,
+  );
+}
+
+console.log(`NH Title: ${story.title}`);
+console.log(`NH URL: https://news.ycombinator.com/item?id=${randomStoryId}`);
+console.log(`Story URL: ${story.url}`);
+
+const pageImageAndText = await getImageAndText(story.url);
+console.log(`Image: ${pageImageAndText.imageUrl ?? "No image found."}`);
+
+const summary =
+  pageImageAndText.text === undefined
+    ? undefined
+    : await summarize(pageImageAndText.text, 300, "google/gemini-2.5-flash");
+
+console.log(`Summary: ${summary ?? "Could not extract page text."}`);
