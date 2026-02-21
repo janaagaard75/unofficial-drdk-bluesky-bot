@@ -7,10 +7,18 @@ puppeteerExtra.use(StealthPlugin());
 
 export const getDocumentObjectModel = async (
   url: UrlString,
-): Promise<JSDOM> => {
+): Promise<JSDOM | undefined> => {
   const browser = await puppeteerExtra.launch();
   const page = await browser.newPage();
-  await page.goto(url, { waitUntil: "networkidle0" });
+
+  try {
+    await page.goto(url, { waitUntil: "networkidle0" });
+  } catch (error) {
+    console.error(`Error navigating to ${url}:`, error);
+    await browser.close();
+    return undefined;
+  }
+
   const htmlContent = await page.content();
   await browser.close();
 
