@@ -18,9 +18,16 @@ export const getImageAndText = async (
   url: UrlString,
 ): Promise<ImageAndText> => {
   const dom = await getDocumentObjectModel(url);
+  if (dom === undefined) {
+    return {
+      imageUrl: undefined,
+      text: undefined,
+    };
+  }
+
   const article = getReadabilityArticle(dom);
 
-  const imageUrl = getImageFromDomOrArticle(dom, article);
+  const imageUrl = await getImageFromDomOrArticle(dom, article);
   const text = getTextFromArticle(article);
 
   return {

@@ -3,20 +3,17 @@ import { brand } from "../shared/brandedTypes/brand";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 import { ReadabilityArticle } from "./getReadabilityArticle";
 
-export const getImageFromDomOrArticle = (
+export const getImageFromDomOrArticle = async (
   dom: JSDOM,
   article: ReadabilityArticle | undefined,
-): UrlString | undefined => {
+): Promise<UrlString | undefined> => {
   const openGraphImageUrl = dom.window.document
     .querySelector('meta[property="og:image"]')
     ?.getAttribute("content");
 
-  if (
-    openGraphImageUrl !== undefined
-    && openGraphImageUrl !== null
-    && openGraphImageUrl.trim() !== ""
-  ) {
-    return brand<UrlString>(openGraphImageUrl);
+  const ogImageUrl = await imageExists(openGraphImageUrl);
+  if (ogImageUrl !== undefined) {
+    return ogImageUrl;
   }
 
   const twitterImageUrl = dom.window.document
@@ -50,4 +47,19 @@ export const getImageFromDomOrArticle = (
   }
 
   return undefined;
+};
+
+const imageExists = async (
+  imageUrl: string | null | undefined,
+): Promise<UrlString | undefined> => {
+  if (imageUrl === undefined || imageUrl === null || imageUrl.trim() === "") {
+    return undefined;
+  }
+
+  const imageResponse = await fetch(imageUrl, { method: "HEAD" });
+  if (!imageResponse.ok) {
+    return undefined;
+  }
+
+  return brand<UrlString>(imageUrl);
 };
