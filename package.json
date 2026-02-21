@@ -19,6 +19,7 @@
     "test-hn-404-image": "tsx --env-file=.env ./src/hackerNews/testHnStory.ts 47032876",
     "test-hn-cookies": "tsx --env-file=.env ./src/hackerNews/testHnStory.ts 47096520",
     "test-hn-ids": "tsx --env-file=.env ./src/hackerNews/testHnStoryIds.ts",
+    "test-hn-paywall": "tsx --env-file=.env ./src/hackerNews/testHnStory.ts 47086980",
     "test-hn-story": "tsx --env-file=.env ./src/hackerNews/testHnStory.ts",
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
     "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts",
