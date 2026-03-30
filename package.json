@@ -24,31 +24,31 @@
     "update-dependencies": "yarn upgrade-interactive && rm yarn.lock && yarn install"
   },
   "dependencies": {
-    "@atproto/api": "^0.18.21",
+    "@atproto/api": "^0.19.6",
     "@mozilla/readability": "^0.6.0",
     "html-entities": "^2.6.0",
-    "jsdom": "^28.1.0",
-    "openai": "^6.22.0",
-    "puppeteer": "^24.37.3",
+    "jsdom": "^29.0.1",
+    "openai": "^6.33.0",
+    "puppeteer": "^24.40.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "rss-parser": "^3.13.0",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@stylistic/eslint-plugin": "^5.8.0",
-    "@types/jsdom": "^27.0.0",
-    "@types/node": "^25.2.3",
-    "eslint": "^9.39.2",
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/jsdom": "^28.0.1",
+    "@types/node": "^25.5.2",
+    "eslint": "^10.2.0",
     "eslint-formatter-unix": "^9.0.1",
-    "eslint-plugin-perfectionist": "^5.5.0",
-    "globals": "^17.3.0",
+    "eslint-plugin-perfectionist": "^5.8.0",
+    "globals": "^17.4.0",
     "prettier": "^3.8.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.55.0",
-    "vitest": "^4.0.18"
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.0",
+    "vitest": "^4.1.2"
   },
   "packageManager": "yarn@4.12.0"
 }
