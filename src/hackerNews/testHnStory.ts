@@ -1,6 +1,6 @@
 import { fetchHnFrontPageStoryIds } from "./fetchHnFrontPageStoryIds";
 import { fetchHnStory } from "./fetchHnStory";
-import { getImageAndText } from "./getImageAndText";
+import { fetchPageInfo } from "./fetchPageInfo";
 import { summarize } from "./summarize";
 
 const storyId = await (async () => {
@@ -36,12 +36,13 @@ console.log(`NH Title: ${story.title}`);
 console.log(`NH URL: https://news.ycombinator.com/item?id=${storyId}`);
 console.log(`Story URL: ${story.url}`);
 
-const pageImageAndText = await getImageAndText(story.url);
-console.log(`Image: ${pageImageAndText.imageUrl ?? "No image found."}`);
+const pageInfo = await fetchPageInfo(story.url);
+console.log(`Description: ${pageInfo.description ?? "No description found."}`);
+console.log(`Image: ${pageInfo.imageUrl ?? "No image found."}`);
 
 const summary =
-  pageImageAndText.text === undefined
+  pageInfo.text === undefined
     ? undefined
-    : await summarize(pageImageAndText.text, 300, "google/gemini-2.5-flash");
+    : await summarize(pageInfo.text, 300, "google/gemini-2.5-flash");
 
 console.log(`Summary: ${summary ?? "Could not extract page text."}`);
