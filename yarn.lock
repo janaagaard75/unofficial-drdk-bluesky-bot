@@ -2447,6 +2447,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"image-size@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "image-size@npm:2.0.2"
+  bin:
+    image-size: bin/image-size.js
+  checksum: 10c0/f09dd0f7cf8511cd20e4f756bdb5a7cb6d2240de3323f41bde266bed8373392a293892bf12e907e2995f52833fd88dd27cf6b1a52ab93968afc716cb78cd7b79
+  languageName: node
+  linkType: hard
+
 "import-fresh@npm:^3.3.0":
   version: 3.3.1
   resolution: "import-fresh@npm:3.3.1"
@@ -4157,6 +4166,7 @@ __metadata:
     eslint-plugin-perfectionist: "npm:^5.8.0"
     globals: "npm:^17.4.0"
     html-entities: "npm:^2.6.0"
+    image-size: "npm:^2.0.2"
     jsdom: "npm:^29.0.1"
     openai: "npm:^6.33.0"
     prettier: "npm:^3.8.1"
