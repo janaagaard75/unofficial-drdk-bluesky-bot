@@ -23,10 +23,10 @@ export const postLink = async (
 
   await postToBluesky({
     agent: agent,
-    description: description,
-    imageUrl: imageUrl,
+    linkDescription: description,
+    linkImageUrl: imageUrl,
+    linkTitle: title,
+    linkUrl: url,
     text: summary,
-    title: title,
-    url: url,
   });
 };

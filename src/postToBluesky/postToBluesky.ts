@@ -6,15 +6,16 @@ import { downloadImage } from "./downloadImage";
 import { limitLength } from "./limitLength";
 import { uploadImage } from "./uploadImage";
 
+/** Create a post on Bluesky that contains a text and a link. The link is comprised of the title, description, thumbnail and of course a URL. */
 export const postToBluesky = async (parameters: {
   agent: AtpAgent;
-  description: PlainTextString;
-  imageUrl: UrlString | undefined;
+  linkDescription: PlainTextString;
+  linkImageUrl: UrlString | undefined;
+  linkTitle: PlainTextString;
+  linkUrl: UrlString;
   text: PlainTextString;
-  title: PlainTextString;
-  url: UrlString;
 }) => {
-  const downloadedImage = await downloadImage(parameters.imageUrl);
+  const downloadedImage = await downloadImage(parameters.linkImageUrl);
   const compressedImage = await compressImage(downloadedImage);
   const uploadedImageReference = await uploadImage(
     parameters.agent,
@@ -23,17 +24,17 @@ export const postToBluesky = async (parameters: {
   const limitedText = limitLength(parameters.text);
 
   console.log(
-    `Posting ${parameters.url} to Bluesky with the text "${limitedText}" (${limitLength.length}).`,
+    `Posting ${parameters.linkUrl} to Bluesky with the text "${limitedText}" (${limitLength.length}).`,
   );
 
   const post = {
     embed: {
       $type: "app.bsky.embed.external",
       external: {
-        description: parameters.description,
+        description: parameters.linkDescription,
         thumb: uploadedImageReference,
-        title: parameters.title,
-        uri: parameters.url,
+        title: parameters.linkTitle,
+        uri: parameters.linkUrl,
       },
     },
     langs: ["da-DK"],
