@@ -1,24 +1,12 @@
-import { AtpAgent } from "@atproto/api";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
-import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { postLink } from "../postNewLinks/postLink";
 import { setDifference } from "../shared/setDifference";
+import { testAgent } from "../shared/testAgent";
 
 const testPostNewLinks = async () => {
   try {
-    const username = getEnvironmentVariableValue("BLUESKY_TEST_USERNAME");
-    const password = getEnvironmentVariableValue("BLUESKY_TEST_PASSWORD");
-    const agent = new AtpAgent({
-      service: "https://bsky.social",
-    });
-    await agent.login({
-      identifier: username,
-      password: password,
-    });
-    console.log(`Signed in to Bluesky as ${username}.`);
-
-    const postedUrls = await fetchUrlsPostedOnBluesky(agent);
+    const postedUrls = await fetchUrlsPostedOnBluesky(testAgent);
     console.log(`Fetched ${postedUrls.size} posted URLs.`);
 
     const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
@@ -34,7 +22,7 @@ const testPostNewLinks = async () => {
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
-      await postLink(agent, titleAndUrl.title, titleAndUrl.url);
+      await postLink(testAgent, titleAndUrl.title, titleAndUrl.url);
     }
 
     console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);
