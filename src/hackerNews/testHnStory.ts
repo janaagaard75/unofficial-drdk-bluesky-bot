@@ -39,6 +39,7 @@ console.log(`Story URL: ${story.url}`);
 const pageInfo = await fetchPageInfo(story.url);
 console.log(`Description: ${pageInfo.description ?? "No description found."}`);
 console.log(`Image: ${pageInfo.imageUrl ?? "No image found."}`);
+console.log(`Title: ${pageInfo.title ?? "No title found."}`);
 
 const summary =
   pageInfo.text === undefined
