@@ -6,36 +6,39 @@ import { downloadImage } from "./downloadImage";
 import { limitLength } from "./limitLength";
 import { uploadImage } from "./uploadImage";
 
-export const postToBluesky = async (
-  agent: AtpAgent,
-  description: PlainTextString,
-  imageUrl: UrlString | undefined,
-  text: PlainTextString,
-  title: PlainTextString,
-  url: UrlString,
-) => {
-  const downloadedImage = await downloadImage(imageUrl);
+export const postToBluesky = async (parameters: {
+  agent: AtpAgent;
+  description: PlainTextString;
+  imageUrl: UrlString | undefined;
+  text: PlainTextString;
+  title: PlainTextString;
+  url: UrlString;
+}) => {
+  const downloadedImage = await downloadImage(parameters.imageUrl);
   const compressedImage = await compressImage(downloadedImage);
-  const uploadedImageReference = await uploadImage(agent, compressedImage);
-  const limitedText = limitLength(text);
+  const uploadedImageReference = await uploadImage(
+    parameters.agent,
+    compressedImage,
+  );
+  const limitedText = limitLength(parameters.text);
 
   console.log(
-    `Posting ${url} to Bluesky with the text "${limitedText}" (${limitLength.length}).`,
+    `Posting ${parameters.url} to Bluesky with the text "${limitedText}" (${limitLength.length}).`,
   );
 
   const post = {
     embed: {
       $type: "app.bsky.embed.external",
       external: {
-        description: description,
+        description: parameters.description,
         thumb: uploadedImageReference,
-        title: title,
-        uri: url,
+        title: parameters.title,
+        uri: parameters.url,
       },
     },
     langs: ["da-DK"],
     text: limitedText,
   };
 
-  await agent.post(post);
+  await parameters.agent.post(post);
 };

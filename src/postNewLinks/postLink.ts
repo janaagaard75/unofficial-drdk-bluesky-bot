@@ -21,5 +21,12 @@ export const postLink = async (
   const articleText = extractArticleText(htmlArticle);
   const summary = await summarize(articleText, "google/gemini-2.5-flash");
 
-  await postToBluesky(agent, description, imageUrl, summary, title, url);
+  await postToBluesky({
+    agent: agent,
+    description: description,
+    imageUrl: imageUrl,
+    text: summary,
+    title: title,
+    url: url,
+  });
 };
