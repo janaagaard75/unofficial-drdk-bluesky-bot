@@ -38,7 +38,7 @@ await postToBluesky({
   agent: testAgent,
   linkDescription: summary,
   linkImageUrl: pageInfo.imageUrl,
-  linkTitle: pageInfo.title ?? brand<PlainTextString>("No title found."),
+  linkTitle: hnStory.title,
   linkUrl: brand<UrlString>(`https://news.ycombinator.com/item?id=${storyId}`),
   text: summary,
 });

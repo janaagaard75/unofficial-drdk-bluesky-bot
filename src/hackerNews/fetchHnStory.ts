@@ -1,5 +1,5 @@
 import { brand } from "../shared/brandedTypes/brand";
-import { HtmlString } from "../shared/brandedTypes/HtmlString";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 import { HnItem } from "./HnItem";
 import { HnStory } from "./HnStory";
@@ -23,7 +23,7 @@ export const fetchHnStory = async (
 
   return {
     kids: rawStory.kids,
-    title: brand<HtmlString>(rawStory.title),
+    title: brand<PlainTextString>(rawStory.title),
     url: brand<UrlString>(rawStory.url),
   };
 };
