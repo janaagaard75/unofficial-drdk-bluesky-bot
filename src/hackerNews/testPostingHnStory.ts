@@ -9,35 +9,39 @@ import { fetchRandomStoryId } from "./fetchRandomStoryId";
 import { summarize } from "./summarize";
 
 const storyId = await fetchRandomStoryId();
+console.log(`Hacker News story ID: ${storyId}.`);
 
-const story = await fetchHnStory(storyId);
+const hnStory = await fetchHnStory(storyId);
 
-if (story === undefined) {
+if (hnStory === undefined) {
   throw new Error(
     `Something went wrong fetching the story with ID ${storyId}.`,
   );
 }
 
-console.log(`NH Title: ${story.title}`);
-console.log(`NH URL: https://news.ycombinator.com/item?id=${storyId}`);
-console.log(`Story URL: ${story.url}`);
+console.log(`Hacker News title: ${hnStory.title}`);
+console.log(`Story URL: ${hnStory.url}`);
 
-const pageInfo = await fetchPageInfo(story.url);
+const article = await fetchPageInfo(hnStory.url);
 
-console.log(`Description: ${pageInfo.description ?? "No description found."}`);
-console.log(`Image: ${pageInfo.imageUrl ?? "No image found."}`);
+console.log(`Title: ${article.title ?? "No title found."}`);
+console.log(`Description: ${article.description ?? "No description found."}`);
+console.log(`Image: ${article.imageUrl ?? "No image found."}`);
+console.log(
+  `Text: ${article.text === undefined ? "No text found." : article.text.substring(0, 600)}...`,
+);
 
 const summary = brand<PlainTextString>(
-  pageInfo.text === undefined
+  article.text === undefined
     ? "No text found to summarize."
-    : await summarize(pageInfo.text, 300, "google/gemini-2.5-flash"),
+    : await summarize(article.text, 300, "google/gemini-2.5-flash"),
 );
 console.log(`Summary: ${summary}`);
 
 await postToBluesky({
   agent: testAgent,
   linkDescription: summary,
-  linkImageUrl: pageInfo.imageUrl,
+  linkImageUrl: article.imageUrl,
   linkTitle: hnStory.title,
   linkUrl: brand<UrlString>(`https://news.ycombinator.com/item?id=${storyId}`),
   text: summary,
