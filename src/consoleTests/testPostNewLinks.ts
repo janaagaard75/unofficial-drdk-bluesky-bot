@@ -1,3 +1,4 @@
+import { drdkFeedSize } from "../drdk/drdkFeedSize";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
 import { postLink } from "../postNewLinks/postLink";
@@ -6,7 +7,10 @@ import { testAgent } from "../shared/testAgent";
 
 const testPostNewLinks = async () => {
   try {
-    const postedUrls = await fetchUrlsPostedOnBluesky(testAgent);
+    const postedUrls = await fetchUrlsPostedOnBluesky(
+      testAgent,
+      2 * drdkFeedSize,
+    );
     console.log(`Fetched ${postedUrls.size} posted URLs.`);
 
     const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();

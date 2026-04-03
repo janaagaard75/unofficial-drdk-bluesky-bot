@@ -3,10 +3,10 @@ import { BlueskyPostRecord } from "./BlueskyPostRecord";
 
 export const fetchUrlsPostedOnBluesky = async (
   agent: AtpAgent,
+  numberOfPostsToFetch: number,
 ): Promise<Set<string>> => {
-  const feedSize = 20;
   const timeline = await agent.getTimeline({
-    limit: 2 * feedSize,
+    limit: numberOfPostsToFetch,
   });
 
   const feedViewPosts = timeline.data.feed;
