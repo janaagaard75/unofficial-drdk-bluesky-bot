@@ -1,13 +1,13 @@
 import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
 import { postLink } from "../postLink/postLink";
-import { productionAgent } from "../shared/productionAgent";
+import { drdkProductionAgent } from "../shared/drdkProductionAgent";
 import { setDifference } from "../shared/setDifference";
 import { drdkFeedSize } from "./drdkFeedSize";
 import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
 
 const postNewDrdkLinks = async () => {
   const postedUrls = await fetchUrlsPostedOnBluesky(
-    productionAgent,
+    drdkProductionAgent,
     2 * drdkFeedSize,
   );
   console.log(`Fetched ${postedUrls.size} posted URLs.`);
@@ -25,7 +25,7 @@ const postNewDrdkLinks = async () => {
   );
 
   for (const titleAndUrl of newTitlesAndUrls) {
-    await postLink(productionAgent, titleAndUrl.title, titleAndUrl.url);
+    await postLink(drdkProductionAgent, titleAndUrl.title, titleAndUrl.url);
   }
 
   console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);
