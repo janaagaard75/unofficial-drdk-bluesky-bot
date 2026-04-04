@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "erasableSyntaxOnly": true,
-    "forceConsistentCasingInFileNames": true,
     "lib": ["ESNext"],
-    "module": "ESNext",
     "moduleResolution": "bundler",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -13,7 +11,6 @@
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
     "target": "ESNext"
   },
   "include": ["./src/**/*.ts", "./*.ts"]
