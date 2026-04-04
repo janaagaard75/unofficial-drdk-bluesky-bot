@@ -24,6 +24,7 @@
     "test-hn-story": "tsx --env-file=.env ./src/hackerNews/testHnStory.ts",
     "test-posting-hn-story": "tsx --env-file=.env ./src/hackerNews/testPostingHnStory.ts",
     "test-post-new-links": "tsx --env-file=.env ./src/consoleTests/testPostNewLinks.ts",
+    "test-posted-nh-story-ids": "tsx --env-file=.env ./src/hackerNews/testPostedHnStoryIds.ts",
     "test-post-test-links": "tsx --env-file=.env ./src/consoleTests/testPostTestLinks.ts",
     "test-summarize": "tsx --env-file=.env ./src/consoleTests/testSummarize.ts",
     "update-dependencies": "yarn upgrade-interactive && rm yarn.lock && yarn install"

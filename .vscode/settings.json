@@ -14,7 +14,8 @@
     "networkidle",
     "nvmrc",
     "openai",
-    "pollopt"
+    "pollopt",
+    "ycombinator"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
