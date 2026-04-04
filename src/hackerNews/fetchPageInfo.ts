@@ -1,7 +1,7 @@
 import { JSDOM } from "jsdom";
 import puppeteerExtra from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
-import { extractDescription } from "../postNewLinks/extractDescription";
+import { extractDescription } from "../postLink/extractDescription";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";

@@ -1,6 +1,6 @@
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
-import { postLink } from "../postNewLinks/postLink";
+import { postLink } from "../postLink/postLink";
 import { productionAgent } from "../shared/productionAgent";
 import { setDifference } from "../shared/setDifference";
 import { drdkFeedSize } from "./drdkFeedSize";
