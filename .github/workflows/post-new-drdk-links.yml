@@ -1,4 +1,4 @@
-name: Post New Links
+name: Post New dr.dk Links
 
 permissions:
   contents: read
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  post-new-links:
+  post-new-drdk-links:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,4 +33,4 @@ jobs:
           BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
           BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
           OPEN_ROUTER_API_KEY: ${{ secrets.OPEN_ROUTER_API_KEY }}
-        run: yarn run post-new-links
+        run: yarn run post-new-drdk-links

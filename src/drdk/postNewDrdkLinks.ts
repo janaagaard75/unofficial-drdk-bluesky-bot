@@ -1,11 +1,11 @@
-import { drdkFeedSize } from "../drdk/drdkFeedSize";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
+import { postLink } from "../postNewLinks/postLink";
 import { productionAgent } from "../shared/productionAgent";
 import { setDifference } from "../shared/setDifference";
-import { postLink } from "./postLink";
+import { drdkFeedSize } from "./drdkFeedSize";
 
-const postNewLinks = async () => {
+const postNewDrdkLinks = async () => {
   const postedUrls = await fetchUrlsPostedOnBluesky(
     productionAgent,
     2 * drdkFeedSize,
@@ -32,7 +32,7 @@ const postNewLinks = async () => {
 };
 
 try {
-  await postNewLinks();
+  await postNewDrdkLinks();
 } catch (error) {
   console.error(error);
   process.exit(1);
