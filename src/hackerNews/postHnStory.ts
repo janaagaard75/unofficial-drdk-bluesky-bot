@@ -16,8 +16,8 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
     );
   }
 
-  console.log(`Hacker News title: ${hnStory.title}`);
   console.log(`Story URL: ${hnStory.url}`);
+  console.log(`Hacker News title: ${hnStory.title}`);
 
   const article = await fetchPageInfo(hnStory.url);
 
