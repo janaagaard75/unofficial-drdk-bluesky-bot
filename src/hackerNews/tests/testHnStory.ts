@@ -1,7 +1,7 @@
-import { fetchHnStory } from "./fetchHnStory";
-import { fetchPageInfo } from "./fetchPageInfo";
-import { fetchRandomStoryId } from "./fetchRandomStoryId";
-import { summarize } from "./summarize";
+import { fetchHnStory } from "../fetchHnStory";
+import { fetchPageInfo } from "../fetchPageInfo";
+import { fetchRandomStoryId } from "../fetchRandomStoryId";
+import { summarize } from "../summarize";
 
 const storyId = await fetchRandomStoryId();
 

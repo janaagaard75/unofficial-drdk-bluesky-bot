@@ -1,12 +1,12 @@
-import { postToBluesky } from "../postToBluesky/postToBluesky";
-import { brand } from "../shared/brandedTypes/brand";
-import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../shared/brandedTypes/UrlString";
-import { testAgent } from "../shared/testAgent";
-import { fetchHnStory } from "./fetchHnStory";
-import { fetchPageInfo } from "./fetchPageInfo";
-import { fetchRandomStoryId } from "./fetchRandomStoryId";
-import { summarize } from "./summarize";
+import { postToBluesky } from "../../postToBluesky/postToBluesky";
+import { brand } from "../../shared/brandedTypes/brand";
+import { PlainTextString } from "../../shared/brandedTypes/PlainTextString";
+import { UrlString } from "../../shared/brandedTypes/UrlString";
+import { testAgent } from "../../shared/testAgent";
+import { fetchHnStory } from "../fetchHnStory";
+import { fetchPageInfo } from "../fetchPageInfo";
+import { fetchRandomStoryId } from "../fetchRandomStoryId";
+import { summarize } from "../summarize";
 
 const storyId = await fetchRandomStoryId();
 console.log(`Hacker News story ID: ${storyId}.`);
