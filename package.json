@@ -15,6 +15,7 @@
     "test-description": "tsx --env-file=.env ./src/consoleTests/testDescription.ts",
     "test-extract-article-text": "tsx --env-file=.env ./src/consoleTests/testExtractArticleText.ts",
     "test-fetch-article": "tsx --env-file=.env ./src/consoleTests/testFetchArticle.ts",
+    "test-get-new-hn-story-ids": "tsx --env-file=.env ./src/hackerNews/testGetNewHnStoryIds.ts",
     "test-hero-images": "tsx --env-file=.env ./src/consoleTests/testHeroImages.ts",
     "test-hn-404-image": "tsx --env-file=.env ./src/hackerNews/testHnStory.ts 47032876",
     "test-hn-cookies": "tsx --env-file=.env ./src/hackerNews/testHnStory.ts 47096520",
