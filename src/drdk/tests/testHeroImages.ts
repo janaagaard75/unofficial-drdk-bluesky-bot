@@ -1,9 +1,9 @@
-import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
-import { extractHtmlArticle } from "../postLink/extractHtmlArticle";
-import { fetchHtmlPage } from "../postLink/fetchHtmlPage";
-import { downloadImage } from "../postToBluesky/downloadImage";
-import { uploadImage } from "../postToBluesky/uploadImage";
-import { testAgent } from "../shared/testAgent";
+import { extractImageUrl } from "../../extractImageUrl/extractImageUrl";
+import { extractHtmlArticle } from "../../postLink/extractHtmlArticle";
+import { fetchHtmlPage } from "../../postLink/fetchHtmlPage";
+import { downloadImage } from "../../postToBluesky/downloadImage";
+import { uploadImage } from "../../postToBluesky/uploadImage";
+import { testAgent } from "../../shared/testAgent";
 import { testUrls } from "./testUrls";
 
 const testHeroImages = async () => {

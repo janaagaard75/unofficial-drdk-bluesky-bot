@@ -1,9 +1,9 @@
-import { drdkFeedSize } from "../drdk/drdkFeedSize";
-import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
-import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
-import { postLink } from "../postLink/postLink";
-import { setDifference } from "../shared/setDifference";
-import { testAgent } from "../shared/testAgent";
+import { fetchTitlesAndUrlsFromRssFeed } from "../../fetchTitlesAndUrlsFromRssFeed";
+import { fetchUrlsPostedOnBluesky } from "../../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
+import { postLink } from "../../postLink/postLink";
+import { setDifference } from "../../shared/setDifference";
+import { testAgent } from "../../shared/testAgent";
+import { drdkFeedSize } from "../drdkFeedSize";
 
 const testPostNewLinks = async () => {
   try {

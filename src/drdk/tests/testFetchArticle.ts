@@ -1,6 +1,6 @@
 import { writeFile } from "fs/promises";
-import { extractHtmlArticle } from "../postLink/extractHtmlArticle";
-import { fetchHtmlPage } from "../postLink/fetchHtmlPage";
+import { extractHtmlArticle } from "../../postLink/extractHtmlArticle";
+import { fetchHtmlPage } from "../../postLink/fetchHtmlPage";
 import { testUrls } from "./testUrls";
 
 const testFetchArticle = async () => {
