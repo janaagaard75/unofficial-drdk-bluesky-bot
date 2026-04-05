@@ -1,4 +1,4 @@
-import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
+import { fetchUrlsPostedOnBluesky } from "../bluesky/fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
 import { drdkProductionAgent } from "../shared/drdkProductionAgent";
 import { setDifference } from "../shared/setDifference";
 import { drdkFeedSize } from "./drdkFeedSize";

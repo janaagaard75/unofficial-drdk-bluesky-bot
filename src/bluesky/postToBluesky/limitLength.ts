@@ -1,5 +1,5 @@
-import { brand } from "../shared/brandedTypes/brand";
-import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { brand } from "../../shared/brandedTypes/brand";
+import { PlainTextString } from "../../shared/brandedTypes/PlainTextString";
 
 export const limitLength = (text: PlainTextString): PlainTextString => {
   const blueskyPostLengthLimit = 300;

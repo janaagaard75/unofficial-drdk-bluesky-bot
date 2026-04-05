@@ -1,6 +1,6 @@
 import { AtpAgent } from "@atproto/api";
+import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
 import { fetchPageInfo } from "../fetchPageInfo/fetchPageInfo";
-import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";

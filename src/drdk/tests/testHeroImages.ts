@@ -1,5 +1,5 @@
-import { downloadImage } from "../../postToBluesky/downloadImage";
-import { uploadImage } from "../../postToBluesky/uploadImage";
+import { downloadImage } from "../../bluesky/postToBluesky/downloadImage";
+import { uploadImage } from "../../bluesky/postToBluesky/uploadImage";
 import { testAgent } from "../../shared/testAgent";
 import { extractHtmlArticle } from "../extractHtmlArticle";
 import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
