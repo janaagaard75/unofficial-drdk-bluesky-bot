@@ -11,7 +11,7 @@
     "check-types": "tsc",
     "check-unused": "yarn dlx --quiet ts-prune src/",
     "post-new-drdk-links": "tsx ./src/drdk/postNewDrdkLinks.ts",
-    "post-new-hn-stories": "tsx --env-file=.env ./src/hackerNews/postNewHnStories.ts",
+    "post-new-hn-stories": "tsx ./src/hackerNews/postNewHnStories.ts",
     "test": "vitest",
     "test-drdk-description": "tsx --env-file=.env ./src/drdk/tests/testDescription.ts",
     "test-drdk-extract-article-text": "tsx --env-file=.env ./src/drdk/tests/testExtractArticleText.ts",
