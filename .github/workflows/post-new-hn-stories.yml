@@ -29,7 +29,7 @@ jobs:
 
       - name: Post new stories
         env:
-          BLUESKY_HN_USERNAME: ${{ secrets.BLUESKY_HN_USERNAME }}
-          BLUESKY_HN_PASSWORD: ${{ secrets.BLUESKY_HN_PASSWORD }}
+          BLUESKY_HN_USERNAME: ${{ secrets.BLUESKY_TEST_USERNAME }}
+          BLUESKY_HN_PASSWORD: ${{ secrets.BLUESKY_TEST_PASSWORD }}
           OPEN_ROUTER_API_KEY: ${{ secrets.OPEN_ROUTER_API_KEY }}
         run: yarn run post-new-hn-stories
