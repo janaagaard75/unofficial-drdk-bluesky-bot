@@ -1,10 +1,10 @@
 import { AtpAgent } from "@atproto/api";
+import { fetchPageInfo } from "../fetchPageInfo/fetchPageInfo";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 import { fetchHnStory } from "./fetchHnStory";
-import { fetchPageInfo } from "./fetchPageInfo";
 import { summarize } from "./summarize";
 
 export const postHnStory = async (agent: AtpAgent, storyId: number) => {
