@@ -1,4 +1,4 @@
-# @janaagaard.com's Bluesky Bots
+# Bluesky Bots
 
 Repository for [my](https://bsky.app/profile/janaagaard.com) two [Bluesky](https://bsky.app/) bots, the [Unofficial Hacker News frontpage bot](https://bsky.app/profile/hn-frontpage-bot.bsky.social) and the Danish [Uofficiel dr.dk nyheder bot on Bluesky](https://bsky.app/profile/drdk-nyheder-bot.bsky.social).
 
