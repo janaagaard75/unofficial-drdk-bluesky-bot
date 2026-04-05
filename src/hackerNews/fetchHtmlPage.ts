@@ -15,7 +15,7 @@ export const fetchHtmlPage = async (
   const page = await browser.newPage();
 
   try {
-    await page.goto(url, { waitUntil: "networkidle0" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
   } catch (error) {
     console.error(`Error navigating to ${url}:`, error);
     await browser.close();
