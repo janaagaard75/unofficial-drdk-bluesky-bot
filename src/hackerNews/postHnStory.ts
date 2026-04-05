@@ -30,7 +30,7 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
 
   const summary = brand<PlainTextString>(
     article.text === undefined
-      ? "No text found to summarize."
+      ? ""
       : await summarize(article.text, 300, "google/gemini-2.5-flash"),
   );
   console.log(`Summary: ${summary}`);
