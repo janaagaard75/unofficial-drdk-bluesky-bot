@@ -28,6 +28,8 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
     `Text: ${article.text === undefined ? "No text found." : article.text.substring(0, 600)}...`,
   );
 
+  const linkDescription = brand<PlainTextString>(article.description ?? "");
+
   const summary = brand<PlainTextString>(
     article.text === undefined
       ? ""
@@ -37,7 +39,7 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
 
   await postToBluesky({
     agent: agent,
-    linkDescription: summary,
+    linkDescription: linkDescription,
     linkImageUrl: article.imageUrl,
     linkTitle: hnStory.title,
     linkUrl: brand<UrlString>(
