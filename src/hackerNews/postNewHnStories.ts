@@ -1,5 +1,5 @@
-import { hnProductionAgent } from "../shared/hnProductionAgent";
 import { getNewHnStoryIds } from "./getNewHnStoryIds";
+import { hnProductionAgent } from "./hnProductionAgent";
 import { postHnStory } from "./postHnStory";
 
 const newStoryIds = await getNewHnStoryIds(hnProductionAgent);
