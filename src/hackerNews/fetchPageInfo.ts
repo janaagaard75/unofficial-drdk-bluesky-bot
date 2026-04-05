@@ -35,7 +35,7 @@ export const fetchPageInfo = async (url: UrlString): Promise<PageInfo> => {
 
   const dom = new JSDOM(htmlPage, { url: url });
   const article = getReadabilityArticle(dom);
-  const imageUrl = await getImageFromDomOrArticle(dom, article);
+  const imageUrl = await getImageFromDomOrArticle(url, dom, article);
   const text = getTextFromArticle(article);
   const title =
     article?.title === undefined || article.title === null

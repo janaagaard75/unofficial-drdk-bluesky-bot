@@ -5,6 +5,7 @@ import { UrlString } from "../shared/brandedTypes/UrlString";
 import { ReadabilityArticle } from "./getReadabilityArticle";
 
 export const getImageFromDomOrArticle = async (
+  baseUrl: UrlString,
   dom: JSDOM,
   article: ReadabilityArticle | undefined,
 ): Promise<UrlString | undefined> => {
@@ -13,10 +14,11 @@ export const getImageFromDomOrArticle = async (
     ?.getAttribute("content");
 
   if (openGraphImageUrl !== undefined && openGraphImageUrl !== null) {
-    const openGraphImage = await fetchImage(openGraphImageUrl);
+    const resolvedUrl = resolveUrl(openGraphImageUrl, baseUrl);
+    const openGraphImage = await fetchImage(resolvedUrl);
 
     if (openGraphImage !== undefined && imageIsLargeEnough(openGraphImage)) {
-      return brand<UrlString>(openGraphImageUrl);
+      return brand<UrlString>(resolvedUrl);
     }
   }
 
@@ -25,10 +27,11 @@ export const getImageFromDomOrArticle = async (
     ?.getAttribute("content");
 
   if (twitterImageUrl !== undefined && twitterImageUrl !== null) {
-    const twitterImage = await fetchImage(twitterImageUrl);
+    const resolvedUrl = resolveUrl(twitterImageUrl, baseUrl);
+    const twitterImage = await fetchImage(resolvedUrl);
 
     if (twitterImage !== undefined && imageIsLargeEnough(twitterImage)) {
-      return brand<UrlString>(twitterImageUrl);
+      return brand<UrlString>(resolvedUrl);
     }
   }
 
@@ -42,10 +45,11 @@ export const getImageFromDomOrArticle = async (
       .querySelector("img")
       ?.getAttribute("src");
     if (articleImageUrl !== undefined && articleImageUrl !== null) {
-      const articleImage = await fetchImage(articleImageUrl);
+      const resolvedUrl = resolveUrl(articleImageUrl, baseUrl);
+      const articleImage = await fetchImage(resolvedUrl);
 
       if (articleImage !== undefined && imageIsLargeEnough(articleImage)) {
-        return brand<UrlString>(articleImageUrl);
+        return brand<UrlString>(resolvedUrl);
       }
     }
   }
@@ -69,4 +73,12 @@ const fetchImage = async (imageUrl: string) => {
 const imageIsLargeEnough = (image: Uint8Array<ArrayBuffer>): boolean => {
   const dimensions = imageSize(image);
   return dimensions.width >= 200 && dimensions.height >= 200;
+};
+
+const resolveUrl = (url: string, baseUrl: string): string => {
+  try {
+    return new URL(url, baseUrl).href;
+  } catch {
+    return url;
+  }
 };
