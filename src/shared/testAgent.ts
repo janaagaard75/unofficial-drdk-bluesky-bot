@@ -1,5 +1,5 @@
 import { AtpAgent } from "@atproto/api";
-import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { getEnvironmentVariableValue } from "./getEnvironmentVariableValue";
 
 const username = getEnvironmentVariableValue("BLUESKY_TEST_USERNAME");
 const password = getEnvironmentVariableValue("BLUESKY_TEST_PASSWORD");

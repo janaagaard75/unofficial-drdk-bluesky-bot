@@ -1,7 +1,7 @@
 import OpenAI from "openai";
-import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { brand } from "../shared/brandedTypes/brand";
+import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableValue";
 
 export const summarize = async (
   articleText: PlainTextString,

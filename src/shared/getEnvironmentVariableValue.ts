@@ -1,4 +1,4 @@
-import { PlainTextString } from "./shared/brandedTypes/PlainTextString";
+import { PlainTextString } from "./brandedTypes/PlainTextString";
 
 export const getEnvironmentVariableValue = (
   variableName: string,
