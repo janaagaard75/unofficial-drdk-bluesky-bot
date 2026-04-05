@@ -1,5 +1,5 @@
-import { fetchPageInfo } from "../../fetchPageInfo/fetchPageInfo";
 import { fetchHnStory } from "../fetchHnStory";
+import { fetchPageInfo } from "../fetchPageInfo/fetchPageInfo";
 import { fetchRandomStoryId } from "../fetchRandomStoryId";
 import { summarize } from "../summarize";
 

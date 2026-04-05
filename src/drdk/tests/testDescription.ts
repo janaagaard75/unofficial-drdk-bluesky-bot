@@ -1,4 +1,4 @@
-import { extractDescription } from "../extractDescription";
+import { extractDescription } from "../../shared/extractDescription";
 import { fetchHtmlPage } from "../fetchHtmlPage";
 import { testUrls } from "./testUrls";
 

@@ -1,8 +1,8 @@
 import puppeteerExtra from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
-import { brand } from "../shared/brandedTypes/brand";
-import { HtmlString } from "../shared/brandedTypes/HtmlString";
-import { UrlString } from "../shared/brandedTypes/UrlString";
+import { HtmlString } from "../../shared/brandedTypes/HtmlString";
+import { UrlString } from "../../shared/brandedTypes/UrlString";
+import { brand } from "../../shared/brandedTypes/brand";
 
 puppeteerExtra.use(StealthPlugin());
 

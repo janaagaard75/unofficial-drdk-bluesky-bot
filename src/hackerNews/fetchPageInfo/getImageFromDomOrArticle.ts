@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom";
-import { brand } from "../shared/brandedTypes/brand";
-import { UrlString } from "../shared/brandedTypes/UrlString";
+import { brand } from "../../shared/brandedTypes/brand";
+import { UrlString } from "../../shared/brandedTypes/UrlString";
 import { fetchImage } from "./fetchImage";
 import { ReadabilityArticle } from "./getReadabilityArticle";
 import { imageIsLargeEnough } from "./imageIsLargeEnough";
