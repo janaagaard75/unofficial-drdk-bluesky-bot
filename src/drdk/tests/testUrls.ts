@@ -1,5 +1,5 @@
-import { brand } from "../shared/brandedTypes/brand";
-import { UrlString } from "../shared/brandedTypes/UrlString";
+import { brand } from "../../shared/brandedTypes/brand";
+import { UrlString } from "../../shared/brandedTypes/UrlString";
 
 export const testUrls = [
   brand<UrlString>(

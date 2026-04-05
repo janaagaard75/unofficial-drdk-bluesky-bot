@@ -1,23 +1,15 @@
-import { AtpAgent } from "@atproto/api";
-import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
 import { fetchUrlsPostedOnBluesky } from "../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
-import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { postLink } from "../postLink/postLink";
+import { drdkProductionAgent } from "../shared/drdkProductionAgent";
 import { setDifference } from "../shared/setDifference";
-import { postLink } from "./postLink";
+import { drdkFeedSize } from "./drdkFeedSize";
+import { fetchTitlesAndUrlsFromRssFeed } from "./fetchTitlesAndUrlsFromRssFeed";
 
-const postNewLinks = async () => {
-  const username = getEnvironmentVariableValue("BLUESKY_USERNAME");
-  const password = getEnvironmentVariableValue("BLUESKY_PASSWORD");
-  const agent = new AtpAgent({
-    service: "https://bsky.social",
-  });
-  await agent.login({
-    identifier: username,
-    password: password,
-  });
-  console.log(`Signed in to Bluesky as ${username}.`);
-
-  const postedUrls = await fetchUrlsPostedOnBluesky(agent);
+const postNewDrdkLinks = async () => {
+  const postedUrls = await fetchUrlsPostedOnBluesky(
+    drdkProductionAgent,
+    2 * drdkFeedSize,
+  );
   console.log(`Fetched ${postedUrls.size} posted URLs.`);
 
   const titlesAndUrlsFromFeed = await fetchTitlesAndUrlsFromRssFeed();
@@ -33,14 +25,14 @@ const postNewLinks = async () => {
   );
 
   for (const titleAndUrl of newTitlesAndUrls) {
-    await postLink(agent, titleAndUrl.title, titleAndUrl.url);
+    await postLink(drdkProductionAgent, titleAndUrl.title, titleAndUrl.url);
   }
 
   console.log(`Posted ${newTitlesAndUrls.length} new URLs.`);
 };
 
 try {
-  await postNewLinks();
+  await postNewDrdkLinks();
 } catch (error) {
   console.error(error);
   process.exit(1);

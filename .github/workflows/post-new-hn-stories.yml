@@ -1,0 +1,35 @@
+name: Post New Hacker News Stories
+
+permissions:
+  contents: read
+
+on:
+  schedule:
+    # Run every 15 minutes.
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  post-new-hn-stories:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Yarn
+        run: corepack enable
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Post new stories
+        env:
+          BLUESKY_HN_USERNAME: ${{ secrets.BLUESKY_TEST_USERNAME }}
+          BLUESKY_HN_PASSWORD: ${{ secrets.BLUESKY_TEST_PASSWORD }}
+          OPEN_ROUTER_API_KEY: ${{ secrets.OPEN_ROUTER_API_KEY }}
+        run: yarn run post-new-hn-stories

@@ -1,5 +1,5 @@
-import { brand } from "../shared/brandedTypes/brand";
-import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { brand } from "../../shared/brandedTypes/brand";
+import { PlainTextString } from "../../shared/brandedTypes/PlainTextString";
 
 export const testArticleTexts = [
   brand<PlainTextString>(

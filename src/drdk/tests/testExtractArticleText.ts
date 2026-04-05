@@ -1,6 +1,6 @@
-import { extractHtmlArticle } from "../postNewLinks/extractHtmlArticle";
-import { fetchHtmlPage } from "../postNewLinks/fetchHtmlPage";
-import { extractArticleText } from "../summarize/extractArticleText";
+import { extractHtmlArticle } from "../../postLink/extractHtmlArticle";
+import { fetchHtmlPage } from "../../postLink/fetchHtmlPage";
+import { extractArticleText } from "../../summarize/extractArticleText";
 import { testUrls } from "./testUrls";
 
 const testExtractArticleText = async () => {

@@ -1,4 +1,4 @@
-name: Post New Links
+name: Post New dr.dk Links
 
 permissions:
   contents: read
@@ -7,20 +7,19 @@ on:
   schedule:
     # Run every 10 minutes.
     - cron: "*/10 * * * *"
-  # Allow manual triggering.
   workflow_dispatch:
 
 jobs:
-  post-new-links:
+  post-new-drdk-links:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install Yarn
         run: corepack enable
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: "yarn"
@@ -30,7 +29,7 @@ jobs:
 
       - name: Post new links
         env:
-          BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
-          BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+          BLUESKY_DRDK_USERNAME: ${{ secrets.BLUESKY_DRDK_USERNAME }}
+          BLUESKY_DRDK_PASSWORD: ${{ secrets.BLUESKY_DRDK_PASSWORD }}
           OPEN_ROUTER_API_KEY: ${{ secrets.OPEN_ROUTER_API_KEY }}
-        run: yarn run post-new-links
+        run: yarn run post-new-drdk-links
