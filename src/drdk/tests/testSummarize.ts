@@ -1,4 +1,4 @@
-import { summarize } from "../../summarize/summarize";
+import { summarize } from "../summarize";
 import { testArticleTexts } from "./testArticlesTexts";
 
 const testSummarize = async () => {

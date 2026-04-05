@@ -3,11 +3,11 @@ import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
-import { extractArticleText } from "../summarize/extractArticleText";
-import { summarize } from "../summarize/summarize";
+import { extractArticleText } from "./extractArticleText";
 import { extractDescription } from "./extractDescription";
 import { extractHtmlArticle } from "./extractHtmlArticle";
 import { fetchHtmlPage } from "./fetchHtmlPage";
+import { summarize } from "./summarize";
 
 export const postLink = async (
   agent: AtpAgent,

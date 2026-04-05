@@ -1,9 +1,9 @@
 import { fetchUrlsPostedOnBluesky } from "../../fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
-import { postLink } from "../../postLink/postLink";
 import { setDifference } from "../../shared/setDifference";
 import { testAgent } from "../../shared/testAgent";
 import { drdkFeedSize } from "../drdkFeedSize";
 import { fetchTitlesAndUrlsFromRssFeed } from "../fetchTitlesAndUrlsFromRssFeed";
+import { postLink } from "../postLink";
 
 const testPostNewLinks = async () => {
   try {
