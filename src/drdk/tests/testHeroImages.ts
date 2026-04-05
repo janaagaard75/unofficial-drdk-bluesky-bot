@@ -1,8 +1,8 @@
-import { extractImageUrl } from "../../extractImageUrl/extractImageUrl";
 import { downloadImage } from "../../postToBluesky/downloadImage";
 import { uploadImage } from "../../postToBluesky/uploadImage";
 import { testAgent } from "../../shared/testAgent";
 import { extractHtmlArticle } from "../extractHtmlArticle";
+import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
 import { fetchHtmlPage } from "../fetchHtmlPage";
 import { testUrls } from "./testUrls";
 

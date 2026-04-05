@@ -1,11 +1,11 @@
 import { AtpAgent } from "@atproto/api";
-import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
 import { postToBluesky } from "../postToBluesky/postToBluesky";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
 import { extractArticleText } from "./extractArticleText";
 import { extractDescription } from "./extractDescription";
 import { extractHtmlArticle } from "./extractHtmlArticle";
+import { extractImageUrl } from "./extractImageUrl/extractImageUrl";
 import { fetchHtmlPage } from "./fetchHtmlPage";
 import { summarize } from "./summarize";
 
