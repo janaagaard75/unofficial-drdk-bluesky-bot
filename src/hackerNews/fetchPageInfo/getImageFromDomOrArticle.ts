@@ -1,8 +1,10 @@
-import { imageSize } from "image-size";
 import { JSDOM } from "jsdom";
-import { brand } from "../shared/brandedTypes/brand";
-import { UrlString } from "../shared/brandedTypes/UrlString";
+import { brand } from "../../shared/brandedTypes/brand";
+import { UrlString } from "../../shared/brandedTypes/UrlString";
+import { fetchImage } from "./fetchImage";
 import { ReadabilityArticle } from "./getReadabilityArticle";
+import { imageIsLargeEnough } from "./imageIsLargeEnough";
+import { resolveUrl } from "./resolveUrl";
 
 export const getImageFromDomOrArticle = async (
   baseUrl: UrlString,
@@ -17,7 +19,10 @@ export const getImageFromDomOrArticle = async (
     const resolvedUrl = resolveUrl(openGraphImageUrl, baseUrl);
     const openGraphImage = await fetchImage(resolvedUrl);
 
-    if (openGraphImage !== undefined && imageIsLargeEnough(openGraphImage)) {
+    if (
+      openGraphImage !== undefined
+      && imageIsLargeEnough(openGraphImage, minimumImageSize)
+    ) {
       return brand<UrlString>(resolvedUrl);
     }
   }
@@ -30,7 +35,10 @@ export const getImageFromDomOrArticle = async (
     const resolvedUrl = resolveUrl(twitterImageUrl, baseUrl);
     const twitterImage = await fetchImage(resolvedUrl);
 
-    if (twitterImage !== undefined && imageIsLargeEnough(twitterImage)) {
+    if (
+      twitterImage !== undefined
+      && imageIsLargeEnough(twitterImage, minimumImageSize)
+    ) {
       return brand<UrlString>(resolvedUrl);
     }
   }
@@ -48,7 +56,10 @@ export const getImageFromDomOrArticle = async (
       const resolvedUrl = resolveUrl(articleImageUrl, baseUrl);
       const articleImage = await fetchImage(resolvedUrl);
 
-      if (articleImage !== undefined && imageIsLargeEnough(articleImage)) {
+      if (
+        articleImage !== undefined
+        && imageIsLargeEnough(articleImage, minimumImageSize)
+      ) {
         return brand<UrlString>(resolvedUrl);
       }
     }
@@ -57,28 +68,4 @@ export const getImageFromDomOrArticle = async (
   return undefined;
 };
 
-const fetchImage = async (imageUrl: string) => {
-  if (imageUrl.trim() === "") {
-    return undefined;
-  }
-
-  const imageResponse = await fetch(imageUrl);
-  if (!imageResponse.ok) {
-    return undefined;
-  }
-
-  return await imageResponse.bytes();
-};
-
-const imageIsLargeEnough = (image: Uint8Array<ArrayBuffer>): boolean => {
-  const dimensions = imageSize(image);
-  return dimensions.width >= 200 && dimensions.height >= 200;
-};
-
-const resolveUrl = (url: string, baseUrl: string): string => {
-  try {
-    return new URL(url, baseUrl).href;
-  } catch {
-    return url;
-  }
-};
+const minimumImageSize = 200;

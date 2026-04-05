@@ -1,10 +1,10 @@
 import { JSDOM } from "jsdom";
 import puppeteerExtra from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
-import { extractDescription } from "../postLink/extractDescription";
-import { brand } from "../shared/brandedTypes/brand";
-import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../shared/brandedTypes/UrlString";
+import { brand } from "../../shared/brandedTypes/brand";
+import { PlainTextString } from "../../shared/brandedTypes/PlainTextString";
+import { UrlString } from "../../shared/brandedTypes/UrlString";
+import { extractDescription } from "../../shared/extractDescription";
 import { fetchHtmlPage } from "./fetchHtmlPage";
 import { getImageFromDomOrArticle } from "./getImageFromDomOrArticle";
 import { getReadabilityArticle } from "./getReadabilityArticle";

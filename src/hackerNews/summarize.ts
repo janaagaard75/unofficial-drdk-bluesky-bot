@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { getEnvironmentVariableValue } from "../getEnvironmentVariableValue";
+import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableValue";
 
 export const summarize = async (
   articleText: string,

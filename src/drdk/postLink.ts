@@ -1,13 +1,13 @@
 import { AtpAgent } from "@atproto/api";
-import { extractImageUrl } from "../extractImageUrl/extractImageUrl";
-import { postToBluesky } from "../postToBluesky/postToBluesky";
+import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { UrlString } from "../shared/brandedTypes/UrlString";
-import { extractArticleText } from "../summarize/extractArticleText";
-import { summarize } from "../summarize/summarize";
-import { extractDescription } from "./extractDescription";
+import { extractDescription } from "../shared/extractDescription";
+import { extractArticleText } from "./extractArticleText";
 import { extractHtmlArticle } from "./extractHtmlArticle";
+import { extractImageUrl } from "./extractImageUrl/extractImageUrl";
 import { fetchHtmlPage } from "./fetchHtmlPage";
+import { summarize } from "./summarize";
 
 export const postLink = async (
   agent: AtpAgent,
