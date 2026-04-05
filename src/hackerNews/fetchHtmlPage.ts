@@ -9,7 +9,9 @@ puppeteerExtra.use(StealthPlugin());
 export const fetchHtmlPage = async (
   url: UrlString,
 ): Promise<HtmlString | undefined> => {
-  const browser = await puppeteerExtra.launch();
+  const browser = await puppeteerExtra.launch({
+    args: ["--no-sandbox"],
+  });
   const page = await browser.newPage();
 
   try {
