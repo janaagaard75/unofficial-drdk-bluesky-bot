@@ -38,7 +38,7 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
     agent: agent,
     linkDescription: brand<PlainTextString>(article.description ?? ""),
     linkImageUrl: article.imageUrl,
-    linkTitle: hnStory.title,
+    linkTitle: brand<PlainTextString>(`${hnStory.title} (${hnStory.score})`),
     linkUrl: brand<UrlString>(
       `https://news.ycombinator.com/item?id=${storyId}`,
     ),
