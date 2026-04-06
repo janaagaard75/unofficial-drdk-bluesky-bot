@@ -1,4 +1,4 @@
-import { fetchUrlsPostedOnBluesky } from "../../bluesky/fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
+import { fetchHrefsPostedOnBluesky } from "../../bluesky/fetchHrefsPostedOnBluesky/fetchHrefsPostedOnBluesky";
 import { setDifference } from "../../shared/setDifference";
 import { testAgent } from "../../shared/testAgent";
 import { drdkFeedSize } from "../drdkFeedSize";
@@ -7,7 +7,7 @@ import { postLink } from "../postLink";
 
 const testPostNewLinks = async () => {
   try {
-    const postedUrls = await fetchUrlsPostedOnBluesky(
+    const postedUrls = await fetchHrefsPostedOnBluesky(
       testAgent,
       2 * drdkFeedSize,
     );
@@ -18,11 +18,13 @@ const testPostNewLinks = async () => {
       `Fetched ${titlesAndUrlsFromFeed.length} titles and URLs from RSS feed.`,
     );
 
-    const urlsFromFeed = new Set(titlesAndUrlsFromFeed.map((item) => item.url));
-    const newUrls = setDifference(urlsFromFeed, postedUrls);
+    const hrefsFromFeed = new Set(
+      titlesAndUrlsFromFeed.map((item) => item.url.href),
+    );
+    const newHrefs = setDifference(hrefsFromFeed, postedUrls);
 
     const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
-      newUrls.has(titleAndUrl.url),
+      newHrefs.has(titleAndUrl.url.href),
     );
 
     for (const titleAndUrl of newTitlesAndUrls) {
