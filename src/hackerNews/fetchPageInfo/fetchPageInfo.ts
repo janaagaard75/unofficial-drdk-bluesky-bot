@@ -3,7 +3,6 @@ import puppeteerExtra from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import { brand } from "../../shared/brandedTypes/brand";
 import { PlainTextString } from "../../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../../shared/brandedTypes/UrlString";
 import { extractDescription } from "../../shared/extractDescription";
 import { fetchHtmlPage } from "./fetchHtmlPage";
 import { getImageFromDomOrArticle } from "./getImageFromDomOrArticle";
@@ -14,12 +13,12 @@ puppeteerExtra.use(StealthPlugin());
 
 interface PageInfo {
   description: PlainTextString | undefined;
-  imageUrl: UrlString | undefined;
+  imageUrl: URL | undefined;
   text: PlainTextString | undefined;
   title: PlainTextString | undefined;
 }
 
-export const fetchPageInfo = async (url: UrlString): Promise<PageInfo> => {
+export const fetchPageInfo = async (url: URL): Promise<PageInfo> => {
   const htmlPage = await fetchHtmlPage(url);
 
   if (htmlPage === undefined) {
@@ -33,7 +32,7 @@ export const fetchPageInfo = async (url: UrlString): Promise<PageInfo> => {
 
   const description = extractDescription(htmlPage);
 
-  const dom = new JSDOM(htmlPage, { url: url });
+  const dom = new JSDOM(htmlPage, { url: url.href });
   const article = getReadabilityArticle(dom);
   const imageUrl = await getImageFromDomOrArticle(url, dom, article);
   const text = getTextFromArticle(article);

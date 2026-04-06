@@ -1,6 +1,5 @@
 import { AtpAgent } from "@atproto/api";
 import { PlainTextString } from "../../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../../shared/brandedTypes/UrlString";
 import { compressImage } from "./compressImage";
 import { downloadImage } from "./downloadImage";
 import { limitLength } from "./limitLength";
@@ -10,9 +9,9 @@ import { uploadImage } from "./uploadImage";
 export const postToBluesky = async (parameters: {
   agent: AtpAgent;
   linkDescription: PlainTextString;
-  linkImageUrl: UrlString | undefined;
+  linkImageUrl: URL | undefined;
   linkTitle: PlainTextString;
-  linkUrl: UrlString;
+  linkUrl: URL;
   text: PlainTextString;
 }) => {
   const downloadedImage = await downloadImage(parameters.linkImageUrl);

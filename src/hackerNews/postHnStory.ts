@@ -2,7 +2,6 @@ import { AtpAgent } from "@atproto/api";
 import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../shared/brandedTypes/UrlString";
 import { fetchHnStory } from "./fetchHnStory";
 import { fetchPageInfo } from "./fetchPageInfo/fetchPageInfo";
 import { summarize } from "./summarize";
@@ -15,9 +14,7 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
     return;
   }
 
-  const hnStoryUrl = brand<UrlString>(
-    `https://news.ycombinator.com/item?id=${storyId}`,
-  );
+  const hnStoryUrl = new URL(`https://news.ycombinator.com/item?id=${storyId}`);
 
   console.log(`Hacker News URL: ${hnStoryUrl}`);
   console.log(`Hacker News title: ${hnStory.title}`);

@@ -1,6 +1,4 @@
-import { UrlString } from "../../shared/brandedTypes/UrlString";
-
-export const downloadImage = async (imageUrl: UrlString | undefined) => {
+export const downloadImage = async (imageUrl: URL | undefined) => {
   if (imageUrl === undefined) {
     return undefined;
   }

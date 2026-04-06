@@ -1,8 +1,4 @@
-export const fetchImage = async (imageUrl: string) => {
-  if (imageUrl.trim() === "") {
-    return undefined;
-  }
-
+export const fetchImage = async (imageUrl: URL) => {
   const imageResponse = await fetch(imageUrl);
   if (!imageResponse.ok) {
     return undefined;

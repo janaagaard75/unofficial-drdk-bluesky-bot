@@ -4,7 +4,7 @@ import { BlueskyPostRecord } from "./BlueskyPostRecord";
 export const fetchUrlsPostedOnBluesky = async (
   agent: AtpAgent,
   numberOfPostsToFetch: number,
-): Promise<Set<string>> => {
+): Promise<Set<URL>> => {
   const timeline = await agent.getTimeline({
     limit: numberOfPostsToFetch,
   });
@@ -15,7 +15,7 @@ export const fetchUrlsPostedOnBluesky = async (
     .map((feedViewPost) => feedViewPost.post.record as BlueskyPostRecord)
     .flatMap((record) => {
       if (record.embed?.external?.uri !== undefined) {
-        return [record.embed.external.uri];
+        return [new URL(record.embed.external.uri)];
       }
 
       if (record.facets !== undefined) {
@@ -24,7 +24,7 @@ export const fetchUrlsPostedOnBluesky = async (
             .filter(
               (feature) => feature.$type === "app.bsky.richtext.facet#link",
             )
-            .map((link) => (link as FacetLink).uri),
+            .map((link) => new URL((link as FacetLink).uri)),
         );
       }
 

@@ -1,12 +1,8 @@
 import { JSDOM } from "jsdom";
-import { brand } from "../../shared/brandedTypes/brand";
 import { HtmlString } from "../../shared/brandedTypes/HtmlString";
-import { UrlString } from "../../shared/brandedTypes/UrlString";
 
 /** Extract the image URL from the content of the <meta name="og:image"> element in htmlDocument. */
-export const extractImageUrl = (
-  articleHtml: HtmlString,
-): UrlString | undefined => {
+export const extractImageUrl = (articleHtml: HtmlString): URL | undefined => {
   const articleDocument = JSDOM.fragment(articleHtml);
   const imageElement = articleDocument.querySelector(
     'div[itemProp="image"][itemType="https://schema.org/ImageObject"] meta[itemProp="url"]',
@@ -21,5 +17,5 @@ export const extractImageUrl = (
   const cropWidth = 1200;
   const imageCrop = `AspectCrop=(${cropWidth},${cropHeight}),xPosition=.5,yPosition=.5;Resize=(${cropWidth},${cropHeight})&impolicy=low`;
   const imageUrl = `${rawImageUrl.substring(0, rawImageUrl.indexOf("?"))}?${imageCrop}`;
-  return brand<UrlString>(imageUrl);
+  return new URL(imageUrl);
 };

@@ -1,11 +1,10 @@
 import Parser from "rss-parser";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../shared/brandedTypes/UrlString";
 
 interface TitleAndUrl {
   title: PlainTextString;
-  url: UrlString;
+  url: URL;
 }
 
 export const fetchTitlesAndUrlsFromRssFeed = async (): Promise<
@@ -16,11 +15,17 @@ export const fetchTitlesAndUrlsFromRssFeed = async (): Promise<
     "https://www.dr.dk/nyheder/service/feeds/senestenyt",
   );
 
-  const titlesAndUrls = newsFeed.items.map((item) => {
-    return {
-      title: brand<PlainTextString>(item.title ?? ""),
-      url: brand<UrlString>(item.link ?? ""),
-    };
+  const titlesAndUrls = newsFeed.items.flatMap((item) => {
+    if (item.link === undefined || item.link.trim() === "") {
+      return [];
+    }
+
+    return [
+      {
+        title: brand<PlainTextString>(item.title ?? ""),
+        url: new URL(item.link),
+      },
+    ];
   });
 
   return titlesAndUrls;
