@@ -11,9 +11,8 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
   const hnStory = await fetchHnStory(storyId);
 
   if (hnStory === undefined) {
-    throw new Error(
-      `Something went wrong fetching the story with ID ${storyId}.`,
-    );
+    console.log(`Skipping story ID ${storyId} (deleted, dead, or no URL).`);
+    return;
   }
 
   console.log(`Story URL: ${hnStory.url}`);
