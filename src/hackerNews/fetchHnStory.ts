@@ -1,6 +1,5 @@
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../shared/brandedTypes/UrlString";
 import { HnItem } from "./HnItem";
 import { HnStory } from "./HnStory";
 
@@ -25,6 +24,6 @@ export const fetchHnStory = async (
     kids: rawStory.kids,
     score: rawStory.score ?? 0,
     title: brand<PlainTextString>(rawStory.title),
-    url: brand<UrlString>(rawStory.url),
+    url: new URL(rawStory.url),
   };
 };

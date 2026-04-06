@@ -1,13 +1,12 @@
 import puppeteerExtra from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import { HtmlString } from "../../shared/brandedTypes/HtmlString";
-import { UrlString } from "../../shared/brandedTypes/UrlString";
 import { brand } from "../../shared/brandedTypes/brand";
 
 puppeteerExtra.use(StealthPlugin());
 
 export const fetchHtmlPage = async (
-  url: UrlString,
+  url: URL,
 ): Promise<HtmlString | undefined> => {
   const browser = await puppeteerExtra.launch({
     args: ["--no-sandbox"],
@@ -15,7 +14,7 @@ export const fetchHtmlPage = async (
   const page = await browser.newPage();
 
   try {
-    await page.goto(url, { waitUntil: "domcontentloaded" });
+    await page.goto(url.href, { waitUntil: "domcontentloaded" });
   } catch (error) {
     console.error(`Error navigating to ${url}:`, error);
     await browser.close();

@@ -4,7 +4,7 @@ import { BlueskyPostRecord } from "./BlueskyPostRecord";
 export const fetchUrlsPostedOnBluesky = async (
   agent: AtpAgent,
   numberOfPostsToFetch: number,
-): Promise<Set<string>> => {
+): Promise<Set<URL>> => {
   const timeline = await agent.getTimeline({
     limit: numberOfPostsToFetch,
   });
@@ -31,5 +31,5 @@ export const fetchUrlsPostedOnBluesky = async (
       return [];
     });
 
-  return new Set(postedUrls);
+  return new Set(postedUrls.map((url) => new URL(url)));
 };

@@ -1,7 +1,6 @@
 import { AtpAgent } from "@atproto/api";
 import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { UrlString } from "../shared/brandedTypes/UrlString";
 import { extractDescription } from "../shared/extractDescription";
 import { extractArticleText } from "./extractArticleText";
 import { extractHtmlArticle } from "./extractHtmlArticle";
@@ -12,7 +11,7 @@ import { summarize } from "./summarize";
 export const postLink = async (
   agent: AtpAgent,
   title: PlainTextString,
-  url: UrlString,
+  url: URL,
 ) => {
   const htmlPage = await fetchHtmlPage(url);
   const description = extractDescription(htmlPage);
