@@ -23,6 +23,7 @@ export const fetchHnStory = async (
 
   return {
     kids: rawStory.kids,
+    score: rawStory.score ?? 0,
     title: brand<PlainTextString>(rawStory.title),
     url: brand<UrlString>(rawStory.url),
   };
