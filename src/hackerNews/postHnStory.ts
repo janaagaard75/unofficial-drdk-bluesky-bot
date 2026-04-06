@@ -15,8 +15,13 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
     return;
   }
 
-  console.log(`Story URL: ${hnStory.url}`);
+  const hnStoryUrl = brand<UrlString>(
+    `https://news.ycombinator.com/item?id=${storyId}`,
+  );
+
+  console.log(`Hacker News URL: ${hnStoryUrl}`);
   console.log(`Hacker News title: ${hnStory.title}`);
+  console.log(`Story URL: ${hnStory.url}`);
 
   const article = await fetchPageInfo(hnStory.url);
 
@@ -39,9 +44,7 @@ export const postHnStory = async (agent: AtpAgent, storyId: number) => {
     linkDescription: brand<PlainTextString>(article.description ?? ""),
     linkImageUrl: article.imageUrl,
     linkTitle: brand<PlainTextString>(`${hnStory.title} (${hnStory.score})`),
-    linkUrl: brand<UrlString>(
-      `https://news.ycombinator.com/item?id=${storyId}`,
-    ),
+    linkUrl: hnStoryUrl,
     text: summary,
   });
 };
