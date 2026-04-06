@@ -33,7 +33,7 @@ export const postToBluesky = async (parameters: {
         description: parameters.linkDescription,
         thumb: uploadedImageReference,
         title: parameters.linkTitle,
-        uri: parameters.linkUrl,
+        uri: parameters.linkUrl.href,
       },
     },
     langs: ["da-DK"],
