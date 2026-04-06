@@ -17,6 +17,7 @@
     "test-drdk-extract-article-text": "tsx --env-file=.env ./src/drdk/tests/testExtractArticleText.ts",
     "test-drdk-fetch-article": "tsx --env-file=.env ./src/drdk/tests/testFetchArticle.ts",
     "test-drdk-hero-images": "tsx --env-file=.env ./src/drdk/tests/testHeroImages.ts",
+    "test-drdk-post-new-links": "tsx --env-file=.env ./src/drdk/tests/testPostNewLinks.ts",
     "test-drdk-post-test-links": "tsx --env-file=.env ./src/drdk/tests/testPostTestLinks.ts",
     "test-drdk-summarize": "tsx --env-file=.env ./src/drdk/tests/testSummarize.ts",
     "test-hn-404-image": "tsx --env-file=.env ./src/hackerNews/tests/testHnStory.ts 47032876",
