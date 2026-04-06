@@ -21,6 +21,7 @@ const testPostNewLinks = async () => {
     const hrefsFromFeed = new Set(
       titlesAndUrlsFromFeed.map((item) => item.url.href),
     );
+    // TODO: The issue is here: setDifference doesn't work on URLs. It has to compare URL hrefs.
     const newHrefs = setDifference(hrefsFromFeed, postedUrls);
 
     const newTitlesAndUrls = titlesAndUrlsFromFeed.filter((titleAndUrl) =>
