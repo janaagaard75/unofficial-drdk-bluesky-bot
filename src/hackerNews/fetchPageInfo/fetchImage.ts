@@ -8,5 +8,10 @@ export const fetchImage = async (imageUrl: string) => {
     return undefined;
   }
 
+  const contentType = imageResponse.headers.get("content-type") ?? "";
+  if (!contentType.startsWith("image/")) {
+    return undefined;
+  }
+
   return await imageResponse.bytes();
 };
