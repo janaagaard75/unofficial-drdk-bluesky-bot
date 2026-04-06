@@ -15,7 +15,7 @@ export const fetchUrlsPostedOnBluesky = async (
     .map((feedViewPost) => feedViewPost.post.record as BlueskyPostRecord)
     .flatMap((record) => {
       if (record.embed?.external?.uri !== undefined) {
-        return [record.embed.external.uri];
+        return [new URL(record.embed.external.uri)];
       }
 
       if (record.facets !== undefined) {
@@ -24,12 +24,12 @@ export const fetchUrlsPostedOnBluesky = async (
             .filter(
               (feature) => feature.$type === "app.bsky.richtext.facet#link",
             )
-            .map((link) => (link as FacetLink).uri),
+            .map((link) => new URL((link as FacetLink).uri)),
         );
       }
 
       return [];
     });
 
-  return new Set(postedUrls.map((url) => new URL(url)));
+  return new Set(postedUrls);
 };
