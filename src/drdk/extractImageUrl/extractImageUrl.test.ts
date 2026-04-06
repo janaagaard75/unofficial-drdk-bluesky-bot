@@ -78,22 +78,3 @@ test.each(testCases)(
     expect(extractedImageUrl).toEqual(expectedImageUrl);
   },
 );
-
-// test("downloaded image is smaller than 1 million bytes", async () => {
-//   const articleFileName = "article-1.html";
-//   const articleFullName = path.join(__dirname, "articles", articleFileName);
-//   const articleHtml = createHtmlArticleString(
-//     await readFile(articleFullName, {
-//       encoding: "utf-8",
-//     }),
-//   );
-//   const imageUrl = extractImageUrl(articleHtml);
-
-//   if (imageUrl === undefined) {
-//     throw new Error("imageUrl is undefined.");
-//   }
-
-//   const response = await fetch(imageUrl);
-//   const imageBuffer = await response.bytes();
-//   expect(imageBuffer.length).toBeLessThan(1_000_000);
-// });
