@@ -1,16 +1,16 @@
 import { AtpAgent } from "@atproto/api";
-import { fetchHrefsPostedOnBluesky } from "../bluesky/fetchHrefsPostedOnBluesky/fetchHrefsPostedOnBluesky";
+import { fetchUrlsPostedOnBluesky } from "../bluesky/fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
 import { numberOfStoriesOnTheNhFrontPage } from "./numberOfStoriesOnTheNhFrontPage";
 
 export const fetchPostedNhStoryIds = async (agent: AtpAgent) => {
-  const postedHrefs = await fetchHrefsPostedOnBluesky(
+  const postedUrls = await fetchUrlsPostedOnBluesky(
     agent,
     2 * numberOfStoriesOnTheNhFrontPage,
   );
 
   const storyIds = new Set(
-    [...postedHrefs]
-      .map((href) => new URL(href))
+    [...postedUrls]
+      .map((url) => new URL(url))
       .filter((url) => url.hostname === "news.ycombinator.com")
       .map((url) => Number(url.searchParams.get("id")))
       .filter((id): id is number => Number.isInteger(id)),
