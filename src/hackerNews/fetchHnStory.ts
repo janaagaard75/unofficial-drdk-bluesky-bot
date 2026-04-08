@@ -21,6 +21,7 @@ export const fetchHnStory = async (
   }
 
   return {
+    id: rawStory.id,
     kids: rawStory.kids,
     score: rawStory.score ?? 0,
     title: brand<PlainTextString>(rawStory.title),
