@@ -16,6 +16,7 @@
     "nvmrc",
     "openai",
     "pollopt",
+    "upvotes",
     "ycombinator"
   ],
   "editor.codeActionsOnSave": {

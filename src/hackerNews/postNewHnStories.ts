@@ -13,6 +13,14 @@ for (const storyId of newStoryIds) {
     continue;
   }
 
+  const minimumUpvotes = 100;
+  if (hnStory.score < minimumUpvotes) {
+    console.log(
+      `Story ID ${storyId} score of ${hnStory.score} is below the threshold of ${minimumUpvotes}. Skipping...`,
+    );
+    continue;
+  }
+
   console.log(`Posting story ID ${storyId} to Bluesky...`);
   await postHnStory(hnProductionAgent, hnStory);
 }
