@@ -1,4 +1,4 @@
-import { fetchHnFrontPageStoryIds } from "./fetchHnFrontPageStoryIds";
+import { fetchHnFrontPageStoryIds } from "../fetchHnFrontPageStoryIds";
 
 export const fetchRandomStoryId = async (): Promise<number> => {
   const arg = process.argv[2];
