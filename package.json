@@ -33,13 +33,13 @@
     "update-dependencies": "yarn upgrade-interactive && rm yarn.lock && yarn install"
   },
   "dependencies": {
-    "@atproto/api": "^0.19.6",
+    "@atproto/api": "^0.19.9",
     "@mozilla/readability": "^0.6.0",
     "html-entities": "^2.6.0",
     "image-size": "^2.0.2",
     "jsdom": "^29.0.2",
     "openai": "^6.34.0",
-    "puppeteer": "^24.40.0",
+    "puppeteer": "^24.41.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "rss-parser": "^3.13.0",
@@ -49,15 +49,15 @@
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/jsdom": "^28.0.1",
-    "@types/node": "^25.5.2",
-    "eslint": "^10.2.0",
+    "@types/node": "^24.12.2",
+    "eslint": "^10.2.1",
     "eslint-formatter-unix": "^9.0.1",
-    "eslint-plugin-perfectionist": "^5.8.0",
-    "globals": "^17.4.0",
-    "prettier": "^3.8.1",
+    "eslint-plugin-perfectionist": "^5.9.0",
+    "globals": "^17.5.0",
+    "prettier": "^3.8.3",
     "tsx": "^4.21.0",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.58.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2",
     "vitest": "^4.1.4"
   }
 }
