@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
+
       - name: Post new stories
         env:
           BLUESKY_HN_USERNAME: ${{ secrets.BLUESKY_HN_USERNAME }}
