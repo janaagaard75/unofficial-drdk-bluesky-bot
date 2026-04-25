@@ -19,7 +19,13 @@ interface PageInfo {
 }
 
 export const fetchPageInfo = async (url: URL): Promise<PageInfo> => {
-  const htmlPage = await fetchHtmlPage(url);
+  let htmlPage;
+  try {
+    htmlPage = await fetchHtmlPage(url);
+  } catch (error) {
+    console.error(`Error fetching ${url}:`, error);
+    htmlPage = undefined;
+  }
 
   if (htmlPage === undefined) {
     return {
