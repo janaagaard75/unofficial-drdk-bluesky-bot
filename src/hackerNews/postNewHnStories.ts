@@ -22,5 +22,9 @@ for (const storyId of newStoryIds) {
   }
 
   console.log(`Posting story ID ${storyId} to Bluesky...`);
-  await postHnStory(hnProductionAgent, hnStory);
+  try {
+    await postHnStory(hnProductionAgent, hnStory);
+  } catch (error) {
+    console.error(`Error posting story ${storyId}:`, error);
+  }
 }
