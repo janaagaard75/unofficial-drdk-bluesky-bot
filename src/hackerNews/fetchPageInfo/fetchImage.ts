@@ -16,5 +16,10 @@ export const fetchImage = async (imageUrl: URL) => {
     return undefined;
   }
 
-  return await imageResponse.bytes();
+  try {
+    return await imageResponse.bytes();
+  } catch (error) {
+    console.error(`Error reading image bytes from ${imageUrl}:`, error);
+    return undefined;
+  }
 };
