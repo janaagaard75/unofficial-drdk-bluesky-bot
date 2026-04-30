@@ -6,9 +6,15 @@ import { HnStory } from "./HnStory";
 export const fetchHnStory = async (
   storyId: number,
 ): Promise<HnStory | undefined> => {
-  const response = await fetch(
-    `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`,
-  );
+  let response;
+  try {
+    response = await fetch(
+      `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`,
+    );
+  } catch (error) {
+    console.error(`Error fetching HN story ${storyId}:`, error);
+    return undefined;
+  }
   const rawStory = (await response.json()) as HnItem;
 
   if (

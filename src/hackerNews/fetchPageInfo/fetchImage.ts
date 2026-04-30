@@ -1,5 +1,12 @@
 export const fetchImage = async (imageUrl: URL) => {
-  const imageResponse = await fetch(imageUrl);
+  let imageResponse;
+  try {
+    imageResponse = await fetch(imageUrl);
+  } catch (error) {
+    console.error(`Error fetching image ${imageUrl}:`, error);
+    return undefined;
+  }
+
   if (!imageResponse.ok) {
     return undefined;
   }
