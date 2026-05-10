@@ -8,6 +8,7 @@ import { uploadImage } from "./uploadImage";
 /** Create a post on Bluesky that contains a text and a link. The link is comprised of the title, description, thumbnail and of course a URL. */
 export const postToBluesky = async (parameters: {
   agent: AtpAgent;
+  language: "da-DK" | "en-US";
   linkDescription: PlainTextString;
   linkImageUrl: URL | undefined;
   linkTitle: PlainTextString;
@@ -36,7 +37,7 @@ export const postToBluesky = async (parameters: {
         uri: parameters.linkUrl.href,
       },
     },
-    langs: ["da-DK"],
+    langs: [parameters.language],
     text: limitedText,
   };
 

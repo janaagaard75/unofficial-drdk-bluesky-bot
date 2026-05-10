@@ -1,6 +1,6 @@
 import { fetchHnStory } from "../fetchHnStory";
 import { fetchPageInfo } from "../fetchPageInfo/fetchPageInfo";
-import { summarize } from "../summarize";
+import { summarizeHn } from "../summarizeHn";
 import { fetchRandomStoryId } from "./fetchRandomStoryId";
 
 const storyId = await fetchRandomStoryId();
@@ -26,6 +26,6 @@ console.log(`Title: ${pageInfo.title ?? "No title found."}`);
 const summary =
   pageInfo.text === undefined
     ? undefined
-    : await summarize(pageInfo.text, 300, "google/gemini-2.5-flash");
+    : await summarizeHn(pageInfo.text, 300, "google/gemini-2.5-flash");
 
 console.log(`Summary: ${summary ?? "Could not extract page text."}`);

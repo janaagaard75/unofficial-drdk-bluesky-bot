@@ -1,11 +1,11 @@
 import { AtpAgent } from "@atproto/api";
 import { fetchUrlsPostedOnBluesky } from "../bluesky/fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
-import { numberOfStoriesOnTheNhFrontPage } from "./numberOfStoriesOnTheNhFrontPage";
+import { numberOfStoriesOnTheHnFrontPage } from "./numberOfStoriesOnTheHnFrontPage";
 
-export const fetchPostedNhStoryIds = async (agent: AtpAgent) => {
+export const fetchPostedHnStoryIds = async (agent: AtpAgent) => {
   const postedUrls = await fetchUrlsPostedOnBluesky(
     agent,
-    2 * numberOfStoriesOnTheNhFrontPage,
+    2 * numberOfStoriesOnTheHnFrontPage,
   );
 
   const storyIds = new Set(

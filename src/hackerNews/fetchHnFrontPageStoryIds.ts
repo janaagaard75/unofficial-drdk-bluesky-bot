@@ -1,4 +1,4 @@
-import { numberOfStoriesOnTheNhFrontPage } from "./numberOfStoriesOnTheNhFrontPage";
+import { numberOfStoriesOnTheHnFrontPage } from "./numberOfStoriesOnTheHnFrontPage";
 
 export const fetchHnFrontPageStoryIds = async (): Promise<
   ReadonlyArray<number>
@@ -8,7 +8,7 @@ export const fetchHnFrontPageStoryIds = async (): Promise<
   );
   const storyIds = (await response.json()) as ReadonlyArray<number>;
 
-  const frontPageStoryIds = storyIds.slice(0, numberOfStoriesOnTheNhFrontPage);
+  const frontPageStoryIds = storyIds.slice(0, numberOfStoriesOnTheHnFrontPage);
 
   return frontPageStoryIds;
 };

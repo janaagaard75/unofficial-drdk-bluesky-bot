@@ -3,7 +3,7 @@ import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { brand } from "../shared/brandedTypes/brand";
 import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableValue";
 
-export const summarize = async (
+export const summarizeDrdk = async (
   articleText: PlainTextString,
   model: "google/gemini-2.5-flash" | "openai/gpt-4o",
 ): Promise<PlainTextString> => {
@@ -18,14 +18,21 @@ export const summarize = async (
     },
   });
 
-  const prompt =
-    "Opsummer venligst følgende nyhedsartikel i et par sætninger på maksimalt 300 tegn. Undgå linjeskift og markdown-formatering. Bevar en neutral og informativ tone, og fokuser på hovedbudskabet uden overflødige detaljer. Det er vigtigt at opsummeringen højst er på 300 tegn. Her er teksten:";
-
-  const completion = await openai.completions.create({
+  const completion = await openai.chat.completions.create({
+    messages: [
+      {
+        content:
+          "Opsummer venligst følgende nyhedsartikel i et par sætninger på maksimalt 300 tegn. Undgå linjeskift og markdown-formatering. Bevar en neutral og informativ tone, og fokuser på hovedbudskabet uden overflødige detaljer. Det er vigtigt at opsummeringen højst er på 300 tegn.",
+        role: "system",
+      },
+      {
+        content: articleText,
+        role: "user",
+      },
+    ],
     model: model,
-    prompt: `${prompt}\n\n${articleText}`,
   });
 
-  const summary = completion.choices[0]?.text.trim() ?? "";
+  const summary = completion.choices[0]?.message.content?.trim() ?? "";
   return brand<PlainTextString>(summary);
 };
