@@ -22,6 +22,7 @@ export const postLink = async (
 
   await postToBluesky({
     agent: agent,
+    language: "da-DK",
     linkDescription: description,
     linkImageUrl: imageUrl,
     linkTitle: title,

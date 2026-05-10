@@ -33,6 +33,7 @@ export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
 
   await postToBluesky({
     agent: agent,
+    language: "en-US",
     linkDescription: brand<PlainTextString>(article.description ?? ""),
     linkImageUrl: article.imageUrl,
     linkTitle: brand<PlainTextString>(`${hnStory.title} (${hnStory.score})`),
