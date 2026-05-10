@@ -6,7 +6,7 @@ import { extractArticleText } from "./extractArticleText";
 import { extractHtmlArticle } from "./extractHtmlArticle";
 import { extractImageUrl } from "./extractImageUrl/extractImageUrl";
 import { fetchHtmlPage } from "./fetchHtmlPage";
-import { summarize } from "./summarize";
+import { summarizeDrdk } from "./summarizeDrdk";
 
 export const postLink = async (
   agent: AtpAgent,
@@ -18,7 +18,7 @@ export const postLink = async (
   const htmlArticle = extractHtmlArticle(htmlPage);
   const imageUrl = extractImageUrl(htmlArticle);
   const articleText = extractArticleText(htmlArticle);
-  const summary = await summarize(articleText, "google/gemini-2.5-flash");
+  const summary = await summarizeDrdk(articleText, "google/gemini-2.5-flash");
 
   await postToBluesky({
     agent: agent,

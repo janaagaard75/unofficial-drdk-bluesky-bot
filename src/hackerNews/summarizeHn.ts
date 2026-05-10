@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableValue";
 
-export const summarize = async (
+export const summarizeHn = async (
   articleText: string,
   maxLength: number,
   model: "google/gemini-2.5-flash",

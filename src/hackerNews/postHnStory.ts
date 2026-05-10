@@ -4,7 +4,7 @@ import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { fetchPageInfo } from "./fetchPageInfo/fetchPageInfo";
 import { HnStory } from "./HnStory";
-import { summarize } from "./summarize";
+import { summarizeHn } from "./summarizeHn";
 
 export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
   const hnStoryUrl = new URL(
@@ -27,7 +27,7 @@ export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
   const summary = brand<PlainTextString>(
     article.text === undefined
       ? ""
-      : await summarize(article.text, 300, "google/gemini-2.5-flash"),
+      : await summarizeHn(article.text, 300, "google/gemini-2.5-flash"),
   );
   console.log(`Summary: ${summary}`);
 
