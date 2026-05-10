@@ -4,7 +4,7 @@ import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableVal
 export const summarize = async (
   articleText: string,
   maxLength: number,
-  model: "google/gemini-2.5-flash" | "openai/gpt-4o",
+  model: "google/gemini-2.5-flash",
 ): Promise<string> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
 
