@@ -1,0 +1,34 @@
+name: Post New Politiet Updates
+
+permissions:
+  contents: read
+
+on:
+  schedule:
+    # Run every 10 minutes.
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  post-new-politiet-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Yarn
+        run: corepack enable
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Post new updates
+        env:
+          BLUESKY_POLUP_ALL_USERNAME: ${{ secrets.BLUESKY_POLUP_ALL_USERNAME }}
+          BLUESKY_POLUP_ALL_PASSWORD: ${{ secrets.BLUESKY_POLUP_ALL_PASSWORD }}
+        run: yarn run post-new-politiet-updates
