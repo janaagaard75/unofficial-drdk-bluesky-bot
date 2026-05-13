@@ -1,11 +1,11 @@
 import { fetchUrlsPostedOnBluesky } from "../bluesky/fetchUrlsPostedOnBluesky/fetchUrlsPostedOnBluesky";
 import { setDifference } from "../shared/setDifference";
 import { fetchUpdatesFromRssFeed } from "./fetchUpdatesFromRssFeed";
-import { politietFeedSize } from "./politietFeedSize";
 import { politietProductionAgent } from "./politietProductionAgent";
 import { postUpdate } from "./postUpdate";
 
 const postNewPolitietUpdates = async () => {
+  const politietFeedSize = 25;
   const postedUrls = await fetchUrlsPostedOnBluesky(
     politietProductionAgent,
     2 * politietFeedSize,
