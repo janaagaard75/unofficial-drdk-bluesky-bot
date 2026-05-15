@@ -1,8 +1,8 @@
 import { AtpAgent } from "@atproto/api";
 import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
-import { fetchPageInfo } from "../hackerNews/fetchPageInfo/fetchPageInfo";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { fetchPageInfo } from "../shared/fetchPageInfo/fetchPageInfo";
 import { PolitietUpdate } from "./PolitietUpdate";
 import { summarizePolitiet } from "./summarizePolitiet";
 

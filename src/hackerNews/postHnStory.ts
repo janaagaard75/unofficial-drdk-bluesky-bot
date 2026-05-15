@@ -2,7 +2,7 @@ import { AtpAgent } from "@atproto/api";
 import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { fetchPageInfo } from "./fetchPageInfo/fetchPageInfo";
+import { fetchPageInfo } from "../shared/fetchPageInfo/fetchPageInfo";
 import { HnStory } from "./HnStory";
 import { summarizeHn } from "./summarizeHn";
 
