@@ -3,14 +3,8 @@ import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
 import { fetchPageInfo } from "../hackerNews/fetchPageInfo/fetchPageInfo";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { PolitietUpdate } from "./PolitietUpdate";
 import { summarizePolitiet } from "./summarizePolitiet";
-
-interface PolitietUpdate {
-  description: PlainTextString;
-  imageUrl: URL | undefined;
-  title: PlainTextString;
-  url: URL;
-}
 
 export const postUpdate = async (agent: AtpAgent, update: PolitietUpdate) => {
   const pageInfo = await fetchPageInfo(update.url);
