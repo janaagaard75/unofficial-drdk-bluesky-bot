@@ -24,17 +24,20 @@ export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
     `Text: ${article.text === undefined ? "No text found." : article.text.substring(0, 600)}...`,
   );
 
-  const summary = brand<PlainTextString>(
-    article.text === undefined
-      ? ""
-      : await summarizeHn(article.text, 300, "google/gemini-2.5-flash"),
-  );
+  const summary = await (() => {
+    if (article.text === undefined || article.text.length === 0) {
+      return brand<PlainTextString>("");
+    }
+
+    return summarizeHn(article.text, 300, "google/gemini-2.5-flash");
+  })();
+
   console.log(`Summary: ${summary}`);
 
   await postToBluesky({
     agent: agent,
     language: "en-US",
-    linkDescription: brand<PlainTextString>(article.description ?? ""),
+    linkDescription: article.description ?? brand<PlainTextString>(""),
     linkImageUrl: article.imageUrl,
     linkTitle: brand<PlainTextString>(`${hnStory.title} (${hnStory.score})`),
     linkUrl: hnStoryUrl,
