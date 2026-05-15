@@ -26,7 +26,7 @@ export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
 
   const summary = await (() => {
     if (article.text === undefined || article.text.length === 0) {
-      return brand<PlainTextString>("");
+      return PlainTextString.Empty;
     }
 
     return summarizeHn(article.text, 300, "google/gemini-2.5-flash");
@@ -37,7 +37,7 @@ export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
   await postToBluesky({
     agent: agent,
     language: "en-US",
-    linkDescription: article.description ?? brand<PlainTextString>(""),
+    linkDescription: article.description ?? PlainTextString.Empty,
     linkImageUrl: article.imageUrl,
     linkTitle: brand<PlainTextString>(`${hnStory.title} (${hnStory.score})`),
     linkUrl: hnStoryUrl,
