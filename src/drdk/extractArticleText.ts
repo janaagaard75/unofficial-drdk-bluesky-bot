@@ -7,7 +7,7 @@ export const extractArticleText = (
   articleHtml: HtmlString,
 ): PlainTextString => {
   if (articleHtml === "") {
-    return brand<PlainTextString>("");
+    return PlainTextString.Empty;
   }
 
   const cleanedArticleHtml = articleHtml

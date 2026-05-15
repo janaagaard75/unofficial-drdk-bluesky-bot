@@ -18,7 +18,11 @@ export const postLink = async (
   const htmlArticle = extractHtmlArticle(htmlPage);
   const imageUrl = extractImageUrl(htmlArticle);
   const articleText = extractArticleText(htmlArticle);
-  const summary = await summarizeDrdk(articleText, "google/gemini-2.5-flash");
+  const summary = await summarizeDrdk(
+    articleText,
+    300,
+    "google/gemini-2.5-flash",
+  );
 
   await postToBluesky({
     agent: agent,

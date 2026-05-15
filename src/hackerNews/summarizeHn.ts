@@ -1,11 +1,13 @@
 import OpenAI from "openai";
+import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { brand } from "../shared/brandedTypes/brand";
 import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableValue";
 
 export const summarizeHn = async (
-  articleText: string,
+  articleText: PlainTextString,
   maxLength: number,
   model: "google/gemini-2.5-flash",
-): Promise<string> => {
+): Promise<PlainTextString> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
 
   const openai = new OpenAI({
@@ -33,7 +35,7 @@ export const summarizeHn = async (
     firstCompletion.choices[0]?.message.content?.trim() ?? "";
 
   if (firstSummary.length <= maxLength) {
-    return firstSummary;
+    return brand<PlainTextString>(firstSummary);
   }
 
   console.log(
@@ -62,5 +64,5 @@ export const summarizeHn = async (
   const secondSummary =
     secondCompletion.choices[0]?.message.content?.trim() ?? "";
 
-  return secondSummary;
+  return brand<PlainTextString>(secondSummary);
 };

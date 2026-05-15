@@ -1,5 +1,5 @@
+import { fetchPageInfo } from "../../shared/fetchPageInfo/fetchPageInfo";
 import { fetchHnStory } from "../fetchHnStory";
-import { fetchPageInfo } from "../fetchPageInfo/fetchPageInfo";
 import { summarizeHn } from "../summarizeHn";
 import { fetchRandomStoryId } from "./fetchRandomStoryId";
 
@@ -23,9 +23,12 @@ console.log(`Description: ${pageInfo.description ?? "No description found."}`);
 console.log(`Image: ${pageInfo.imageUrl ?? "No image found."}`);
 console.log(`Title: ${pageInfo.title ?? "No title found."}`);
 
-const summary =
-  pageInfo.text === undefined
-    ? undefined
-    : await summarizeHn(pageInfo.text, 300, "google/gemini-2.5-flash");
+const summary = await (() => {
+  if (pageInfo.text === undefined || pageInfo.text.length === 0) {
+    return undefined;
+  }
+
+  return summarizeHn(pageInfo.text, 300, "google/gemini-2.5-flash");
+})();
 
 console.log(`Summary: ${summary ?? "Could not extract page text."}`);

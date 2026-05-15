@@ -1,14 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-parameters */
-import { HtmlString } from "./HtmlString";
-import { PlainTextString } from "./PlainTextString";
+import { Branded } from "./Branded";
 
-type BrandedType = HtmlString | PlainTextString;
-
-export function brand<T extends BrandedType>(value: string): T;
-export function brand<T extends BrandedType>(
+export function brand<T extends Branded<string, string>>(value: string): T;
+export function brand<T extends Branded<string, string>>(
   value: string | undefined,
 ): T | undefined;
-export function brand<T extends BrandedType>(
+export function brand<T extends Branded<string, string>>(
   value: string | undefined,
 ): T | undefined {
   return value as T | undefined;

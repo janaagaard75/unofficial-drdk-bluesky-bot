@@ -1,16 +1,10 @@
 import { AtpAgent } from "@atproto/api";
 import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
-import { fetchPageInfo } from "../hackerNews/fetchPageInfo/fetchPageInfo";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
+import { fetchPageInfo } from "../shared/fetchPageInfo/fetchPageInfo";
+import { PolitietUpdate } from "./PolitietUpdate";
 import { summarizePolitiet } from "./summarizePolitiet";
-
-interface PolitietUpdate {
-  description: PlainTextString;
-  imageUrl: URL | undefined;
-  title: PlainTextString;
-  url: URL;
-}
 
 export const postUpdate = async (agent: AtpAgent, update: PolitietUpdate) => {
   const pageInfo = await fetchPageInfo(update.url);
@@ -28,7 +22,7 @@ export const postUpdate = async (agent: AtpAgent, update: PolitietUpdate) => {
   console.log(`Summary: ${summary}`);
 
   await postToBluesky({
-    agent,
+    agent: agent,
     language: "da-DK",
     linkDescription: update.description,
     linkImageUrl: update.imageUrl,

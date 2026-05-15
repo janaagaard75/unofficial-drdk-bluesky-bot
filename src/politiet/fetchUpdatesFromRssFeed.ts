@@ -1,13 +1,7 @@
 import Parser from "rss-parser";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-
-interface PolitietUpdate {
-  description: PlainTextString;
-  imageUrl: URL | undefined;
-  title: PlainTextString;
-  url: URL;
-}
+import { PolitietUpdate } from "./PolitietUpdate";
 
 export const fetchUpdatesFromRssFeed = async (): Promise<
   ReadonlyArray<PolitietUpdate>

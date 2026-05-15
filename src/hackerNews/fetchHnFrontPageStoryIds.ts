@@ -1,4 +1,4 @@
-import { numberOfStoriesOnTheHnFrontPage } from "./numberOfStoriesOnTheHnFrontPage";
+import { hnFeedSize } from "./hnFeedSize";
 
 export const fetchHnFrontPageStoryIds = async (): Promise<
   ReadonlyArray<number>
@@ -8,7 +8,7 @@ export const fetchHnFrontPageStoryIds = async (): Promise<
   );
   const storyIds = (await response.json()) as ReadonlyArray<number>;
 
-  const frontPageStoryIds = storyIds.slice(0, numberOfStoriesOnTheHnFrontPage);
+  const frontPageStoryIds = storyIds.slice(0, hnFeedSize);
 
   return frontPageStoryIds;
 };

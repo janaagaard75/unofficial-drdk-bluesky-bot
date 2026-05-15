@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install Yarn
+      - name: Enable Corepack
         run: corepack enable
 
       - uses: actions/setup-node@v6

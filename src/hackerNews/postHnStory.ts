@@ -2,7 +2,7 @@ import { AtpAgent } from "@atproto/api";
 import { postToBluesky } from "../bluesky/postToBluesky/postToBluesky";
 import { brand } from "../shared/brandedTypes/brand";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
-import { fetchPageInfo } from "./fetchPageInfo/fetchPageInfo";
+import { fetchPageInfo } from "../shared/fetchPageInfo/fetchPageInfo";
 import { HnStory } from "./HnStory";
 import { summarizeHn } from "./summarizeHn";
 
@@ -24,17 +24,20 @@ export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
     `Text: ${article.text === undefined ? "No text found." : article.text.substring(0, 600)}...`,
   );
 
-  const summary = brand<PlainTextString>(
-    article.text === undefined
-      ? ""
-      : await summarizeHn(article.text, 300, "google/gemini-2.5-flash"),
-  );
+  const summary = await (() => {
+    if (article.text === undefined || article.text.length === 0) {
+      return PlainTextString.Empty;
+    }
+
+    return summarizeHn(article.text, 300, "google/gemini-2.5-flash");
+  })();
+
   console.log(`Summary: ${summary}`);
 
   await postToBluesky({
     agent: agent,
     language: "en-US",
-    linkDescription: brand<PlainTextString>(article.description ?? ""),
+    linkDescription: article.description ?? PlainTextString.Empty,
     linkImageUrl: article.imageUrl,
     linkTitle: brand<PlainTextString>(`${hnStory.title} (${hnStory.score})`),
     linkUrl: hnStoryUrl,
