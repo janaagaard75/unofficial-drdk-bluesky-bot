@@ -22,7 +22,7 @@ export const postUpdate = async (agent: AtpAgent, update: PolitietUpdate) => {
   console.log(`Summary: ${summary}`);
 
   await postToBluesky({
-    agent,
+    agent: agent,
     language: "da-DK",
     linkDescription: update.description,
     linkImageUrl: update.imageUrl,
