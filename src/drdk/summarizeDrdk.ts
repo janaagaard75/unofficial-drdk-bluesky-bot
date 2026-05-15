@@ -5,6 +5,7 @@ import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableVal
 
 export const summarizeDrdk = async (
   articleText: PlainTextString,
+  maxLength: number,
   model: "google/gemini-2.5-flash" | "openai/gpt-4o",
 ): Promise<PlainTextString> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
@@ -21,8 +22,7 @@ export const summarizeDrdk = async (
   const completion = await openai.chat.completions.create({
     messages: [
       {
-        content:
-          "Opsummer venligst følgende nyhedsartikel i et par sætninger på maksimalt 300 tegn. Undgå linjeskift og markdown-formatering. Bevar en neutral og informativ tone, og fokuser på hovedbudskabet uden overflødige detaljer. Det er vigtigt at opsummeringen højst er på 300 tegn.",
+        content: `Opsummer venligst følgende nyhedsartikel i et par sætninger på maksimalt ${maxLength} tegn. Undgå linjeskift og markdown-formatering. Bevar en neutral og informativ tone, og fokuser på hovedbudskabet uden overflødige detaljer. Det er vigtigt at opsummeringen højst er på ${maxLength} tegn.`,
         role: "system",
       },
       {
