@@ -29,6 +29,7 @@ jobs:
 
       - name: Post new updates
         env:
-          BLUESKY_POLUP_ALL_USERNAME: ${{ secrets.BLUESKY_POLUP_ALL_USERNAME }}
           BLUESKY_POLUP_ALL_PASSWORD: ${{ secrets.BLUESKY_POLUP_ALL_PASSWORD }}
+          BLUESKY_POLUP_ALL_USERNAME: ${{ secrets.BLUESKY_POLUP_ALL_USERNAME }}
+          OPEN_ROUTER_API_KEY: ${{ secrets.OPEN_ROUTER_API_KEY }}
         run: yarn run post-new-politiet-updates

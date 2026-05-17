@@ -9,17 +9,23 @@ import { summarizePolitiet } from "./summarizePolitiet";
 export const postUpdate = async (agent: AtpAgent, update: PolitietUpdate) => {
   const pageInfo = await fetchPageInfo(update.url);
 
+  console.log(
+    `Page text: ${pageInfo.text === undefined ? "undefined" : `${pageInfo.text.length} characters`}`,
+  );
+
   const summary = await (async () => {
     if (pageInfo.text === undefined || pageInfo.text.length === 0) {
+      console.log("Using fallback description as summary.");
       return update.description;
     }
 
+    console.log("Generating summary with AI...");
     return brand<PlainTextString>(
       await summarizePolitiet(pageInfo.text, 300, "google/gemini-2.5-flash"),
     );
   })();
 
-  console.log(`Summary: ${summary}`);
+  console.log(`Summary (${summary.length} characters): ${summary}`);
 
   await postToBluesky({
     agent: agent,

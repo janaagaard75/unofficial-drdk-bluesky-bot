@@ -27,6 +27,10 @@ export const summarizePolitiet = async (
     role: "user" as const,
   };
 
+  console.log(
+    `Summarizing ${textBeforeSeparatorHeading.length} characters with model ${model} (max ${maxLength} characters)...`,
+  );
+
   const firstCompletion = await openai.chat.completions.create({
     messages: [systemMessage, firstUserMessage],
     model: model,
