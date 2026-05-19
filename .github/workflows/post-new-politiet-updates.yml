@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
+
       - name: Post new updates
         env:
           BLUESKY_POLUP_ALL_PASSWORD: ${{ secrets.BLUESKY_POLUP_ALL_PASSWORD }}
