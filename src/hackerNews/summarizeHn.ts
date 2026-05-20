@@ -6,7 +6,7 @@ import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableVal
 export const summarizeHn = async (
   articleText: PlainTextString,
   maxLength: number,
-  model: "google/gemini-2.5-flash",
+  model: "google/gemini-3.5-flash",
 ): Promise<PlainTextString> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
 
