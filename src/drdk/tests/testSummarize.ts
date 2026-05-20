@@ -7,7 +7,7 @@ const testSummarize = async () => {
     const summary = await summarizeDrdk(
       articleText,
       300,
-      "google/gemini-2.5-flash",
+      "google/gemini-3.5-flash",
     );
     console.log(
       `\n--- Summary ${number} --- (${summary.length} characters)\n${summary.substring(0, 300 + 100)}`,

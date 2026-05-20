@@ -21,7 +21,7 @@ export const postLink = async (
   const summary = await summarizeDrdk(
     articleText,
     300,
-    "google/gemini-2.5-flash",
+    "google/gemini-3.5-flash",
   );
 
   await postToBluesky({
