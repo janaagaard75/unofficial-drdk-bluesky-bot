@@ -2,11 +2,11 @@ import OpenAI from "openai";
 import { PlainTextString } from "../shared/brandedTypes/PlainTextString";
 import { brand } from "../shared/brandedTypes/brand";
 import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableValue";
+import { model } from "../shared/model";
 
 export const summarizeHn = async (
   articleText: PlainTextString,
   maxLength: number,
-  model: "google/gemini-3.5-flash",
 ): Promise<PlainTextString> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
 

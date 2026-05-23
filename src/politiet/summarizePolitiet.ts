@@ -1,10 +1,10 @@
 import OpenAI from "openai";
 import { getEnvironmentVariableValue } from "../shared/getEnvironmentVariableValue";
+import { model } from "../shared/model";
 
 export const summarizePolitiet = async (
   articleText: string,
   maxLength: number,
-  model: "google/gemini-3.5-flash",
 ): Promise<string> => {
   const openRouterApiKey = getEnvironmentVariableValue("OPEN_ROUTER_API_KEY");
 

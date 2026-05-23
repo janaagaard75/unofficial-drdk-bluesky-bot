@@ -20,9 +20,7 @@ export const postUpdate = async (agent: AtpAgent, update: PolitietUpdate) => {
     }
 
     console.log("Generating summary with AI...");
-    return brand<PlainTextString>(
-      await summarizePolitiet(pageInfo.text, 300, "google/gemini-3.5-flash"),
-    );
+    return brand<PlainTextString>(await summarizePolitiet(pageInfo.text, 300));
   })();
 
   console.log(`Summary (${summary.length} characters): ${summary}`);

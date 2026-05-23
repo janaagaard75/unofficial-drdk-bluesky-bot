@@ -29,7 +29,7 @@ export const postHnStory = async (agent: AtpAgent, hnStory: HnStory) => {
       return PlainTextString.Empty;
     }
 
-    return summarizeHn(article.text, 300, "google/gemini-3.5-flash");
+    return summarizeHn(article.text, 300);
   })();
 
   console.log(`Summary: ${summary}`);
