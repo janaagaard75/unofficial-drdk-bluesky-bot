@@ -28,7 +28,7 @@ const summary = await (() => {
     return undefined;
   }
 
-  return summarizeHn(pageInfo.text, 300, "google/gemini-3.5-flash");
+  return summarizeHn(pageInfo.text, 300);
 })();
 
 console.log(`Summary: ${summary ?? "Could not extract page text."}`);

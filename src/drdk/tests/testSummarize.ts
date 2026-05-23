@@ -4,11 +4,7 @@ import { testArticleTexts } from "./testArticlesTexts";
 const testSummarize = async () => {
   let number = 1;
   for (const articleText of testArticleTexts) {
-    const summary = await summarizeDrdk(
-      articleText,
-      300,
-      "google/gemini-3.5-flash",
-    );
+    const summary = await summarizeDrdk(articleText, 300);
     console.log(
       `\n--- Summary ${number} --- (${summary.length} characters)\n${summary.substring(0, 300 + 100)}`,
     );
