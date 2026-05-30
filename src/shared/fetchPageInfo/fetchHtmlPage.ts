@@ -10,7 +10,7 @@ export const fetchHtmlPage = async (
 ): Promise<HtmlString | undefined> => {
   const browser = await puppeteerExtra.launch({
     args: ["--no-sandbox"],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+    executablePath: process.env["PUPPETEER_EXECUTABLE_PATH"],
   });
   const page = await browser.newPage();
 
