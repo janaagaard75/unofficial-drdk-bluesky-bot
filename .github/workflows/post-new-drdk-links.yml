@@ -27,12 +27,10 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Install Chrome for Puppeteer
-        run: npx puppeteer browsers install chrome
-
       - name: Post new links
         env:
           BLUESKY_DRDK_PASSWORD: ${{ secrets.BLUESKY_DRDK_PASSWORD }}
           BLUESKY_DRDK_USERNAME: ${{ secrets.BLUESKY_DRDK_USERNAME }}
           OPEN_ROUTER_API_KEY: ${{ secrets.OPEN_ROUTER_API_KEY }}
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: yarn run post-new-drdk-links
